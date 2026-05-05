@@ -1,56 +1,137 @@
 export function Impressum() {
   return (
-    <article className="prose prose-stone mx-auto max-w-3xl px-4 py-10 dark:prose-invert">
-      <h1 className="mb-6 text-3xl font-bold">Impressum</h1>
-
-      <p className="text-stone-700 dark:text-stone-300">
-        Angaben gemäß § 5 DDG (Digitale-Dienste-Gesetz) und § 18 Abs. 2 MStV
-        (Medienstaatsvertrag).
+    <article className="mx-auto max-w-3xl px-6 py-16">
+      <p className="small-caps text-[11px] text-rust">Kolophon</p>
+      <h1 className="mt-3 font-headline text-5xl font-semibold tracking-tight text-ink">
+        Impressum
+      </h1>
+      <p className="mt-4 max-w-xl font-display text-base leading-relaxed text-ink-soft">
+        Angaben gemäß § 5 DDG (Digitale-Dienste-Gesetz) und § 18 Abs. 2 MStV (Medienstaatsvertrag).
       </p>
 
-      <h2 className="mt-6 text-xl font-semibold">Verantwortlich für den Inhalt</h2>
-      <address className="not-italic text-stone-700 dark:text-stone-300">
-        Stefan Waßmann
-        <br />
-        Quellweg 36A
-        <br />
-        15345 Rehfelde
-        <br />
-        Deutschland
-        <br />
-        <br />
-        E-Mail: <a href="mailto:st.ar.wassmann@gmx.de" className="text-sky-600 hover:underline dark:text-sky-400">st.ar.wassmann@gmx.de</a>
-      </address>
+      <div className="mt-12 space-y-10 text-ink">
+        <Section
+          n="I"
+          title="Verantwortlich für den Inhalt"
+          body={
+            <address className="not-italic">
+              <span className="block font-headline text-xl text-ink">Stefan Waßmann</span>
+              <span className="block">Quellweg 36A</span>
+              <span className="block">15345 Rehfelde</span>
+              <span className="block">Deutschland</span>
+              <span className="mt-3 block">
+                <a
+                  href="mailto:st.ar.wassmann@gmx.de"
+                  className="text-rust underline-offset-4 hover:underline"
+                >
+                  st.ar.wassmann@gmx.de
+                </a>
+              </span>
+            </address>
+          }
+        />
 
-      <h2 className="mt-6 text-xl font-semibold">Hinweis zum Projekt</h2>
-      <p className="text-stone-700 dark:text-stone-300">
-        Diese Seite ist ein privates Schülerprojekt und wird nicht kommerziell betrieben.
-        Es findet keine Werbung, kein Verkauf und kein Sponsoring statt.
-      </p>
+        <Section
+          n="II"
+          title="Hinweis zum Projekt"
+          body={
+            <p>
+              Diese Seite ist ein privates Schülerprojekt und wird nicht kommerziell betrieben.
+              Es findet keine Werbung, kein Verkauf und kein Sponsoring statt.
+            </p>
+          }
+        />
 
-      <h2 className="mt-6 text-xl font-semibold">Haftung für Inhalte</h2>
-      <p className="text-stone-700 dark:text-stone-300">
-        Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen
-        Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir
-        als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte
-        fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine
-        rechtswidrige Tätigkeit hinweisen.
-      </p>
+        <Section
+          n="III"
+          title="Haftung für Inhalte"
+          body={
+            <p>
+              Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen
+              Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir
+              jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu
+              überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit
+              hinweisen.
+            </p>
+          }
+        />
 
-      <h2 className="mt-6 text-xl font-semibold">Haftung für Links</h2>
-      <p className="text-stone-700 dark:text-stone-300">
-        Diese Seite enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen
-        Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr
-        übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter
-        oder Betreiber der Seiten verantwortlich.
-      </p>
+        <Section
+          n="IV"
+          title="Haftung für Links"
+          body={
+            <p>
+              Diese Seite enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir
+              keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine
+              Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige
+              Anbieter oder Betreiber der Seiten verantwortlich.
+            </p>
+          }
+        />
 
-      <h2 className="mt-6 text-xl font-semibold">Bildnachweise</h2>
-      <p className="text-stone-700 dark:text-stone-300">
-        Die im Spiel verwendeten Standortbilder sind in der Datei{" "}
-        <code>src/data/locations.json</code> im Projekt-Repository mit Quelle und Lizenz
-        dokumentiert.
-      </p>
+        <Section
+          n="V"
+          title="Bildnachweise"
+          body={
+            <>
+              <p>
+                Die im Spiel verwendeten Standortbilder werden von{" "}
+                <a
+                  href="https://unsplash.com"
+                  className="text-rust underline-offset-4 hover:underline"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Unsplash
+                </a>{" "}
+                hotgelinkt und unterliegen der{" "}
+                <a
+                  href="https://unsplash.com/license"
+                  className="text-rust underline-offset-4 hover:underline"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Unsplash-Lizenz
+                </a>
+                .
+              </p>
+              <p>
+                Genaue URL-Quellen pro Bild sind in der Datei{" "}
+                <code className="font-display text-sm text-rust">src/data/locations.json</code> im
+                Projekt-Repository dokumentiert.
+              </p>
+            </>
+          }
+        />
+
+        <Section
+          n="VI"
+          title="Schriften"
+          body={
+            <p>
+              Display: <em>Fraunces</em> (Stephen Nixon, OFL).
+              <br />
+              Body: <em>Manrope</em> (Mikhail Sharanda, OFL).
+              <br />
+              Beide Schriften werden selbst gehostet ausgeliefert.
+            </p>
+          }
+        />
+      </div>
     </article>
+  );
+}
+
+function Section({ n, title, body }: { n: string; title: string; body: React.ReactNode }) {
+  return (
+    <section className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-3">
+      <span className="font-headline text-3xl italic text-ink-muted">{n}</span>
+      <div>
+        <h2 className="font-headline text-2xl font-semibold text-ink">{title}</h2>
+        <div className="mt-3 space-y-3 font-display text-base leading-relaxed text-ink-soft">
+          {body}
+        </div>
+      </div>
+    </section>
   );
 }

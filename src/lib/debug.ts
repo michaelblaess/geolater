@@ -1,10 +1,12 @@
 // Debug-Mode wird ueber URL ?debug=1 oder localStorage aktiviert.
-// Wenn aktiv, gibt das Spiel Statusinformationen in der Browser-Konsole aus.
+//
+// Zwei Logging-Ebenen:
+//   log()         — immer aktiv, fuer High-Level-Events (Spielstart, Tipp, Endscore)
+//   debugLog()    — nur wenn Debug-Mode aktiv (Wahre Position, Distanz-Math, etc.)
 
 const STORAGE_KEY = "geolater:debug";
 const URL_PARAM = "debug";
 
-// Liest URL- oder localStorage-Flag und persistiert die Wahl
 export function initDebugFromUrl(): boolean {
   try {
     const params = new URLSearchParams(window.location.search);
@@ -20,25 +22,41 @@ export function initDebugFromUrl(): boolean {
   }
 }
 
-// Singleton-Status fuer den aktuellen Run
 let active = false;
-
 export function setDebugActive(value: boolean): void {
   active = value;
 }
-
 export function isDebugActive(): boolean {
   return active;
 }
 
-// Praegnante Console-Logs mit gemeinsamem Prefix
+const PREFIX_STYLE_LOG = "color:#fff;background:#b45309;padding:2px 8px;border-radius:4px;font-weight:700;font-family:ui-monospace,monospace";
+const PREFIX_STYLE_DEBUG = "color:#1c1917;background:#facc15;padding:2px 8px;border-radius:4px;font-weight:700;font-family:ui-monospace,monospace";
+
+// Top-Level-Log: immer sichtbar, keine sensitiven Spoiler-Daten
+export function log(label: string, data?: unknown): void {
+  if (data === undefined) {
+    console.log(`%cgeolater%c %c${label}`, PREFIX_STYLE_LOG, "", "color:inherit;font-weight:600");
+  } else {
+    console.log(`%cgeolater%c %c${label}`, PREFIX_STYLE_LOG, "", "color:inherit;font-weight:600", data);
+  }
+}
+
+// Debug-Log: nur mit ?debug=1 sichtbar, kann Spoiler enthalten (z.B. Wahrheits-Lat/Lng)
 export function debugLog(label: string, data?: unknown): void {
   if (!active) return;
   if (data === undefined) {
-    console.log(`%c[geolater]%c ${label}`, "color:#0ea5e9;font-weight:bold", "color:inherit");
+    console.log(`%cdebug%c %c${label}`, PREFIX_STYLE_DEBUG, "", "color:#a16207;font-style:italic");
   } else {
-    console.log(`%c[geolater]%c ${label}`, "color:#0ea5e9;font-weight:bold", "color:inherit", data);
+    console.log(`%cdebug%c %c${label}`, PREFIX_STYLE_DEBUG, "", "color:#a16207;font-style:italic", data);
   }
+}
+
+export function debugTable(label: string, rows: unknown[]): void {
+  if (!active) return;
+  console.groupCollapsed(`%cdebug%c %c${label}`, PREFIX_STYLE_DEBUG, "", "color:#a16207;font-style:italic");
+  console.table(rows);
+  console.groupEnd();
 }
 
 export function debugGroup(label: string, run: () => void): void {
@@ -46,7 +64,7 @@ export function debugGroup(label: string, run: () => void): void {
     run();
     return;
   }
-  console.group(`%c[geolater]%c ${label}`, "color:#0ea5e9;font-weight:bold", "color:inherit");
+  console.group(`%cdebug%c %c${label}`, PREFIX_STYLE_DEBUG, "", "color:#a16207;font-style:italic");
   try {
     run();
   } finally {

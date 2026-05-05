@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { Location } from "../lib/types";
 import { imageUrl } from "../lib/locations";
 
@@ -5,19 +6,72 @@ type Props = {
   location: Location;
   roundIndex: number;
   totalRounds: number;
+  // true = das Spiel ist in der Result-Phase, dann darf der Label gezeigt werden
+  reveal: boolean;
 };
 
-export function BildPanel({ location, roundIndex, totalRounds }: Props) {
+const ROUND_NUMERAL = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];
+
+export function BildPanel({ location, roundIndex, totalRounds, reveal }: Props) {
+  const [errored, setErrored] = useState(false);
+
   return (
-    <div className="relative h-full w-full overflow-hidden rounded-2xl border border-stone-200 bg-stone-100 dark:border-stone-800 dark:bg-stone-900">
-      <img
-        src={imageUrl(location.image)}
-        alt={`Standortbild Runde ${roundIndex + 1}`}
-        className="h-full w-full object-cover"
-        draggable={false}
+    <figure className="group relative h-full w-full overflow-hidden border border-ink/10 bg-cream-deep shadow-[0_30px_60px_-20px_rgba(28,25,23,0.25)]">
+      {/* Bild */}
+      {errored ? (
+        <FallbackPlate />
+      ) : (
+        <img
+          src={imageUrl(location.image)}
+          alt={`Standortbild Etappe ${roundIndex + 1}`}
+          className="h-full w-full object-cover"
+          draggable={false}
+          onError={() => setErrored(true)}
+        />
+      )}
+
+      {/* Verlauf von oben fuer Lesbarkeit */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/55 to-transparent"
       />
-      <div className="absolute left-3 top-3 rounded-full bg-black/60 px-3 py-1 text-sm font-semibold text-white backdrop-blur-sm">
-        Runde {roundIndex + 1} / {totalRounds}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/55 to-transparent"
+      />
+
+      {/* Etappen-Marke oben links */}
+      <figcaption className="absolute left-5 top-5 flex items-center gap-3 text-cream">
+        <span className="small-caps text-[10px] opacity-90">Etappe</span>
+        <span className="font-headline text-3xl italic leading-none">
+          {ROUND_NUMERAL[roundIndex] ?? roundIndex + 1}
+        </span>
+        <span className="text-cream/60">/</span>
+        <span className="font-display text-sm opacity-80">{totalRounds}</span>
+      </figcaption>
+
+      {/* Credit unten rechts (immer dezent) */}
+      <span className="absolute bottom-4 right-5 max-w-[60%] truncate text-right font-display text-[10px] uppercase tracking-widest text-cream/70">
+        {location.credit}
+      </span>
+
+      {/* Reveal: Label-Overlay nach Tipp */}
+      {reveal ? (
+        <div className="absolute bottom-5 left-5 max-w-[70%] rounded-sm bg-cream/95 px-3 py-2 shadow-md backdrop-blur">
+          <p className="small-caps text-[10px] text-rust">Hier warst du</p>
+          <p className="font-headline text-lg italic text-ink">{location.label}</p>
+        </div>
+      ) : null}
+    </figure>
+  );
+}
+
+function FallbackPlate() {
+  return (
+    <div className="flex h-full w-full items-center justify-center bg-cream-deep">
+      <div className="text-center">
+        <p className="font-headline text-3xl italic text-ink-muted">Bild nicht verfügbar</p>
+        <p className="mt-2 small-caps text-[10px] text-ink-muted">offline · cors · oder url tot</p>
       </div>
     </div>
   );

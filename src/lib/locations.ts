@@ -18,12 +18,14 @@ export function pickRandomLocations(n: number): Location[] {
   return out;
 }
 
-// Gesamtzahl der verfuegbaren Locations (fuer Anzeige im UI)
 export function totalLocations(): number {
   return LOCATIONS.length;
 }
 
-// Gibt den Pfad zum Bild zurueck (Pfad-Praefix inkl. Vite base)
+// Nimmt eine externe URL direkt; bei lokalem Dateinamen wird BASE_URL vorangestellt.
 export function imageUrl(image: string): string {
+  if (image.startsWith("http://") || image.startsWith("https://")) {
+    return image;
+  }
   return `${import.meta.env.BASE_URL}locations/${image}`;
 }

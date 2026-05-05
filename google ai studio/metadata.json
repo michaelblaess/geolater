@@ -1,0 +1,6 @@
+{
+  "name": "GeoLater",
+  "description": "Ein einfaches GeoGuessr-ähnliches Spiel mit Leaflet und OpenStreetMap. Errate Orte auf der ganzen Welt basierend auf Street-View-Bildern.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

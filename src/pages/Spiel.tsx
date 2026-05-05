@@ -5,7 +5,7 @@ import { GuessMap } from "../components/GuessMap";
 import { RoundResult } from "../components/RoundResult";
 import { pickRandomLocations } from "../lib/locations";
 import { haversineKm, pointsFromDistance } from "../lib/scoring";
-import { debugGroup, debugLog, isDebugActive } from "../lib/debug";
+import { debugGroup, debugLog, debugTable, isDebugActive, log } from "../lib/debug";
 import type { GameResult, Location, Round } from "../lib/types";
 
 const TOTAL_ROUNDS = 5;
@@ -21,9 +21,17 @@ export function Spiel() {
   // Locations werden nur einmal beim Mount gezogen
   const locations = useMemo<Location[]>(() => {
     const picked = pickRandomLocations(TOTAL_ROUNDS);
-    debugGroup("Spiel gestartet", () => {
-      debugLog("Spieler", stateNickname);
-      debugLog("Gezogene Locations", picked);
+    log("Spielsession startet", { spieler: stateNickname, runden: picked.length });
+    debugGroup("Gezogene Locations (DEBUG)", () => {
+      debugTable(
+        "Pool",
+        picked.map((p, i) => ({
+          "#": i + 1,
+          Ort: p.label,
+          Lat: p.lat,
+          Lng: p.lng,
+        })),
+      );
     });
     return picked;
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -40,26 +48,22 @@ export function Spiel() {
 
   const current = locations[roundIndex];
 
-  // Beim Wechsel der Runde loggen
+  // Beim Wechsel der Runde loggen — Stadtname NICHT, sonst Spoiler
   useEffect(() => {
     if (current === undefined) return;
-    debugLog(`Runde ${roundIndex + 1} beginnt`, {
-      label: current.label,
-      lat: current.lat,
-      lng: current.lng,
-      image: current.image,
-    });
+    log(`Etappe ${roundIndex + 1} von ${TOTAL_ROUNDS} laeuft`);
+    debugLog("Wahre Position (DEBUG)", { lat: current.lat, lng: current.lng, label: current.label });
   }, [roundIndex, current]);
 
   function handleSubmit() {
     if (guess === null) return;
     const distanceKm = haversineKm(guess.lat, guess.lng, current.lat, current.lng);
     const points = pointsFromDistance(distanceKm);
-    debugGroup(`Runde ${roundIndex + 1} ausgewertet`, () => {
-      debugLog("Tipp", guess);
-      debugLog("Wahrheit", { lat: current.lat, lng: current.lng });
-      debugLog("Distanz (km)", distanceKm);
-      debugLog("Punkte", points);
+    log(`Etappe ${roundIndex + 1}: ${current.label}`, {
+      tipp: `${guess.lat.toFixed(3)}, ${guess.lng.toFixed(3)}`,
+      ziel: `${current.lat.toFixed(3)}, ${current.lng.toFixed(3)}`,
+      distanzKm: Math.round(distanceKm),
+      punkte: points,
     });
     setCurrentResult({ distanceKm, points });
     setPhase("result");
@@ -77,13 +81,18 @@ export function Spiel() {
     const nextCompleted = [...completedRounds, finishedRound];
 
     if (roundIndex + 1 >= TOTAL_ROUNDS) {
+      const totalPoints = nextCompleted.reduce((sum, r) => sum + r.points, 0);
       const result: GameResult = {
         nickname: stateNickname,
-        totalPoints: nextCompleted.reduce((sum, r) => sum + r.points, 0),
+        totalPoints,
         rounds: nextCompleted,
         playedAt: new Date().toISOString(),
       };
-      debugLog("Spiel beendet", { totalPoints: result.totalPoints, rounds: result.rounds.length });
+      log("Reise beendet", {
+        spieler: stateNickname,
+        gesamtpunkte: totalPoints,
+        maxMoeglich: 25000,
+      });
       navigate("/victory", { state: { result } });
       return;
     }
@@ -95,7 +104,6 @@ export function Spiel() {
     setPhase("guessing");
   }
 
-  // Debug-Funktion: Runde mit 0 Punkten ueberspringen
   function handleDebugSkip() {
     if (current === undefined) return;
     const skippedRound: Round = {
@@ -106,7 +114,7 @@ export function Spiel() {
       points: 0,
     };
     const nextCompleted = [...completedRounds, skippedRound];
-    debugLog(`Runde ${roundIndex + 1} uebersprungen (DEBUG)`);
+    debugLog(`Etappe ${roundIndex + 1} uebersprungen`);
 
     if (roundIndex + 1 >= TOTAL_ROUNDS) {
       const result: GameResult = {
@@ -137,28 +145,31 @@ export function Spiel() {
   const debug = isDebugActive();
 
   return (
-    <div className="mx-auto flex max-w-7xl flex-col gap-4 p-4">
-      <div className="flex items-center justify-between text-sm">
-        <span className="text-stone-600 dark:text-stone-400">
-          Spieler: <strong className="text-stone-900 dark:text-stone-100">{stateNickname}</strong>
-        </span>
-        <span className="text-stone-600 dark:text-stone-400">
-          Punkte bisher:{" "}
-          <strong className="text-stone-900 dark:text-stone-100">
+    <div className="mx-auto flex max-w-7xl flex-col gap-5 px-4 py-5 sm:px-6">
+      {/* Editorial Header-Zeile */}
+      <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-paper-rule pb-3 text-sm">
+        <div className="flex items-baseline gap-3">
+          <span className="small-caps text-[10px] text-ink-muted">Reisende</span>
+          <span className="font-headline text-lg italic text-ink">{stateNickname}</span>
+        </div>
+        <div className="flex items-baseline gap-3">
+          <span className="small-caps text-[10px] text-ink-muted">Punkte</span>
+          <span className="font-headline text-lg text-rust">
             {totalSoFar.toLocaleString("de-DE")}
-          </strong>
-        </span>
+          </span>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <div className="h-[42vh] sm:h-[50vh] lg:h-[70vh]">
+        <div className="h-[44vh] sm:h-[52vh] lg:h-[70vh]">
           <BildPanel
             location={current}
             roundIndex={roundIndex}
             totalRounds={TOTAL_ROUNDS}
+            reveal={phase === "result"}
           />
         </div>
-        <div className="h-[42vh] sm:h-[50vh] lg:h-[70vh]">
+        <div className="h-[44vh] sm:h-[52vh] lg:h-[70vh]">
           <GuessMap
             guess={guess}
             truth={phase === "result" ? { lat: current.lat, lng: current.lng } : null}
@@ -176,18 +187,21 @@ export function Spiel() {
             <button
               type="button"
               onClick={handleDebugSkip}
-              className="rounded-lg border border-amber-400 bg-amber-50 px-4 py-2 text-sm font-medium text-amber-900 transition-colors hover:bg-amber-100 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-200 dark:hover:bg-amber-900"
+              className="border border-gold/60 bg-gold-soft px-4 py-2 text-sm font-medium text-gold-dark transition-colors hover:bg-gold/20"
             >
-              Runde überspringen (DEBUG)
+              <span className="small-caps text-[10px]">Etappe überspringen (DEBUG)</span>
             </button>
           ) : null}
           <button
             type="button"
             onClick={handleSubmit}
             disabled={guess === null}
-            className="w-full rounded-xl bg-gradient-to-r from-sky-600 to-sky-500 px-6 py-3 font-semibold text-white shadow-lg shadow-sky-500/30 transition-all hover:from-sky-700 hover:to-sky-600 active:scale-[0.98] disabled:cursor-not-allowed disabled:from-stone-400 disabled:to-stone-400 disabled:shadow-none sm:w-auto dark:disabled:from-stone-700 dark:disabled:to-stone-700"
+            className="group inline-flex w-full items-center justify-center gap-3 bg-ink px-6 py-3.5 text-cream transition-all hover:bg-rust active:translate-y-px disabled:cursor-not-allowed disabled:bg-ink-muted/40 disabled:text-cream/70 sm:w-auto"
           >
-            Tipp abgeben
+            <span className="small-caps text-xs">Tipp abgeben</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden className="transition-transform group-hover:translate-x-0.5">
+              <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
+            </svg>
           </button>
         </div>
       ) : currentResult !== null ? (

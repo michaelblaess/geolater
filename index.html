@@ -4,8 +4,10 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f1e8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1c1917" media="(prefers-color-scheme: dark)" />
     <meta name="description" content="geolater — kostenloses GeoGuessr-ähnliches Browser-Spiel" />
-    <title>geolater</title>
+    <title>geolater — Editorial Travel Guessing</title>
     <script>
       // Theme aus localStorage so frueh wie moeglich anwenden, damit kein Flash entsteht
       (function () {
@@ -18,7 +20,7 @@
       })();
     </script>
   </head>
-  <body class="bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-100">
+  <body class="paper-grain">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

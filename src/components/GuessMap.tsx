@@ -98,7 +98,7 @@ export function GuessMap({ guess, truth, debugTruth, onMapClick }: Props) {
 
     const lngLat: LngLatLike = [guess.lng, guess.lat];
     if (guessMarkerRef.current === null) {
-      guessMarkerRef.current = new maplibregl.Marker({ color: "#0ea5e9" })
+      guessMarkerRef.current = new maplibregl.Marker({ color: "#b45309" })
         .setLngLat(lngLat)
         .addTo(map);
     } else {
@@ -151,7 +151,7 @@ export function GuessMap({ guess, truth, debugTruth, onMapClick }: Props) {
 
     if (truth === undefined || truth === null) return;
 
-    truthMarkerRef.current = new maplibregl.Marker({ color: "#16a34a" })
+    truthMarkerRef.current = new maplibregl.Marker({ color: "#3f6212" })
       .setLngLat([truth.lng, truth.lat])
       .addTo(map);
 
@@ -177,9 +177,9 @@ export function GuessMap({ guess, truth, debugTruth, onMapClick }: Props) {
           type: "line",
           source: "guess-line",
           paint: {
-            "line-color": "#dc2626",
-            "line-width": 2,
-            "line-dasharray": [2, 2],
+            "line-color": "#1c1917",
+            "line-width": 1.5,
+            "line-dasharray": [2, 3],
           },
         });
         lineSourceAdded.current = true;
@@ -199,11 +199,11 @@ export function GuessMap({ guess, truth, debugTruth, onMapClick }: Props) {
   }, [truth, guess]);
 
   return (
-    <div className="relative h-full w-full overflow-hidden rounded-2xl border border-stone-200 shadow-sm dark:border-stone-800">
+    <div className="relative h-full w-full overflow-hidden border border-ink/10 shadow-[0_30px_60px_-20px_rgba(28,25,23,0.25)]">
       <div ref={containerRef} className="h-full w-full" />
       {onMapClick !== null && guess === null ? (
-        <div className="pointer-events-none absolute inset-x-0 top-3 mx-auto w-fit rounded-full bg-black/60 px-4 py-1 text-sm text-white backdrop-blur-sm">
-          Klicke auf die Karte, um zu raten
+        <div className="pointer-events-none absolute inset-x-0 top-4 mx-auto w-fit bg-ink/85 px-4 py-1.5 backdrop-blur-sm">
+          <span className="small-caps text-[10px] text-cream">Klicke auf die Karte um zu raten</span>
         </div>
       ) : null}
     </div>

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { totalLocations } from "../lib/locations";
+import { CompassRose } from "../components/CompassRose";
+import { log } from "../lib/debug";
 
 const NICKNAME_KEY = "geolater:lastNickname";
 
@@ -23,52 +25,79 @@ export function Start() {
     } catch {
       // ignorieren
     }
+    log("Spiel startet", { nickname: finalName });
     navigate("/spiel", { state: { nickname: finalName } });
   }
 
   return (
-    <div className="hero-bg relative overflow-hidden">
-      <div className="mx-auto flex max-w-3xl flex-col items-center px-4 py-20 text-center sm:py-28">
-        <span className="animate-fade-up rounded-full border border-sky-200 bg-white/70 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-sky-700 shadow-sm backdrop-blur dark:border-sky-900 dark:bg-stone-900/70 dark:text-sky-300">
-          Schülerprojekt &middot; F2P &middot; Open Source
-        </span>
+    <div className="topo-bg relative overflow-hidden">
+      {/* dezenter Compass-Rose-Hintergrund, sehr leise */}
+      <CompassRose
+        size={520}
+        className="pointer-events-none absolute -right-32 -top-24 hidden text-ink/5 sm:block"
+      />
 
-        <h1 className="animate-fade-up mt-6 text-6xl font-black tracking-tight sm:text-7xl">
-          geo<span className="text-gradient-brand">later</span>
-        </h1>
+      <div className="relative mx-auto grid max-w-6xl gap-12 px-6 py-20 sm:py-28 lg:grid-cols-[1.2fr_1fr] lg:items-center lg:gap-16">
+        {/* Hero links */}
+        <div>
+          <p className="animate-rise small-caps text-xs text-rust">
+            Vol. I &nbsp;·&nbsp; Editorial Travel Almanac
+          </p>
 
-        <p className="animate-fade-up-delay mt-6 max-w-xl text-lg text-stone-600 dark:text-stone-400">
-          Du siehst ein Bild — wo wurde es aufgenommen? Klicke auf die Karte und rate die
-          Position. Je näher dein Tipp, desto mehr Punkte.
-        </p>
+          <h1 className="animate-rise-1 mt-5 font-headline text-[16vw] leading-[0.9] sm:text-7xl lg:text-[7.5rem]">
+            <span className="font-semibold text-ink">geo</span>
+            <span className="italic font-medium text-rust">later</span>
+            <span className="text-rust">.</span>
+          </h1>
 
-        <p className="animate-fade-up-delay mt-2 text-sm text-stone-500 dark:text-stone-500">
-          5 Runden &middot; max. 25.000 Punkte
-        </p>
+          <p className="animate-rise-2 mt-7 max-w-xl font-display text-xl leading-relaxed text-ink-soft sm:text-[1.35rem]">
+            Du betrittst einen unbekannten Ort. Deine einzige Aufgabe:{" "}
+            <em className="text-ink">die Welt deuten.</em> Klicke auf die Karte und
+            rate, wo du bist — fünf Etappen, höchstens fünfundzwanzigtausend Punkte.
+          </p>
 
-        <form
-          onSubmit={handleSubmit}
-          className="animate-fade-up-delay mt-10 flex w-full flex-col gap-3 sm:flex-row"
-        >
-          <input
-            type="text"
-            value={nickname}
-            onChange={(e) => setNickname(e.target.value)}
-            placeholder="Nickname (optional)"
-            maxLength={30}
-            className="flex-1 rounded-xl border border-stone-300 bg-white/90 px-4 py-3 text-base shadow-sm transition-colors focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/40 dark:border-stone-700 dark:bg-stone-900/90"
-          />
-          <button
-            type="submit"
-            className="rounded-xl bg-gradient-to-r from-sky-600 via-sky-500 to-fuchsia-500 px-7 py-3 text-base font-semibold text-white shadow-lg shadow-sky-500/30 transition-all hover:shadow-sky-500/50 active:scale-[0.98]"
+          <div className="animate-rise-3 mt-10 rule">
+            <span className="small-caps text-[10px]">Tritt ein</span>
+          </div>
+
+          <form
+            onSubmit={handleSubmit}
+            className="animate-rise-3 mt-6 flex w-full max-w-md flex-col gap-3 sm:flex-row"
           >
-            Spiel starten
-          </button>
-        </form>
+            <input
+              type="text"
+              value={nickname}
+              onChange={(e) => setNickname(e.target.value)}
+              placeholder="Nom de plume"
+              maxLength={30}
+              className="flex-1 rounded-none border-b-2 border-ink/30 bg-transparent px-1 py-3 font-display text-lg text-ink placeholder:text-ink-muted/70 placeholder:italic focus:border-rust focus:outline-none"
+            />
+            <button
+              type="submit"
+              className="group relative inline-flex items-center justify-center gap-3 bg-ink px-6 py-3.5 font-medium tracking-wide text-cream transition-all hover:bg-rust active:translate-y-px"
+            >
+              <span className="small-caps text-xs">Spiel beginnen</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
+                <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
+              </svg>
+            </button>
+          </form>
 
-        <p className="animate-fade-up-delay mt-12 text-sm text-stone-500 dark:text-stone-500">
-          {totalLocations()} Standorte verfügbar — Bilder werden zufällig gezogen.
-        </p>
+          <p className="animate-rise-4 mt-12 text-sm text-ink-muted">
+            <span className="small-caps text-rust">{totalLocations()} Orte</span> &nbsp;im
+            aktuellen Almanach &nbsp;—&nbsp; jede Reise zieht fünf zufällige Etappen.
+          </p>
+        </div>
+
+        {/* Compass-Rose rechts (sichtbar) */}
+        <div className="animate-rise-2 relative hidden lg:flex lg:items-center lg:justify-center">
+          <CompassRose size={360} className="animate-spin-slow text-rust/85" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+            <span className="font-headline text-5xl italic text-ink">Terra</span>
+            <span className="font-headline text-5xl italic text-rust">incognita</span>
+            <span className="small-caps mt-2 text-[10px] text-ink-soft">finde deinen ort</span>
+          </div>
+        </div>
       </div>
     </div>
   );
