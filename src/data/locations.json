@@ -28,7 +28,7 @@
     "credit": "Foto: Unsplash"
   },
   {
-    "image": "https://images.unsplash.com/photo-1599946347341-6cd48217c1d9?auto=format&fit=crop&q=80&w=1000",
+    "image": "https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&q=80&w=1000",
     "lat": 52.5163,
     "lng": 13.3789,
     "label": "Brandenburger Tor, Berlin",
@@ -49,14 +49,14 @@
     "credit": "Foto: Unsplash"
   },
   {
-    "image": "https://images.unsplash.com/photo-1536098565842-039096a996f9?auto=format&fit=crop&q=80&w=1000",
+    "image": "https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&q=80&w=1000",
     "lat": 35.6586,
     "lng": 139.7460,
     "label": "Tokio-Turm, Tokio",
     "credit": "Foto: Unsplash"
   },
   {
-    "image": "https://images.unsplash.com/photo-1593121922329-38383307384c?auto=format&fit=crop&q=80&w=1000",
+    "image": "https://images.unsplash.com/photo-1518639192441-8fce0a366e2e?auto=format&fit=crop&q=80&w=1000",
     "lat": -22.9519,
     "lng": -43.2105,
     "label": "Christusstatue, Rio de Janeiro",

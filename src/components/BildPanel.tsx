@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { Location } from "../lib/types";
 import { imageUrl } from "../lib/locations";
+import { log } from "../lib/debug";
 
 type Props = {
   location: Location;
@@ -14,23 +15,36 @@ const ROUND_NUMERAL = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "
 
 export function BildPanel({ location, roundIndex, totalRounds, reveal }: Props) {
   const [errored, setErrored] = useState(false);
+  const url = imageUrl(location.image);
 
   return (
     <figure className="group relative h-full w-full overflow-hidden border border-ink/10 bg-cream-deep shadow-[0_30px_60px_-20px_rgba(28,25,23,0.25)]">
       {/* Bild */}
       {errored ? (
-        <FallbackPlate />
+        <FallbackPlate url={url} />
       ) : (
         <img
-          src={imageUrl(location.image)}
+          key={url}
+          src={url}
           alt={`Standortbild Etappe ${roundIndex + 1}`}
           className="h-full w-full object-cover"
           draggable={false}
-          onError={() => setErrored(true)}
+          onLoad={() => {
+            log(`Bild geladen — Etappe ${roundIndex + 1}`, { url });
+          }}
+          onError={() => {
+            console.warn(
+              `%cgeolater%c Bild konnte nicht geladen werden`,
+              "color:#fff;background:#dc2626;padding:2px 8px;border-radius:4px;font-weight:700",
+              "color:#dc2626;font-weight:600",
+              { etappe: roundIndex + 1, url, location: location.label },
+            );
+            setErrored(true);
+          }}
         />
       )}
 
-      {/* Verlauf von oben fuer Lesbarkeit */}
+      {/* Verlauf von oben/unten fuer Lesbarkeit */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/55 to-transparent"
@@ -50,7 +64,7 @@ export function BildPanel({ location, roundIndex, totalRounds, reveal }: Props) 
         <span className="font-display text-sm opacity-80">{totalRounds}</span>
       </figcaption>
 
-      {/* Credit unten rechts (immer dezent) */}
+      {/* Credit unten rechts */}
       <span className="absolute bottom-4 right-5 max-w-[60%] truncate text-right font-display text-[10px] uppercase tracking-widest text-cream/70">
         {location.credit}
       </span>
@@ -66,13 +80,12 @@ export function BildPanel({ location, roundIndex, totalRounds, reveal }: Props) 
   );
 }
 
-function FallbackPlate() {
+function FallbackPlate({ url }: { url: string }) {
   return (
-    <div className="flex h-full w-full items-center justify-center bg-cream-deep">
-      <div className="text-center">
-        <p className="font-headline text-3xl italic text-ink-muted">Bild nicht verfügbar</p>
-        <p className="mt-2 small-caps text-[10px] text-ink-muted">offline · cors · oder url tot</p>
-      </div>
+    <div className="flex h-full w-full flex-col items-center justify-center bg-cream-deep p-8 text-center">
+      <p className="font-headline text-3xl italic text-ink-muted">Bild nicht verfügbar</p>
+      <p className="mt-2 small-caps text-[10px] text-ink-muted">offline · cors · oder url tot</p>
+      <p className="mt-6 max-w-md break-all font-display text-[10px] text-ink-muted/70">{url}</p>
     </div>
   );
 }
