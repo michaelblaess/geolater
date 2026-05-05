@@ -1,15 +1,16 @@
 # geolater — Projektplan
 
-> Ein GeoGuessr-ähnliches Browser-Spiel. Komplett kostenlos, ohne Zahlungsdaten,
-> als Schülerprojekt von Michael Blaess. **Statisch, gehostet auf GitHub Pages.**
+> Ein GeoGuessr-ähnliches Browser-Spiel als „Editorial Travel Almanac".
+> Komplett kostenlos, ohne Zahlungsdaten, ohne Konto, ohne Backend.
+> Schülerprojekt von Michael Blaess. Live: https://michaelblaess.github.io/geolater/
 
 ---
 
 ## 1. Projektziel
 
-Der Spieler landet in einem zufälligen Street-Level-Panorama irgendwo auf der Welt
-und muss auf einer Weltkarte raten, wo er sich befindet. Punkte richten sich nach
-der Distanz zwischen Tipp und echter Position.
+Der Spieler sieht das Foto eines Wahrzeichens irgendwo auf der Welt und muss auf
+einer Weltkarte raten, wo das Bild aufgenommen wurde. Punkte richten sich nach der
+Distanz zwischen Tipp und echter Position.
 
 **Inspiration:** GeoGuessr — aber kostenlos, ohne Account, ohne Backend,
 ohne Paywall.
@@ -20,80 +21,77 @@ ohne Paywall.
 
 - **Keine Kreditkarte / keine Zahlungsdaten** — Michael ist Schüler.
 - **Keine kostenpflichtigen APIs.**
-- **Kein Supabase, kein Vercel** — Anforderung von Michael, weniger
-  Account-Komplexität.
-- **Hosting: GitHub Pages** (kostenlos, statisch, mit GitHub-Account vorhanden).
-- **Code-Basis:** Von Null aufgebaut. Eine AI-Studio-Codebase war als
-  Ausgangspunkt geplant, wurde aber verworfen (Michael: "mach wie du meinst").
+- **Kein Supabase, kein Vercel** — Anforderung von Michael (weniger Accounts).
+- **Hosting: GitHub Pages** (öffentliches Repo, Auto-Deploy via Actions).
+- **Verantwortlich (Impressum):** Stefan Waßmann, Quellweg 36A, 15345 Rehfelde,
+  st.ar.wassmann@gmx.de — als ladungsfähige Kontaktperson, da Michael minderjährig.
 
 ---
 
-## 3. Stack
+## 3. Stack (final)
 
-| Schicht         | Technologie                          | Frei?              |
-|-----------------|--------------------------------------|--------------------|
-| Build-Tool      | **Vite 7**                           | ja, Open Source    |
-| Frontend        | **React 19 + TypeScript**            | ja, Open Source    |
-| Routing         | **React Router 7**                   | ja, Open Source    |
-| Styling         | **Tailwind CSS 4** (mit Dark Mode)   | ja, Open Source    |
-| Bildanzeige     | Plain `<img>`-Element                | ja                 |
-| Bildquelle      | **Lokale Bilder** in `public/locations/` (JPG/PNG, mit metadata.json) | ja |
-| Rate-Karte      | **MapLibre GL JS** + OSM-Tiles       | ja, kein Key       |
-| "Datenbank"     | **`localStorage`** im Browser        | ja, kein Server    |
-| Hosting         | **GitHub Pages**                     | ja                 |
-| Musik (später)  | **Suno**-AI-generierte MP3-Dateien   | ja (Free-Plan)     |
+| Schicht         | Technologie                                  | Frei?              |
+|-----------------|----------------------------------------------|--------------------|
+| Build-Tool      | **Vite 7**                                   | ja, Open Source    |
+| Frontend        | **React 19 + TypeScript**                    | ja, Open Source    |
+| Routing         | **React Router 7** (HashRouter für GH Pages) | ja, Open Source    |
+| Styling         | **Tailwind CSS 4** (`@theme`, klassischer Dark Mode) | ja, Open Source    |
+| Schriften       | **Fraunces** (Display, Variable + Italic) + **Manrope** (Body) — selbst gehostet via `@fontsource-variable` | ja, OFL |
+| Bildanzeige     | Plain `<img>` mit `onError`-Fallback         | ja                 |
+| **Bildquelle**  | **Wikimedia Commons** Hotlinks (1280px Thumbs, via MediaWiki Pageimages-API ermittelt) | ja, CC-BY-SA |
+| Rate-Karte      | **MapLibre GL JS** + **OpenFreeMap** Vektor-Tiles (Fallback: OSM-Raster) | ja, kein Key |
+| Spieldaten      | **`localStorage`** (Highscores, Theme) + **`sessionStorage`** (laufende Reise) | ja |
+| Hosting         | **GitHub Pages** (Public-Repo, Actions-Deploy) | ja |
+| Musik (Phase 1.5) | **Suno**-AI-generierte MP3-Dateien         | ja (CC-BY-NC)      |
+
+### Warum Wikimedia Commons statt Unsplash / Mapillary / Street View?
+
+| Quelle              | Lizenz / Kosten        | Reliabilität        | Ergebnis           |
+|---------------------|------------------------|---------------------|--------------------|
+| Google Street View  | Kreditkarte ab Aufruf 5.001/Monat | sehr hoch | ❌ ausgeschlossen |
+| Mapillary           | Token, kein KK; lückenhafte Coverage | mittel | ❌ verworfen      |
+| Eigene SVG-Platzhalter | gratis, keine echten Bilder      | hoch  | ❌ kein Spiel     |
+| Unsplash-Hotlinks   | gratis, aber instabil (URLs verschwinden, Inhalt passt nicht zum Label) | niedrig | ❌ verworfen |
+| **Wikimedia Commons via Pageimages-API** | gratis, korrektes Motiv garantiert, stabile URLs | **hoch** | ✅ aktuell |
+
+**Lessons learned:**
+- **Wikipedia-Pageimages-API** (`/w/api.php?action=query&prop=pageimages&pithumbsize=1280`) liefert pro
+  Wikipedia-Artikel **die offizielle Thumbnail-URL**, die garantiert in Wikimedias
+  Cache liegt. Selbst gebastelte Thumb-URLs können 400 zurückgeben (Wikimedia generiert
+  nicht alle Größen vor).
+- **1280px** ist die Größe, die die API standardmäßig zurückliefert — funktioniert
+  für alle Wahrzeichen. 1024px war für Taj Mahal nicht gecacht.
 
 ### Warum Vite + React statt Next.js?
 
-- GitHub Pages ist statisches Hosting → Vite buildet zu plain HTML/CSS/JS,
-  keine Server-Komponenten / API-Routes nötig
-- Next.js wäre jetzt Overkill (wir haben kein Backend mehr)
-- Vite startet schneller im Dev-Modus, einfachere Konfiguration
-- React 19 + TypeScript für sauberen Spielzustand (5 Runden, Scoring, Theme)
+GitHub Pages ist statisches Hosting → Vite buildet zu reinem HTML/CSS/JS, keine Server-
+Komponenten nötig. Next.js wäre Overkill ohne Backend.
 
-### Warum kein Backend / kein Supabase?
+### Warum HashRouter?
 
-Michael will die Account-Komplexität rausnehmen. Folgen:
-- **Highscore nur lokal** (`localStorage`) — kein globales Leaderboard.
-  Ist für Phase 1 ok, kann in Phase 3 nachgerüstet werden, wenn er es will.
-- **Keine API-Routes** — alles läuft client-seitig.
-- **Kein Server-Validation** — Anti-Cheat = nicht Phase 1.
-
-### Warum GitHub Pages statt Vercel?
-
-- Michael will keinen Vercel-Account dafür.
-- GitHub-Account hat er. Mit `gh-pages`-Branch oder GitHub Actions deployen.
-- Statisches Hosting reicht, weil keine Server-Logik nötig ist.
-
-### Warum lokale Bilder statt Mapillary / Street View?
-
-- **Komplett offline-fähig & ohne API** — kein Token, kein Service-Limit
-- **Maximale Kontrolle** über Bildqualität und Kuratierung
-- **Schnelles Laden** (statisch ausgeliefert, von GitHub-Pages-CDN)
-- **Trade-off:** kein interaktives 360°-Panorama. Spieler sieht nur ein Standbild
-  pro Runde. Das ist weniger "GeoGuessr-like", aber für ein Schülerprojekt
-  völlig ausreichend und macht die Implementierung dramatisch einfacher.
-- **Bildquelle:** Michael liefert die Bilder ins Repo (eigene Fotos,
-  CC-BY-Bilder von Wikimedia Commons, AI-generiert mit Standortbezug, …).
-  Pro Bild: Dateiname + reale Lat/Lng + Label.
+GitHub Pages kann keine SPA-Routing-Fallbacks; ein Direktaufruf von `/highscore` würde
+404. HashRouter packt die Route hinter `#`, der nicht zum Server geht. Saubere Lösung
+ohne `404.html`-Trick.
 
 ---
 
 ## 4. Free-Tier-Limits (Stand 2026-05)
 
 ### GitHub Pages
-- Soft-Limit: 100 GB Bandbreite / Monat, max. 1 GB Repo-Größe
-- Build-Limit: 10 Builds / Stunde
-- Reicht für ein Schülerprojekt locker
+- 100 GB Bandbreite / Monat (soft), max. 1 GB Repo-Größe
+- 10 Builds / Stunde (Actions-basiert)
+- Reicht für Schülerprojekt locker
 
-### OSM-Tiles
-- Tile Usage Policy: faire Nutzung, keine harte Grenze
-- Bei viel Traffic später eigenen Tile-Server / MapTiler Free-Tier
+### OpenFreeMap
+- „Free Forever, No Limits" laut Anbieter (community-finanziert)
+- Vektor-Tiles, kein Key, kein Account
 
-### Suno
-- Free-Plan: 50 Songs / Monat (Stand 2026)
-- Lizenz: Free-Tier-Songs sind **CC-BY-NC** — nur non-commercial nutzbar.
-  Passt zum Schülerprojekt, aber wenn Werbung dazukommt, brauchen wir Pro.
+### Wikimedia Commons
+- Hotlinking erlaubt für moderate Nutzung
+- Bei viel Traffic: lokales Hosten der Bilder (HEAD-Request-Caching auf GitHub-CDN)
+
+### Suno (für später)
+- Free-Plan: 50 Songs / Monat, **CC-BY-NC** — non-commercial only.
 
 ---
 
@@ -103,109 +101,140 @@ Michael will die Account-Komplexität rausnehmen. Folgen:
 
 | Frage                  | Antwort                                              |
 |------------------------|------------------------------------------------------|
-| Login?                 | **Nein** — nicht mehr nötig (kein Backend)           |
-| Highscore-Speicherung? | **`localStorage`** lokal                             |
-| Region?                | **Weltweit** (kuratiert)                             |
-| UI-Sprache & Code?     | **Deutsch**                                          |
-| Bildquelle             | **Lokale Bilder im Repo** (`public/locations/`)      |
-| Rate-Karte             | **MapLibre + OSM**                                   |
-| Hosting                | **GitHub Pages**                                     |
-| Musik                  | **Suno**-AI-generiert                                |
-| Theme                  | **Dark + Light Mode** (umschaltbar)                  |
-| Rechtsseiten           | **Datenschutz + Impressum** (DSGVO-Pflicht)          |
-| Musik                  | **Verschoben** — kommt in Phase 1.5, sobald Tracks da |
+| Login?                 | Nein (kein Backend)                                  |
+| Highscore?             | Lokal in `localStorage`, Top 10                      |
+| Region?                | Weltweit (10 kuratierte Wahrzeichen)                 |
+| UI-Sprache             | Deutsch                                              |
+| Theme                  | Dark + Light, in `localStorage`                      |
+| Bildquelle             | Wikimedia Commons Hotlinks                           |
+| Rate-Karte             | MapLibre + OpenFreeMap                               |
+| Hosting                | GitHub Pages                                         |
+| Musik                  | Phase 1.5 (Suno, sobald Tracks da)                   |
+| Pflicht-Seiten         | Datenschutz + Impressum                              |
 
-### Features
+### Features — alle erledigt ✓
 
-- [ ] Startseite mit Button "Spiel starten" + Nickname-Eingabe (optional)
-- [ ] 5 Runden pro Spiel
-- [ ] Pro Runde: Standbild der Location (links) + Weltkarte zum Tippen (rechts)
-- [ ] Button "Tipp abgeben" → zeigt Distanz + Punkte für die Runde
-- [ ] Nach Runde 5: **Victory-Screen** mit Endscore + Animation
-- [ ] **Highscore-Liste lokal** (`localStorage`, Top 10 dieses Browsers)
-- [ ] ~~**Hintergrundmusik** (Suno-Tracks, Mute-Toggle)~~ — auf Phase 1.5 verschoben, Tracks noch nicht generiert
-- [ ] **Dark/Light-Mode-Toggle**, Auswahl in `localStorage` merken
-- [ ] **Datenschutz**-Seite (was wird gespeichert: nichts außer localStorage)
-- [ ] **Impressum**-Seite (Schüler-Impressum mit Name + Kontakt)
+- ✓ Startseite mit Hero, Compass-Rose, Nickname-Eingabe
+- ✓ 5 Etappen pro Reise (römische Numerale I–V)
+- ✓ Bild + MapLibre-Karte zum Tippen, mit Tipp/Wahrheits-Markern und Linie
+- ✓ Haversine-Scoring, Etappenwertung mit „Weiter / Endergebnis"-Knopf
+- ✓ Animierter Victory-Screen mit Count-up der Punktzahl + Etappenbuch
+- ✓ Lokale Top-10-Tafel, sortiert, mit Reset-Button
+- ✓ Datenschutz + Impressum (Wikimedia + OpenFreeMap + GitHub als Drittanbieter)
+- ✓ Dark/Light-Toggle, Vor-Hydration-Skript gegen FOUC
+- ✓ Debug-Mode (`?debug=1`): zeigt Wahrheits-Pin live, Skip-Button, mehr Logs
+- ✓ Always-on Console-Logs für High-Level-Events (Spielstart, Tipp, Endscore)
+- ✓ Wiederaufnahme der laufenden Reise via `sessionStorage` (Tafel/Datenschutz/
+  Impressum verlieren keine Spielfortschritte)
 
 ### Bewusst NICHT in Phase 1
-
-- Globales Multiplayer-Leaderboard (kein Backend)
-- Login / User-Accounts
-- Multiplayer
-- Mobile-optimiertes UI
-- Schwierigkeitsgrade
-- Zeitlimit pro Runde
+- Multiplayer / globales Leaderboard
+- Login / Konten
+- Mobile-optimiertes UI über das hinaus, was Tailwind eh liefert
+- Schwierigkeitsgrade, Zeitlimit pro Etappe
+- Custom Maps / eigene Location-Sets
+- Musik (auf 1.5 verschoben)
 
 ---
 
-## 6. Architektur
+## 6. Designsprache — Editorial Travel Almanac
 
-### Verzeichnisstruktur — vorläufig (final, sobald AI-Studio-Code da)
+Klare Abkehr vom Tech-Flat-Look. Inspiration: alte Reise-Almanache, Atlanten,
+National-Geographic-Editorial.
+
+**Palette (CSS-Tokens via Tailwind 4 `@theme`):**
+- `--color-cream: #f5f1e8` — Papier
+- `--color-ink: #1c1917` — Tinte
+- `--color-rust: #b45309` — primärer Akzent (Buttons, Links, Marker-Tipp)
+- `--color-moss: #3f6212` — Wahrheits-Marker auf der Karte
+- `--color-gold: #ca8a04` — Erstplatzierter, Debug-Badge
+- `--color-paper-rule: rgba(28, 25, 23, 0.10)` — Trennlinien
+
+Dark Mode invertiert die Cream/Ink-Achse, die Akzente bleiben warm.
+
+**Typografie:**
+- **Fraunces** (Variable Serif mit `opsz` und Italic) — alle Überschriften, Numerals
+- **Manrope** (Variable Sans) — Body, Buttons, Smallcaps
+- **Smallcaps** (`font-variant-caps: all-small-caps`, weite Tracking) für UI-Marken
+
+**Decorations:**
+- Compass-Rose-SVG mit langsamer 90-s-Rotation auf Start
+- Topografische Radialgradienten (Rust + Moss) als Hero-Hintergrund
+- Subtiles SVG-Noise-Korn als fixer Body-Overlay (`paper-grain`)
+- Editorial-Trennlinien mit Inline-Smallcaps-Label
+- Etappen sind I, II, III, IV, V — keine arabischen Ziffern in Headlines
+- Karten-Canvas im Dark Mode via CSS-Filter invertiert (Marker bleiben unberührt)
+
+**Animations** (alle CSS-only, keine Lib):
+- `rise`, `rise-1` … `rise-4` — staggered Fade-up beim Mount
+- `pulse-soft` — pulsierender Punkt für „Reise läuft"-Pille
+- `spin-slow` — 90 s/Umdrehung Compass-Rose
+- Count-up der Endpunktzahl auf Victory (1.4 s ease-out)
+
+---
+
+## 7. Architektur
+
+### Verzeichnisstruktur (aktuell)
 
 ```
 geolater/
 ├── plan.md                     ← dieses Dokument
-├── README.md                   ← für GitHub
-├── LICENSE                     ← MIT o.ä.
-├── .github/
-│   └── workflows/
-│       └── deploy.yml          ← Auto-Deploy auf GitHub Pages
+├── README.md
+├── package.json
+├── vite.config.ts              ← base: "/geolater/"
+├── tsconfig.{json,app,node}.json
+├── index.html                  ← Theme-Bootstrap, paper-grain class
+├── .github/workflows/deploy.yml ← Auto-Deploy
 ├── public/
-│   ├── locations/              ← Standortbilder (JPG/PNG)
-│   │   ├── berlin-01.jpg
-│   │   ├── paris-01.jpg
-│   │   └── ...
-│   └── musik/                  ← Phase 1.5
-│       └── (leer, kommt später)
+│   ├── favicon.svg
+│   └── locations/
+│       └── README.md           ← Anleitung Bilder
 ├── src/
+│   ├── main.tsx                ← Debug-Init, Console-Banner
+│   ├── App.tsx                 ← HashRouter, Routes
+│   ├── index.css               ← @theme Tokens, Animations, paper-grain
 │   ├── pages/
-│   │   ├── Start              ← Nickname + Start-Button
-│   │   ├── Spiel              ← Hauptspiel (5 Runden)
-│   │   ├── Victory            ← End-/Sieges-Screen
-│   │   ├── Highscore          ← Lokale Top-10
-│   │   ├── Datenschutz        ← Privacy
-│   │   └── Impressum          ← Imprint
+│   │   ├── Layout.tsx          ← Header (Logo, Tafel, Debug-Badge,
+│   │   │                          „Reise läuft"-Pille, Theme-Toggle), Footer
+│   │   ├── Start.tsx           ← Hero, Compass, Nickname-Form, Resume-Button
+│   │   ├── Spiel.tsx           ← 5 Etappen, useState + sessionStorage-Resume
+│   │   ├── Victory.tsx         ← Count-up, Etappenbuch, „Neue Reise"
+│   │   ├── Highscore.tsx       ← Top-10-Tafel, Reset
+│   │   ├── Datenschutz.tsx     ← Editorial-Sections (I–VI)
+│   │   └── Impressum.tsx       ← Editorial-Sections (I–VI), Kolophon
 │   ├── components/
-│   │   ├── BildPanel          ← Bild der Location
-│   │   ├── GuessMap           ← MapLibre + Click
-│   │   ├── RoundResult        ← Distanz/Punkte
-│   │   ├── VictoryScreen      ← Animierter Endscreen
-│   │   ├── MusicPlayer        ← Phase 1.5 (leer reserviert)
-│   │   └── ThemeToggle        ← Dark/Light
+│   │   ├── BildPanel.tsx       ← Bild + Etappen-Marke + Reveal + Fallback
+│   │   ├── GuessMap.tsx        ← MapLibre, OpenFreeMap, Marker, Linie
+│   │   ├── RoundResult.tsx     ← Etappenwertung-Karte
+│   │   ├── ThemeToggle.tsx     ← Sonne/Mond-Icon
+│   │   └── CompassRose.tsx     ← SVG-Kompass mit Strahlen + N/E/S/W
 │   ├── lib/
-│   │   ├── locations.ts       ← Pool laden + zufällig ziehen
-│   │   ├── scoring.ts         ← Haversine + Punkte
-│   │   ├── highscore.ts       ← localStorage R/W
-│   │   └── theme.ts           ← Dark/Light State
+│   │   ├── types.ts            ← Location, Round, GameResult, StoredScore
+│   │   ├── locations.ts        ← Pool laden, zufällig ziehen, imageUrl()
+│   │   ├── scoring.ts          ← Haversine, pointsFromDistance, formatDistance
+│   │   ├── highscore.ts        ← localStorage-CRUD für Top-10
+│   │   ├── theme.ts            ← Dark/Light-Toggle + Persistenz
+│   │   ├── debug.ts            ← log() always, debugLog/Group/Table gated
+│   │   └── gameSession.ts      ← sessionStorage-Resume der laufenden Reise
 │   └── data/
-│       └── locations.json     ← Bild-Metadaten (Datei + Lat/Lng + Label)
-└── (kein .env nötig — keine API-Keys mehr!)
+│       └── locations.json      ← 10 Wahrzeichen mit Wikimedia-URL + Lat/Lng
+└── (kein .env nötig — keine API-Keys)
 ```
 
-### "Datenbank" — `localStorage`
+### Datenmodell
 
-Statt SQL-Tabelle:
-
+**`localStorage`** (überlebt Tab-Schließen):
 ```ts
-// Schlüssel: "geolater:scores"
-type StoredScore = {
-  nickname: string;
-  totalPoints: number;
-  rounds: Array<{ distanceKm: number; points: number; locationLabel: string }>;
-  playedAt: string; // ISO
-};
-
-// Wir speichern Array von StoredScore, sortiert nach totalPoints desc, max 10
+"geolater:scores"        // StoredScore[] — Top 10
+"geolater:theme"         // "dark" | "light"
+"geolater:lastNickname"  // string
+"geolater:debug"         // "1" | "0"
 ```
 
+**`sessionStorage`** (verschwindet beim Tab-Schließen):
 ```ts
-// Schlüssel: "geolater:settings"
-type Settings = {
-  theme: "dark" | "light";
-  musicMuted: boolean;
-  musicVolume: number; // 0..1
-};
+"geolater:activeGame"  // ActiveGame — laufende Reise (Etappe, Tipp, Phase, …)
 ```
 
 ### Scoring-Formel
@@ -213,125 +242,120 @@ type Settings = {
 ```ts
 const points = Math.round(5000 * Math.exp(-distanceKm / 2000));
 // 0 km → 5000, 1000 km → ~3032, 5000 km → ~410, 20000 km → ~0
-// Maximum pro Spiel: 25.000 Punkte
+// Maximum pro Reise: 25.000 Punkte
 ```
 
-### Location-Pool (lokale Bilder)
+### Logging — zwei Ebenen
 
-```json
-[
-  {
-    "image": "berlin-01.jpg",
-    "lat": 52.5163,
-    "lng": 13.3777,
-    "label": "Berlin, Deutschland",
-    "credit": "Foto: Wikimedia Commons / CC-BY-SA 4.0"
-  }
-]
-```
+**Always-on (`log()`)**, sichtbar mit Rust-Badge `geolater`:
+- App geladen
+- Spielsession startet (Spieler, Anzahl Runden)
+- Aktive Reise wiederhergestellt
+- Etappe N läuft (ohne Stadtname → kein Spoiler)
+- Etappe N: <Stadt> mit Tipp/Ziel/Distanz/Punkten (nach Tipp-Abgabe)
+- Reise beendet (Gesamtpunkte)
+- Highscore gespeichert
+- `BildPanel` loggt onLoad (geladen) und onError (rote Warnung mit URL)
 
-Pro Runde: zufällig einen Eintrag ziehen, `image` aus `public/locations/`
-laden, Lat/Lng als "echte Position" für Distanzberechnung.
-
-**Aufbau:** ~20–50 Bilder, manuell kuratiert. Quellen z. B.
-- Wikimedia Commons (CC-BY oder CC-BY-SA, Attribution beachten)
-- Eigene Fotos
-- AI-generierte Bilder mit Standortbezug
-
-Mischung pro Kontinent (Vorschlag, kann Michael anpassen):
-- Europa: 10 · Nordamerika: 5 · Südamerika: 3 · Asien: 7 · Afrika: 3 · Ozeanien: 2
+**Debug-only (`?debug=1`, Gold-Badge `debug`):**
+- Wahre Position der aktuellen Etappe (Spoiler)
+- Komplette Pool-Tabelle als `console.table`
+- Skip-Runde-Aktion
+- Genaues Lat/Lng des Tipps und Ziels
 
 ---
 
-## 7. Aufgabenliste (Phase 1)
+## 8. Aufgabenliste
 
-| # | Aufgabe                              | Wer      | Status      |
-|---|--------------------------------------|----------|-------------|
-| 3 | Stack in plan.md konsolidieren       | Claude   | erledigt    |
-|12 | GitHub-Repo + Pages-Deployment       | Claude   | in Arbeit   |
-|13 | Vite + React + TS + Tailwind scaffolden | Claude| offen       |
-| 4 | Location-Pool & Bilder kuratieren    | Michael+C| offen       |
-| 5 | Game-UI bauen (Split-Screen)         | Claude   | offen       |
-| 6 | Scoring + Rundenlogik                | Claude   | offen       |
-| 7 | Lokale Highscore-Liste               | Claude   | offen       |
-| 8 | Victory-Screen                       | Claude   | offen       |
-| 9 | Dark/Light-Mode                      | Claude   | offen       |
-|11 | Datenschutz + Impressum              | Claude   | offen       |
-|10 | Musik-Player (Phase 1.5)             | Claude+M | verschoben  |
-
----
-
-## 8. Roadmap (nach MVP)
-
-### Phase 2 — Politur
-- Mobile-optimiertes UI
-- Zeitlimit pro Runde (optional)
-- "Bewegung erlaubt / verboten"-Modus
-- Animationen polieren
-
-### Phase 3 — Globales Leaderboard (optional)
-- Falls Michael es will: leichtes Backend
-  (z. B. Cloudflare Workers Free + KV oder GitHub Issues als Quasi-DB)
-- Validierung server-seitig
-
-### Phase 4 — Multiplayer
-- WebRTC oder leichter WebSocket-Server
-- Räume mit Code
-
-### Phase 5 — Custom Content
-- Eigene Location-Sets
-- Themen-Maps
+| # | Aufgabe                                       | Status              |
+|---|-----------------------------------------------|---------------------|
+| 1 | Stack festlegen + Scaffold                    | ✓ erledigt          |
+| 2 | Game-UI, Scoring, Rundenlogik                 | ✓ erledigt          |
+| 3 | Lokale Highscore-Tafel                        | ✓ erledigt          |
+| 4 | Victory-Screen + Count-up                     | ✓ erledigt          |
+| 5 | Dark/Light-Mode                               | ✓ erledigt          |
+| 6 | Datenschutz + Impressum                       | ✓ erledigt          |
+| 7 | Debug-Mode + Console-Logging zweistufig       | ✓ erledigt          |
+| 8 | OpenFreeMap statt OSM-Raster                  | ✓ erledigt          |
+| 9 | Bilder: Wikimedia Commons via Pageimages-API  | ✓ erledigt          |
+|10 | Editorial Redesign (Fraunces/Manrope, Cream)  | ✓ erledigt          |
+|11 | Wiederaufnahme via `sessionStorage`           | ✓ erledigt          |
+|12 | GitHub Pages Auto-Deploy                      | ✓ erledigt          |
+|13 | Musik (Suno) einbinden                        | offen, Phase 1.5    |
+|14 | PWA (Manifest + Service Worker)               | offen, Vorarbeit Stores |
+|15 | Spenden-Link (Ko-fi/BMC)                      | offen, optional     |
 
 ---
 
-## 9. Datenschutz / Impressum (Phase 1)
+## 9. Datenschutz / Impressum
 
 ### Was wird gespeichert?
-- **Im Browser (`localStorage`):** Nickname, Highscores, Theme-Wahl,
-  Musik-Lautstärke. Verlässt das Gerät nie.
-- **Server-seitig:** nichts. Wir haben keinen Server.
+- **Browser (`localStorage` + `sessionStorage`):** Nickname, Highscores, Theme,
+  Debug-Flag, laufende Reise. Verlässt das Gerät nie.
+- **Server-seitig:** nichts.
 - **Cookies:** keine.
-- **Tracking:** keines.
 
-### Drittanbieter
-- **OpenStreetMap-Tile-Server** lädt Karten-Tiles → IP wird an OSM übermittelt
-- **GitHub Pages** loggt IPs beim Seitenaufruf
-
-→ Diese Drittanbieter müssen in der Datenschutzerklärung erwähnt werden.
-Bilder kommen direkt aus dem Repo (kein externer Image-Service).
+### Drittanbieter (verarbeiten IP)
+- **GitHub Pages** — Hosting
+- **OpenFreeMap** (`tiles.openfreemap.org`) — Karten-Tiles
+- **OpenStreetMap** — Datenquelle (Fallback)
+- **Wikimedia Commons** (`upload.wikimedia.org`) — Standortbilder
 
 ### Impressum (Schüler)
-
-Verantwortlich i.S.d. § 5 DDG / § 18 Abs. 2 MStV:
-
 ```
-Stefan Waßmann
-Quellweg 36A
-15345 Rehfelde
-Deutschland
-
+Stefan Waßmann · Quellweg 36A · 15345 Rehfelde · Deutschland
 E-Mail: st.ar.wassmann@gmx.de
+Privates Schülerprojekt, nicht kommerziell.
 ```
 
-Hinweis: "Privates Schülerprojekt, nicht kommerziell."
+---
 
-> Stefan Waßmann ist als ladungsfähige Kontaktperson eingetragen, da Michael
-> minderjährig ist. So in Impressum-Page einbauen.
+## 10. Phasen-Roadmap (nach MVP)
+
+### Phase 1.5 — Politur & Begleitfeatures
+- Suno-Tracks einbinden (Hintergrundmusik mit Mute/Volume, in `localStorage`)
+- Optional: Spenden-Link im Footer (Ko-fi / Buy Me a Coffee, ohne Tracking-Skripte)
+- Mehr Locations (z. B. 30+) und/oder Schwierigkeitsgrade
+
+### Phase 2 — App-Tauglichkeit
+- **PWA** — Manifest + Service Worker + Install-Prompt + Offline-Fallback
+- Mobile-Polish (Touch-Map-Geste, größere Tap-Targets)
+- Eigene Domain (optional)
+
+### Phase 3 — Stores (falls gewünscht)
+- **Google Play**: TWA via Bubblewrap/PWA Builder, 25 USD einmalig (Stefan)
+- **Apple App Store**: Capacitor-Wrapper, 99 USD/Jahr (Stefan)
+- Erfordert: kommerzielle Klarstellung im Impressum, ggf. Gewerbeanmeldung
+- Bilder dann lokal hosten (Wikimedia-Hotlinks bei kommerziellem Maßstab unsauber)
+
+### Phase 4 — Multiplayer (falls gewollt)
+- WebRTC oder leichter WebSocket-Server (Cloudflare Workers Free + KV)
+- Räume mit Code zum Beitreten
+
+### Phase 5 — Custom Content
+- Eigene Location-Sets (Themen, Regionen)
+- Community-Sets teilen via JSON-Export
 
 ---
 
-## 10. Offene Fragen / Risiken
+## 11. Offene Fragen / Risiken
 
-- [ ] **Bild-Lizenzen sauber dokumentieren** — pro Bild Quelle + Lizenz
-      im `credit`-Feld der locations.json (wichtig bei Wikimedia-Bildern)
-- [ ] **Suno-Lizenz** — Free-Tier ist CC-BY-NC, später Namensnennung im Impressum
-- [x] ~~Adresse fürs Impressum~~ → Stefan Waßmann, Rehfelde (entschieden)
-- [ ] **Anti-Cheat** — Phase 1 ignorieren (kein Backend ohnehin)
+- [ ] **Wikimedia-Hotlinking-Politur**: bei viralem Traffic sollten wir die Bilder
+      ins Repo packen. Aktuell pro Bild ~150 KB hotgelinkt → bei 1.000 Spielsessions/Tag
+      sind das ~750 MB Wikimedia-Traffic — vertretbar, aber nicht Ewigkeit-skalierbar.
+- [ ] **Hobby-Plan auf GitHub Pages** ist offiziell „nicht für kommerzielle Zwecke";
+      bei Monetarisierung (Phase 3) Hosting-Wechsel auf Cloudflare Pages prüfen.
+- [ ] **Suno-Lizenz**: Free-Tier ist CC-BY-NC, also nicht für Monetarisierung erlaubt.
+- [ ] **Anti-Cheat**: clientseitige Scores sind manipulierbar. Bewusst akzeptiert,
+      weil kein Backend. Bei globalem Leaderboard (Phase 4) anders lösen.
+- [ ] **Wikipedia-API-Limits**: Pageimages wird nur einmal beim Erstellen des
+      Location-Pools angefragt (offline, durch uns) — der Spieler ruft sie nie auf.
+      Daher kein Laufzeit-Risiko.
 
 ---
 
-## 11. Designnotizen
+## 12. Designnotizen
 
-> Dieser Abschnitt wird von Michael befüllt, während er die UI designt.
+> Dieser Abschnitt ist für Michael — füllen, wenn Mockups/Skizzen anstehen.
 
-(Platzhalter — Mockups, Farbpalette, Logo-Ideen, Suno-Track-Stil hier ergänzen)
+(Platzhalter — Logo-Varianten, mögliche Farb-Tweaks, Mobile-Layouts hier ergänzen)
