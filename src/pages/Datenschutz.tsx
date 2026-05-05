@@ -85,10 +85,11 @@ export function Datenschutz() {
                   </a>
                 </li>
                 <li>
-                  <strong>Unsplash</strong> (Unsplash, Inc., 388 Richmond St W, Toronto, ON,
-                  Kanada) — liefert die Standortbilder als Hotlinks.{" "}
+                  <strong>Wikimedia Commons</strong> (Wikimedia Foundation, Inc., 1 Montgomery
+                  Street Suite 1600, San Francisco, CA 94104, USA) — liefert die Standortbilder
+                  als Hotlinks von <code className="font-display text-sm">upload.wikimedia.org</code>.{" "}
                   <a
-                    href="https://unsplash.com/privacy"
+                    href="https://meta.wikimedia.org/wiki/Privacy_policy"
                     className="text-rust underline-offset-4 hover:underline"
                     target="_blank"
                     rel="noreferrer"

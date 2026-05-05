@@ -77,28 +77,21 @@ export function Impressum() {
               <p>
                 Die im Spiel verwendeten Standortbilder werden von{" "}
                 <a
-                  href="https://unsplash.com"
+                  href="https://commons.wikimedia.org"
                   className="text-rust underline-offset-4 hover:underline"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Unsplash
+                  Wikimedia Commons
                 </a>{" "}
-                hotgelinkt und unterliegen der{" "}
-                <a
-                  href="https://unsplash.com/license"
-                  className="text-rust underline-offset-4 hover:underline"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Unsplash-Lizenz
-                </a>
-                .
+                hotgelinkt. Es gelten die jeweiligen Lizenzen der einzelnen Bilder
+                (überwiegend CC-BY-SA, Public Domain oder vergleichbar).
               </p>
               <p>
-                Genaue URL-Quellen pro Bild sind in der Datei{" "}
+                Die genauen URLs pro Standort sind in der Datei{" "}
                 <code className="font-display text-sm text-rust">src/data/locations.json</code> im
-                Projekt-Repository dokumentiert.
+                Projekt-Repository dokumentiert. Über die Wikimedia-URL gelangt man jeweils
+                zur Originalseite mit Fotograf- und Lizenzangaben.
               </p>
             </>
           }
