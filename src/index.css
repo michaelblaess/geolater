@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@import "maplibre-gl/dist/maplibre-gl.css";
+
+/* Dark Mode klassenbasiert: <html class="dark"> aktiviert die Variante */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+/* MapLibre-Container braucht eine Hoehe — wird in den Komponenten gesetzt */
+.maplibregl-canvas:focus {
+  outline: none;
+}

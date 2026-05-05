@@ -1,0 +1,58 @@
+[
+  {
+    "image": "01-berlin.svg",
+    "lat": 52.5163,
+    "lng": 13.3777,
+    "label": "Berlin (Brandenburger Tor), Deutschland",
+    "credit": "Platzhalter-SVG — durch echtes Foto ersetzen"
+  },
+  {
+    "image": "02-paris.svg",
+    "lat": 48.8584,
+    "lng": 2.2945,
+    "label": "Paris (Eiffelturm), Frankreich",
+    "credit": "Platzhalter-SVG — durch echtes Foto ersetzen"
+  },
+  {
+    "image": "03-tokyo.svg",
+    "lat": 35.6586,
+    "lng": 139.7454,
+    "label": "Tokio (Tokyo Tower), Japan",
+    "credit": "Platzhalter-SVG — durch echtes Foto ersetzen"
+  },
+  {
+    "image": "04-newyork.svg",
+    "lat": 40.7484,
+    "lng": -73.9857,
+    "label": "New York (Empire State Building), USA",
+    "credit": "Platzhalter-SVG — durch echtes Foto ersetzen"
+  },
+  {
+    "image": "05-sydney.svg",
+    "lat": -33.8568,
+    "lng": 151.2153,
+    "label": "Sydney (Opera House), Australien",
+    "credit": "Platzhalter-SVG — durch echtes Foto ersetzen"
+  },
+  {
+    "image": "06-rio.svg",
+    "lat": -22.9519,
+    "lng": -43.2105,
+    "label": "Rio de Janeiro (Cristo Redentor), Brasilien",
+    "credit": "Platzhalter-SVG — durch echtes Foto ersetzen"
+  },
+  {
+    "image": "07-kairo.svg",
+    "lat": 29.9792,
+    "lng": 31.1342,
+    "label": "Kairo (Pyramiden von Gizeh), Aegypten",
+    "credit": "Platzhalter-SVG — durch echtes Foto ersetzen"
+  },
+  {
+    "image": "08-rom.svg",
+    "lat": 41.8902,
+    "lng": 12.4922,
+    "label": "Rom (Kolosseum), Italien",
+    "credit": "Platzhalter-SVG — durch echtes Foto ersetzen"
+  }
+]
