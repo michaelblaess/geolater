@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { totalLocations } from "../lib/locations";
 import { CompassRose } from "../components/CompassRose";
 import { log } from "../lib/debug";
+import { clearActiveGame, hasActiveGame } from "../lib/gameSession";
 
 const NICKNAME_KEY = "geolater:lastNickname";
 
@@ -25,9 +26,18 @@ export function Start() {
     } catch {
       // ignorieren
     }
+    // Beim Start aus dem Hero IMMER eine frische Reise — alte verwerfen
+    clearActiveGame();
     log("Spiel startet", { nickname: finalName });
     navigate("/spiel", { state: { nickname: finalName } });
   }
+
+  function handleResume() {
+    log("Reise wird fortgesetzt");
+    navigate("/spiel");
+  }
+
+  const canResume = hasActiveGame();
 
   return (
     <div className="topo-bg relative overflow-hidden">
@@ -60,6 +70,27 @@ export function Start() {
             <span className="small-caps text-[10px]">Tritt ein</span>
           </div>
 
+          {canResume ? (
+            <div className="animate-rise-3 mt-6 flex w-full max-w-md flex-col gap-3">
+              <button
+                type="button"
+                onClick={handleResume}
+                className="group inline-flex items-center justify-between gap-3 border-2 border-rust bg-rust px-6 py-3.5 text-cream transition-colors hover:bg-rust-deep"
+              >
+                <span className="flex items-center gap-3">
+                  <span aria-hidden className="block h-2 w-2 rounded-full bg-cream animate-pulse-soft" />
+                  <span className="small-caps text-xs">Laufende Reise fortsetzen</span>
+                </span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden className="transition-transform group-hover:translate-x-0.5">
+                  <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
+                </svg>
+              </button>
+              <p className="text-xs text-ink-muted">
+                <span className="small-caps">oder</span> &nbsp; eine neue Reise unten beginnen — die laufende geht dabei verloren.
+              </p>
+            </div>
+          ) : null}
+
           <form
             onSubmit={handleSubmit}
             className="animate-rise-3 mt-6 flex w-full max-w-md flex-col gap-3 sm:flex-row"
@@ -76,7 +107,9 @@ export function Start() {
               type="submit"
               className="group relative inline-flex items-center justify-center gap-3 bg-ink px-6 py-3.5 font-medium tracking-wide text-cream transition-all hover:bg-rust active:translate-y-px"
             >
-              <span className="small-caps text-xs">Spiel beginnen</span>
+              <span className="small-caps text-xs">
+                {canResume ? "Neue Reise" : "Spiel beginnen"}
+              </span>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
                 <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
               </svg>

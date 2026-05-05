@@ -1,72 +1,72 @@
 [
   {
-    "image": "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&q=80&w=1000",
-    "lat": 48.8575,
-    "lng": 2.2952,
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg/1024px-Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg",
+    "lat": 48.8584,
+    "lng": 2.2945,
     "label": "Eiffelturm, Paris",
-    "credit": "Foto: Unsplash"
+    "credit": "Foto: Wikimedia Commons"
   },
   {
-    "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&q=80&w=1000",
-    "lat": 40.6908,
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Front_view_of_Statue_of_Liberty_%28cropped%29.jpg/1024px-Front_view_of_Statue_of_Liberty_%28cropped%29.jpg",
+    "lat": 40.6892,
     "lng": -74.0445,
     "label": "Freiheitsstatue, New York",
-    "credit": "Foto: Unsplash"
+    "credit": "Foto: Wikimedia Commons"
   },
   {
-    "image": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&q=80&w=1000",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/1024px-Colosseo_2020.jpg",
     "lat": 41.8902,
-    "lng": 12.4925,
+    "lng": 12.4922,
     "label": "Kolosseum, Rom",
-    "credit": "Foto: Unsplash"
+    "credit": "Foto: Wikimedia Commons"
   },
   {
-    "image": "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&q=80&w=1000",
-    "lat": 27.1738,
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Taj_Mahal_%28Edited%29.jpeg/1024px-Taj_Mahal_%28Edited%29.jpeg",
+    "lat": 27.1751,
     "lng": 78.0421,
     "label": "Taj Mahal, Indien",
-    "credit": "Foto: Unsplash"
+    "credit": "Foto: Wikimedia Commons"
   },
   {
-    "image": "https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&q=80&w=1000",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Brandenburger_Tor_abends.jpg/1024px-Brandenburger_Tor_abends.jpg",
     "lat": 52.5163,
-    "lng": 13.3789,
+    "lng": 13.3777,
     "label": "Brandenburger Tor, Berlin",
-    "credit": "Foto: Unsplash"
+    "credit": "Foto: Wikimedia Commons"
   },
   {
-    "image": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&q=80&w=1000",
-    "lat": -33.8587,
-    "lng": 151.2140,
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Sydney_Australia._%2821339175489%29.jpg/1024px-Sydney_Australia._%2821339175489%29.jpg",
+    "lat": -33.8568,
+    "lng": 151.2153,
     "label": "Opernhaus, Sydney",
-    "credit": "Foto: Unsplash"
+    "credit": "Foto: Wikimedia Commons"
   },
   {
-    "image": "https://images.unsplash.com/photo-1449034446853-66c86144b0ad?auto=format&fit=crop&q=80&w=1000",
-    "lat": 37.8077,
-    "lng": -122.4750,
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Golden_Gate_Bridge_as_seen_from_Battery_East.jpg/1024px-Golden_Gate_Bridge_as_seen_from_Battery_East.jpg",
+    "lat": 37.8199,
+    "lng": -122.4783,
     "label": "Golden Gate Bridge, San Francisco",
-    "credit": "Foto: Unsplash"
+    "credit": "Foto: Wikimedia Commons"
   },
   {
-    "image": "https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&q=80&w=1000",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Tokyo_Tower_2023.jpg/1024px-Tokyo_Tower_2023.jpg",
     "lat": 35.6586,
-    "lng": 139.7460,
+    "lng": 139.7454,
     "label": "Tokio-Turm, Tokio",
-    "credit": "Foto: Unsplash"
+    "credit": "Foto: Wikimedia Commons"
   },
   {
-    "image": "https://images.unsplash.com/photo-1518639192441-8fce0a366e2e?auto=format&fit=crop&q=80&w=1000",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Christ_the_Redeemer_-_Cristo_Redentor.jpg/1024px-Christ_the_Redeemer_-_Cristo_Redentor.jpg",
     "lat": -22.9519,
     "lng": -43.2105,
     "label": "Christusstatue, Rio de Janeiro",
-    "credit": "Foto: Unsplash"
+    "credit": "Foto: Wikimedia Commons"
   },
   {
-    "image": "https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&fit=crop&q=80&w=1000",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Elizabeth_Tower%2C_June_2022.jpg/1024px-Elizabeth_Tower%2C_June_2022.jpg",
     "lat": 51.5007,
     "lng": -0.1246,
     "label": "Big Ben, London",
-    "credit": "Foto: Unsplash"
+    "credit": "Foto: Wikimedia Commons"
   }
 ]

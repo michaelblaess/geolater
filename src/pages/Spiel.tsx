@@ -6,11 +6,15 @@ import { RoundResult } from "../components/RoundResult";
 import { pickRandomLocations } from "../lib/locations";
 import { haversineKm, pointsFromDistance } from "../lib/scoring";
 import { debugGroup, debugLog, debugTable, isDebugActive, log } from "../lib/debug";
-import type { GameResult, Location, Round } from "../lib/types";
+import {
+  clearActiveGame,
+  loadActiveGame,
+  saveActiveGame,
+  type Phase,
+} from "../lib/gameSession";
+import type { GameResult, Round } from "../lib/types";
 
 const TOTAL_ROUNDS = 5;
-
-type Phase = "guessing" | "result";
 
 export function Spiel() {
   const navigate = useNavigate();
@@ -18,14 +22,23 @@ export function Spiel() {
   const stateNickname =
     (routerLocation.state as { nickname?: string } | null)?.nickname ?? "Anonym";
 
-  // Locations werden nur einmal beim Mount gezogen
-  const locations = useMemo<Location[]>(() => {
-    const picked = pickRandomLocations(TOTAL_ROUNDS);
-    log("Spielsession startet", { spieler: stateNickname, runden: picked.length });
+  // Initial state: aktive Reise wiederherstellen oder neu starten
+  const initial = useMemo(() => {
+    const saved = loadActiveGame();
+    if (saved !== null) {
+      log("Aktive Reise wiederhergestellt", {
+        spieler: saved.nickname,
+        etappe: saved.roundIndex + 1,
+        bisherigePunkte: saved.completedRounds.reduce((s, r) => s + r.points, 0),
+      });
+      return saved;
+    }
+    const locations = pickRandomLocations(TOTAL_ROUNDS);
+    log("Spielsession startet", { spieler: stateNickname, runden: locations.length });
     debugGroup("Gezogene Locations (DEBUG)", () => {
       debugTable(
         "Pool",
-        picked.map((p, i) => ({
+        locations.map((p, i) => ({
           "#": i + 1,
           Ort: p.label,
           Lat: p.lat,
@@ -33,18 +46,38 @@ export function Spiel() {
         })),
       );
     });
-    return picked;
+    return {
+      nickname: stateNickname,
+      locations,
+      roundIndex: 0,
+      guess: null,
+      phase: "guessing" as Phase,
+      completedRounds: [] as Round[],
+      currentResult: null as { distanceKm: number; points: number } | null,
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const [roundIndex, setRoundIndex] = useState(0);
-  const [guess, setGuess] = useState<{ lat: number; lng: number } | null>(null);
-  const [phase, setPhase] = useState<Phase>("guessing");
-  const [completedRounds, setCompletedRounds] = useState<Round[]>([]);
-  const [currentResult, setCurrentResult] = useState<{
-    distanceKm: number;
-    points: number;
-  } | null>(null);
+  const [nickname] = useState(initial.nickname);
+  const [locations] = useState(initial.locations);
+  const [roundIndex, setRoundIndex] = useState(initial.roundIndex);
+  const [guess, setGuess] = useState(initial.guess);
+  const [phase, setPhase] = useState<Phase>(initial.phase);
+  const [completedRounds, setCompletedRounds] = useState(initial.completedRounds);
+  const [currentResult, setCurrentResult] = useState(initial.currentResult);
+
+  // Persistiere bei jeder Aenderung — so kann der Spieler navigieren und zurueckkommen
+  useEffect(() => {
+    saveActiveGame({
+      nickname,
+      locations,
+      roundIndex,
+      guess,
+      phase,
+      completedRounds,
+      currentResult,
+    });
+  }, [nickname, locations, roundIndex, guess, phase, completedRounds, currentResult]);
 
   const current = locations[roundIndex];
 
@@ -83,16 +116,17 @@ export function Spiel() {
     if (roundIndex + 1 >= TOTAL_ROUNDS) {
       const totalPoints = nextCompleted.reduce((sum, r) => sum + r.points, 0);
       const result: GameResult = {
-        nickname: stateNickname,
+        nickname,
         totalPoints,
         rounds: nextCompleted,
         playedAt: new Date().toISOString(),
       };
       log("Reise beendet", {
-        spieler: stateNickname,
+        spieler: nickname,
         gesamtpunkte: totalPoints,
         maxMoeglich: 25000,
       });
+      clearActiveGame();
       navigate("/victory", { state: { result } });
       return;
     }
@@ -118,11 +152,12 @@ export function Spiel() {
 
     if (roundIndex + 1 >= TOTAL_ROUNDS) {
       const result: GameResult = {
-        nickname: stateNickname,
+        nickname,
         totalPoints: nextCompleted.reduce((sum, r) => sum + r.points, 0),
         rounds: nextCompleted,
         playedAt: new Date().toISOString(),
       };
+      clearActiveGame();
       navigate("/victory", { state: { result } });
       return;
     }
@@ -146,11 +181,10 @@ export function Spiel() {
 
   return (
     <div className="mx-auto flex max-w-7xl flex-col gap-5 px-4 py-5 sm:px-6">
-      {/* Editorial Header-Zeile */}
       <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-paper-rule pb-3 text-sm">
         <div className="flex items-baseline gap-3">
           <span className="small-caps text-[10px] text-ink-muted">Reisende</span>
-          <span className="font-headline text-lg italic text-ink">{stateNickname}</span>
+          <span className="font-headline text-lg italic text-ink">{nickname}</span>
         </div>
         <div className="flex items-baseline gap-3">
           <span className="small-caps text-[10px] text-ink-muted">Punkte</span>
@@ -187,7 +221,7 @@ export function Spiel() {
             <button
               type="button"
               onClick={handleDebugSkip}
-              className="border border-gold/60 bg-gold-soft px-4 py-2 text-sm font-medium text-gold-dark transition-colors hover:bg-gold/20"
+              className="border border-gold/60 bg-gold-soft px-4 py-2 text-sm font-medium text-gold transition-colors hover:bg-gold/20"
             >
               <span className="small-caps text-[10px]">Etappe überspringen (DEBUG)</span>
             </button>
