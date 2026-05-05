@@ -14,7 +14,55 @@ body,
   height: 100%;
 }
 
-/* MapLibre-Container braucht eine Hoehe — wird in den Komponenten gesetzt */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseSlow {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 0.9; }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.5s ease-out both;
+  }
+  .animate-fade-up-delay {
+    animation: fadeUp 0.5s ease-out 0.15s both;
+  }
+  .text-gradient-brand {
+    background: linear-gradient(90deg, #0ea5e9 0%, #d946ef 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* Hintergrund-Verlauf, der subtil leuchtet */
+.hero-bg {
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(14, 165, 233, 0.18), transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(217, 70, 239, 0.15), transparent 50%);
+}
+
+.dark .hero-bg {
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(14, 165, 233, 0.25), transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(217, 70, 239, 0.2), transparent 50%);
+}
+
 .maplibregl-canvas:focus {
   outline: none;
+}
+
+/* Dark-Mode-Filter nur auf den Karten-Canvas. Marker liegen darueber und bleiben unberuehrt. */
+.dark .maplibregl-canvas {
+  filter: invert(0.92) hue-rotate(180deg) brightness(0.92) saturate(0.85);
 }

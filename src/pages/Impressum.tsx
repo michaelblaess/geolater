@@ -4,7 +4,7 @@ export function Impressum() {
       <h1 className="mb-6 text-3xl font-bold">Impressum</h1>
 
       <p className="text-stone-700 dark:text-stone-300">
-        Angaben gemäss § 5 DDG (Digitale-Dienste-Gesetz) und § 18 Abs. 2 MStV
+        Angaben gemäß § 5 DDG (Digitale-Dienste-Gesetz) und § 18 Abs. 2 MStV
         (Medienstaatsvertrag).
       </p>
 
@@ -30,7 +30,7 @@ export function Impressum() {
 
       <h2 className="mt-6 text-xl font-semibold">Haftung für Inhalte</h2>
       <p className="text-stone-700 dark:text-stone-300">
-        Als Diensteanbieter sind wir gemäss § 7 Abs. 1 DDG für eigene Inhalte auf diesen
+        Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen
         Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir
         als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte
         fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine

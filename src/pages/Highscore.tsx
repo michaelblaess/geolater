@@ -11,7 +11,7 @@ export function Highscore() {
   }, []);
 
   function handleReset() {
-    if (!confirm("Wirklich alle lokalen Highscores loeschen?")) return;
+    if (!confirm("Wirklich alle lokalen Highscores löschen?")) return;
     clearScores();
     setScores([]);
   }
@@ -24,38 +24,43 @@ export function Highscore() {
           <button
             type="button"
             onClick={handleReset}
-            className="rounded-lg border border-stone-300 px-3 py-1.5 text-sm hover:bg-stone-100 dark:border-stone-700 dark:hover:bg-stone-800"
+            className="rounded-lg border border-stone-300 px-3 py-1.5 text-sm transition-colors hover:bg-stone-100 dark:border-stone-700 dark:hover:bg-stone-800"
           >
-            Liste loeschen
+            Liste löschen
           </button>
         ) : null}
       </div>
 
       {scores.length === 0 ? (
-        <div className="rounded-2xl border border-stone-200 bg-white p-8 text-center dark:border-stone-800 dark:bg-stone-900">
+        <div className="animate-fade-up rounded-2xl border border-stone-200 bg-white p-8 text-center shadow-sm dark:border-stone-800 dark:bg-stone-900">
           <p className="text-stone-600 dark:text-stone-400">
             Noch keine Spiele gespielt. Los geht's!
           </p>
           <Link
             to="/"
-            className="mt-4 inline-block rounded-xl bg-sky-600 px-5 py-2.5 font-semibold text-white shadow hover:bg-sky-700"
+            className="mt-4 inline-block rounded-xl bg-gradient-to-r from-sky-600 to-sky-500 px-5 py-2.5 font-semibold text-white shadow transition-all hover:shadow-lg active:scale-[0.98]"
           >
             Zum Start
           </Link>
         </div>
       ) : (
-        <ol className="divide-y divide-stone-200 overflow-hidden rounded-2xl border border-stone-200 bg-white dark:divide-stone-800 dark:border-stone-800 dark:bg-stone-900">
+        <ol className="animate-fade-up divide-y divide-stone-200 overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm dark:divide-stone-800 dark:border-stone-800 dark:bg-stone-900">
           {scores.map((s, i) => (
-            <li key={s.playedAt} className="flex items-center gap-4 px-4 py-3">
-              <span className={`inline-flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold ${
-                i === 0
-                  ? "bg-amber-300 text-amber-900"
-                  : i === 1
-                    ? "bg-stone-300 text-stone-800"
-                    : i === 2
-                      ? "bg-orange-300 text-orange-900"
-                      : "bg-stone-200 text-stone-700 dark:bg-stone-800 dark:text-stone-300"
-              }`}>
+            <li
+              key={s.playedAt}
+              className="flex items-center gap-4 px-4 py-3 transition-colors hover:bg-stone-50 dark:hover:bg-stone-800/60"
+            >
+              <span
+                className={`inline-flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold ${
+                  i === 0
+                    ? "bg-amber-300 text-amber-900 shadow-sm"
+                    : i === 1
+                      ? "bg-stone-300 text-stone-800 shadow-sm"
+                      : i === 2
+                        ? "bg-orange-300 text-orange-900 shadow-sm"
+                        : "bg-stone-200 text-stone-700 dark:bg-stone-800 dark:text-stone-300"
+                }`}
+              >
                 {i + 1}
               </span>
               <div className="min-w-0 flex-1">
@@ -73,8 +78,8 @@ export function Highscore() {
       )}
 
       <p className="mt-6 text-sm text-stone-500 dark:text-stone-500">
-        Diese Liste wird ausschliesslich in deinem Browser gespeichert (localStorage).
-        Sie verlaesst dein Geraet nicht.
+        Diese Liste wird ausschließlich in deinem Browser gespeichert (localStorage).
+        Sie verlässt dein Gerät nicht.
       </p>
     </div>
   );

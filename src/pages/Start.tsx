@@ -27,35 +27,49 @@ export function Start() {
   }
 
   return (
-    <div className="mx-auto flex max-w-2xl flex-col items-center px-4 py-16 text-center">
-      <h1 className="mb-3 text-5xl font-extrabold tracking-tight">
-        geo<span className="text-sky-500">later</span>
-      </h1>
-      <p className="mb-10 text-lg text-stone-600 dark:text-stone-400">
-        Du siehst ein Bild — wo wurde es aufgenommen? Klicke auf die Karte und rate die
-        Position. Je naeher dein Tipp, desto mehr Punkte. 5 Runden, max. 25.000 Punkte.
-      </p>
+    <div className="hero-bg relative overflow-hidden">
+      <div className="mx-auto flex max-w-3xl flex-col items-center px-4 py-20 text-center sm:py-28">
+        <span className="animate-fade-up rounded-full border border-sky-200 bg-white/70 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-sky-700 shadow-sm backdrop-blur dark:border-sky-900 dark:bg-stone-900/70 dark:text-sky-300">
+          Schülerprojekt &middot; F2P &middot; Open Source
+        </span>
 
-      <form onSubmit={handleSubmit} className="flex w-full flex-col gap-3 sm:flex-row">
-        <input
-          type="text"
-          value={nickname}
-          onChange={(e) => setNickname(e.target.value)}
-          placeholder="Nickname (optional)"
-          maxLength={30}
-          className="flex-1 rounded-xl border border-stone-300 bg-white px-4 py-3 text-base shadow-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/40 dark:border-stone-700 dark:bg-stone-900"
-        />
-        <button
-          type="submit"
-          className="rounded-xl bg-sky-600 px-6 py-3 text-base font-semibold text-white shadow hover:bg-sky-700 active:bg-sky-800"
+        <h1 className="animate-fade-up mt-6 text-6xl font-black tracking-tight sm:text-7xl">
+          geo<span className="text-gradient-brand">later</span>
+        </h1>
+
+        <p className="animate-fade-up-delay mt-6 max-w-xl text-lg text-stone-600 dark:text-stone-400">
+          Du siehst ein Bild — wo wurde es aufgenommen? Klicke auf die Karte und rate die
+          Position. Je näher dein Tipp, desto mehr Punkte.
+        </p>
+
+        <p className="animate-fade-up-delay mt-2 text-sm text-stone-500 dark:text-stone-500">
+          5 Runden &middot; max. 25.000 Punkte
+        </p>
+
+        <form
+          onSubmit={handleSubmit}
+          className="animate-fade-up-delay mt-10 flex w-full flex-col gap-3 sm:flex-row"
         >
-          Spiel starten
-        </button>
-      </form>
+          <input
+            type="text"
+            value={nickname}
+            onChange={(e) => setNickname(e.target.value)}
+            placeholder="Nickname (optional)"
+            maxLength={30}
+            className="flex-1 rounded-xl border border-stone-300 bg-white/90 px-4 py-3 text-base shadow-sm transition-colors focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/40 dark:border-stone-700 dark:bg-stone-900/90"
+          />
+          <button
+            type="submit"
+            className="rounded-xl bg-gradient-to-r from-sky-600 via-sky-500 to-fuchsia-500 px-7 py-3 text-base font-semibold text-white shadow-lg shadow-sky-500/30 transition-all hover:shadow-sky-500/50 active:scale-[0.98]"
+          >
+            Spiel starten
+          </button>
+        </form>
 
-      <p className="mt-8 text-sm text-stone-500 dark:text-stone-500">
-        {totalLocations()} Standorte verfuegbar — Bilder werden zufaellig gezogen.
-      </p>
+        <p className="animate-fade-up-delay mt-12 text-sm text-stone-500 dark:text-stone-500">
+          {totalLocations()} Standorte verfügbar — Bilder werden zufällig gezogen.
+        </p>
+      </div>
     </div>
   );
 }

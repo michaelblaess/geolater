@@ -1,16 +1,24 @@
 import { useEffect, useRef } from "react";
 import maplibregl, { type Map as MapLibreMap, type Marker, type LngLatLike } from "maplibre-gl";
+import { isDebugActive } from "../lib/debug";
 
 type Props = {
   // Tipp-Marker (klickbar setzen). null = noch kein Tipp.
   guess: { lat: number; lng: number } | null;
   // Wahre Position (wird erst nach Tipp-Abgabe sichtbar). null = nicht zeigen.
   truth?: { lat: number; lng: number } | null;
+  // Zeigt die Wahrheit auch ohne Tipp-Abgabe (Debug-Mode)
+  debugTruth?: { lat: number; lng: number } | null;
   // Klick-Handler — null bedeutet "Karte ist gelockt"
   onMapClick: ((lat: number, lng: number) => void) | null;
 };
 
-const OSM_STYLE: maplibregl.StyleSpecification = {
+// OpenFreeMap (https://openfreemap.org) liefert kostenlose Vektor-Tiles
+// ohne API-Key und ohne harte Limits. Faellt automatisch auf einen
+// einfachen OSM-Raster-Style zurueck, wenn der Vektor-Style nicht laedt.
+const OPENFREEMAP_STYLE = "https://tiles.openfreemap.org/styles/positron";
+
+const FALLBACK_STYLE: maplibregl.StyleSpecification = {
   version: 8,
   sources: {
     osm: {
@@ -21,20 +29,15 @@ const OSM_STYLE: maplibregl.StyleSpecification = {
       maxzoom: 19,
     },
   },
-  layers: [
-    {
-      id: "osm",
-      type: "raster",
-      source: "osm",
-    },
-  ],
+  layers: [{ id: "osm", type: "raster", source: "osm" }],
 };
 
-export function GuessMap({ guess, truth, onMapClick }: Props) {
+export function GuessMap({ guess, truth, debugTruth, onMapClick }: Props) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
   const guessMarkerRef = useRef<Marker | null>(null);
   const truthMarkerRef = useRef<Marker | null>(null);
+  const debugMarkerRef = useRef<Marker | null>(null);
   const lineSourceAdded = useRef(false);
   const onMapClickRef = useRef(onMapClick);
 
@@ -49,12 +52,24 @@ export function GuessMap({ guess, truth, onMapClick }: Props) {
 
     const map = new maplibregl.Map({
       container: containerRef.current,
-      style: OSM_STYLE,
+      style: OPENFREEMAP_STYLE,
       center: [10, 30],
       zoom: 1.2,
       attributionControl: { compact: true },
     });
     mapRef.current = map;
+
+    // Falls OpenFreeMap nicht erreichbar ist, auf OSM-Raster zurueckfallen
+    map.on("error", (e) => {
+      const msg = e?.error?.message ?? "";
+      if (msg.includes("style") || msg.includes("Failed to fetch")) {
+        try {
+          map.setStyle(FALLBACK_STYLE);
+        } catch {
+          // ignorieren
+        }
+      }
+    });
 
     map.on("click", (e) => {
       const handler = onMapClickRef.current;
@@ -91,7 +106,33 @@ export function GuessMap({ guess, truth, onMapClick }: Props) {
     }
   }, [guess]);
 
-  // Wahrheits-Marker + Linie aktualisieren
+  // Debug-Marker fuer wahre Position waehrend des Ratens
+  useEffect(() => {
+    const map = mapRef.current;
+    if (map === null) return;
+
+    if (debugMarkerRef.current !== null) {
+      debugMarkerRef.current.remove();
+      debugMarkerRef.current = null;
+    }
+    if (debugTruth === undefined || debugTruth === null) return;
+    if (!isDebugActive()) return;
+
+    const el = document.createElement("div");
+    el.style.width = "16px";
+    el.style.height = "16px";
+    el.style.borderRadius = "50%";
+    el.style.background = "rgba(34, 197, 94, 0.85)";
+    el.style.border = "2px solid #fff";
+    el.style.boxShadow = "0 0 0 2px rgba(34,197,94,0.4)";
+    el.title = "DEBUG: wahre Position";
+
+    debugMarkerRef.current = new maplibregl.Marker({ element: el })
+      .setLngLat([debugTruth.lng, debugTruth.lat])
+      .addTo(map);
+  }, [debugTruth]);
+
+  // Wahrheits-Marker + Linie aktualisieren (nach Tipp-Abgabe)
   useEffect(() => {
     const map = mapRef.current;
     if (map === null) return;
@@ -150,7 +191,6 @@ export function GuessMap({ guess, truth, onMapClick }: Props) {
         map.once("load", ensureSource);
       }
 
-      // Auf beide Punkte zoomen
       const bounds = new maplibregl.LngLatBounds();
       bounds.extend([guess.lng, guess.lat]);
       bounds.extend([truth.lng, truth.lat]);
@@ -159,7 +199,7 @@ export function GuessMap({ guess, truth, onMapClick }: Props) {
   }, [truth, guess]);
 
   return (
-    <div className="relative h-full w-full overflow-hidden rounded-2xl border border-stone-200 dark:border-stone-800">
+    <div className="relative h-full w-full overflow-hidden rounded-2xl border border-stone-200 shadow-sm dark:border-stone-800">
       <div ref={containerRef} className="h-full w-full" />
       {onMapClick !== null && guess === null ? (
         <div className="pointer-events-none absolute inset-x-0 top-3 mx-auto w-fit rounded-full bg-black/60 px-4 py-1 text-sm text-white backdrop-blur-sm">

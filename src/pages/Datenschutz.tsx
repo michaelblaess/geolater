@@ -16,7 +16,7 @@ export function Datenschutz() {
       <h2 className="mt-6 text-xl font-semibold">2. Welche Daten werden gespeichert?</h2>
       <p className="text-stone-700 dark:text-stone-300">
         Im <code>localStorage</code> deines Browsers werden folgende Angaben gespeichert,
-        ausschliesslich auf deinem Geraet, ohne Übertragung an uns:
+        ausschließlich auf deinem Gerät, ohne Übertragung an uns:
       </p>
       <ul className="list-disc pl-6 text-stone-700 dark:text-stone-300">
         <li>der von dir eingegebene Nickname (optional)</li>
@@ -47,9 +47,16 @@ export function Datenschutz() {
           </a>
         </li>
         <li>
-          <strong>OpenStreetMap</strong> (OpenStreetMap Foundation, St John's Innovation Centre,
-          Cowley Road, Cambridge CB4 0WS, Vereinigtes Königreich) — liefert die Karten-Tiles.
-          Datenschutzerklärung:{" "}
+          <strong>OpenFreeMap</strong> (tiles.openfreemap.org) — liefert die Karten-Tiles
+          basierend auf OpenStreetMap-Daten. Mehr Infos:{" "}
+          <a href="https://openfreemap.org" className="text-sky-600 hover:underline dark:text-sky-400" target="_blank" rel="noreferrer">
+            openfreemap.org
+          </a>
+        </li>
+        <li>
+          <strong>OpenStreetMap</strong> (Datenquelle der Karten-Tiles, OpenStreetMap Foundation,
+          St John's Innovation Centre, Cowley Road, Cambridge CB4 0WS, Vereinigtes Königreich) —
+          wird ggf. als Fallback direkt angefragt.{" "}
           <a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy" className="text-sky-600 hover:underline dark:text-sky-400" target="_blank" rel="noreferrer">
             wiki.osmfoundation.org
           </a>
