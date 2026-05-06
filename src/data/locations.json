@@ -373,7 +373,7 @@
   },
   {
     "id": "Cliffs_of_Moher",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Reliefkarte_Irland.png/1280px-Reliefkarte_Irland.png",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/BesucherwegO%E2%80%99Brien%E2%80%99s_Tower.jpg/1280px-BesucherwegO%E2%80%99Brien%E2%80%99s_Tower.jpg",
     "lat": 52.93611111,
     "lng": -9.47083333,
     "label": "Cliffs of Moher",
@@ -565,7 +565,7 @@
   },
   {
     "id": "Chichen_Itza",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Mexico_location_map.svg/1280px-Mexico_location_map.svg.png",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/2014-01-03_Tzompantli_in_Chich%C3%A9n_Itz%C3%A1_anagoria.jpg/1280px-2014-01-03_Tzompantli_in_Chich%C3%A9n_Itz%C3%A1_anagoria.jpg",
     "lat": 20.68416667,
     "lng": -88.56861111,
     "label": "Chichén Itzá",
@@ -721,7 +721,7 @@
   },
   {
     "id": "Iguazu_Falls",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Riodelaplatabasinmap.png/1280px-Riodelaplatabasinmap.png",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/20170821_Iguaz%C3%BA-Wasserf%C3%A4lle_%28Brasilien%29.jpg/1280px-20170821_Iguaz%C3%BA-Wasserf%C3%A4lle_%28Brasilien%29.jpg",
     "lat": -25.69527778,
     "lng": -54.43666667,
     "label": "Iguazú-Wasserfälle",
@@ -745,7 +745,7 @@
   },
   {
     "id": "Atacama_Desert",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Atacama_map.svg/1280px-Atacama_map.svg.png",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Chile_Atacama.jpg",
     "lat": -22,
     "lng": -69.5,
     "label": "Atacama-Wüste",
@@ -757,7 +757,7 @@
   },
   {
     "id": "Galápagos_Islands",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Galapagos_Islands_topographic_map-de.svg/1280px-Galapagos_Islands_topographic_map-de.svg.png",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/%28Grapsus_grapsus%29_Puerto_Ayora_Gal%C3%A1pagos_Islands_pic._a4.JPG/1280px-%28Grapsus_grapsus%29_Puerto_Ayora_Gal%C3%A1pagos_Islands_pic._a4.JPG",
     "lat": -0.537,
     "lng": -90.521,
     "label": "Galapagosinseln",
@@ -781,7 +781,7 @@
   },
   {
     "id": "Lake_Titicaca",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/7/74/SatTiticacaSee-boundary.jpg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/36_Titicaca_Grebe.JPG/1280px-36_Titicaca_Grebe.JPG",
     "lat": -15.83638889,
     "lng": -69.33861111,
     "label": "Titicacasee",
@@ -1069,7 +1069,7 @@
   },
   {
     "id": "Hạ_Long_Bay",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vietnam_adm_location_map.svg/1280px-Vietnam_adm_location_map.svg.png",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Baie_d%27halong.jpg/1280px-Baie_d%27halong.jpg",
     "lat": 20.85,
     "lng": 107.15,
     "label": "Halong-Bucht",
@@ -1225,7 +1225,7 @@
   },
   {
     "id": "Sahara",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Sahara_satellite_hires.jpg/1280px-Sahara_satellite_hires.jpg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Ev10734_Sahara.A2001314.0910.2km.jpg",
     "lat": 26,
     "lng": 13,
     "label": "Sahara",

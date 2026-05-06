@@ -217,6 +217,53 @@ async function fetchOnWiki(title, lang) {
   };
 }
 
+// Listet alle Bilder eines Artikels (Filenamen mit 'File:'-Prefix)
+async function fetchArticleImages(title, lang) {
+  const url =
+    `https://${lang}.wikipedia.org/w/api.php?` +
+    `action=query&titles=${encodeURIComponent(title)}` +
+    `&prop=images&imlimit=30&format=json&redirects=1&origin=*`;
+  const r = await fetch(url, { headers: { "User-Agent": UA } });
+  if (!r.ok) return [];
+  const d = await r.json();
+  const page = Object.values(d?.query?.pages ?? {})[0];
+  return (page?.images ?? []).map((i) => i.title);
+}
+
+// Holt fuer ein File die 1280px-Thumb-URL via Commons (haelt sprachneutrale Files
+// auf einer einzigen Wiki). Akzeptiert sowohl 'File:' (en) als auch 'Datei:' (de).
+async function fetchImageThumb(fileTitle) {
+  const normalized = fileTitle.replace(/^(Datei|Bild|Fichier|Archivo):/i, "File:");
+  const url =
+    `https://commons.wikimedia.org/w/api.php?` +
+    `action=query&titles=${encodeURIComponent(normalized)}` +
+    `&prop=imageinfo&iiprop=url|mime&iiurlwidth=1280` +
+    `&format=json&redirects=1&origin=*`;
+  const r = await fetch(url, { headers: { "User-Agent": UA } });
+  if (!r.ok) return null;
+  const d = await r.json();
+  const page = Object.values(d?.query?.pages ?? {})[0];
+  const info = page?.imageinfo?.[0];
+  if (!info) return null;
+  return { url: info.thumburl ?? info.url, mime: info.mime };
+}
+
+// Heuristik: ist dieser Filename vermutlich eine Karte/ein Diagramm/ein Wappen?
+function isProbablyMap(filename) {
+  if (typeof filename !== "string") return false;
+  const f = filename.toLowerCase();
+  if (f.endsWith(".svg")) return true;
+  return /(map|karte|reliefkarte|lageplan|locator|topographic|topo_|plan_|scheme|diagram|chart|flag|flagge|wappen|coat[_-]of[_-]arms|emblem|seal|logo|boundary|satellite|^sat[A-Z]|_sat[A-Z])/i.test(filename);
+}
+
+// Entfernt utm-Tracking-Parameter aus Wikimedia-URLs
+function cleanUrl(url) {
+  return url
+    .replace(/[?&]utm_[^&]+/g, (m) => (m.startsWith("?") ? "?" : ""))
+    .replace(/[?&]$/, "")
+    .replace(/\?$/, "");
+}
+
 function trimExtract(text) {
   if (!text) return undefined;
   // Auf 2 Saetze beschraenken (API liefert manchmal mehr)
@@ -230,13 +277,40 @@ async function buildLocation({ slug, category }) {
     const onDe = deTitle ? await fetchOnWiki(deTitle, "de") : null;
     const onEn = await fetchOnWiki(slug, "en");
 
-    const image = onDe?.image ?? onEn?.image;
+    let image = onDe?.image ?? onEn?.image;
     const lat = onDe?.lat ?? onEn?.lat;
     const lng = onDe?.lng ?? onEn?.lng;
 
     if (!image || lat === undefined || lng === undefined) {
       console.warn(`  ⚠ ${slug}: missing image/coords (de=${!!onDe}, en=${!!onEn})`);
       return null;
+    }
+
+    // Heuristik: wenn pageimage vermutlich eine Karte ist, durch Foto aus dem
+    // Artikel ersetzen. Wir nutzen die englische Wiki, weil die meist mehr
+    // Bilder pro Artikel hat.
+    if (isProbablyMap(image)) {
+      const articleTitle = deTitle ?? slug;
+      const lang = deTitle ? "de" : "en";
+      let candidates = await fetchArticleImages(articleTitle, lang);
+      if (candidates.length === 0 && lang === "de") {
+        candidates = await fetchArticleImages(slug, "en");
+      }
+      let replaced = false;
+      for (const f of candidates) {
+        if (isProbablyMap(f)) continue;
+        if (!/\.(jpg|jpeg|png|webp)$/i.test(f)) continue;
+        const info = await fetchImageThumb(f);
+        if (info?.url && info.mime?.startsWith("image/")) {
+          image = cleanUrl(info.url);
+          replaced = true;
+          break;
+        }
+      }
+      if (!replaced) {
+        console.warn(`  ⚠ ${slug}: pageimage sieht aus wie Karte, kein Foto im Artikel gefunden — verwerfe`);
+        return null;
+      }
     }
 
     const label = onDe?.title ?? onEn?.title ?? slug.replace(/_/g, " ");
