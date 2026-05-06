@@ -2,6 +2,9 @@ import type { Continent, Difficulty } from "./types";
 
 const STORAGE_KEY = "geolater:difficulty";
 
+// Sekunden pro Etappe im "schwer"-Modus
+export const TIMER_SECONDS = 30;
+
 export const DIFFICULTY_LABELS: Record<Difficulty, string> = {
   einfach: "Einfach",
   mittel: "Mittel",

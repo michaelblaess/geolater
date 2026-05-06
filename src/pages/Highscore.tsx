@@ -1,19 +1,30 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { clearScores, loadScores } from "../lib/highscore";
+import { clearPlayedIds, playedCount } from "../lib/playedHistory";
+import { totalLocations } from "../lib/locations";
 import type { StoredScore } from "../lib/types";
 
 export function Highscore() {
   const [scores, setScores] = useState<StoredScore[]>([]);
+  const [played, setPlayed] = useState(0);
+  const total = totalLocations();
 
   useEffect(() => {
     setScores(loadScores());
+    setPlayed(playedCount());
   }, []);
 
   function handleReset() {
     if (!confirm("Wirklich alle lokalen Einträge löschen?")) return;
     clearScores();
     setScores([]);
+  }
+
+  function handleResetPlayed() {
+    if (!confirm(`Gespielte Orte vergessen — alle ${total} sind wieder im Pool. Wirklich?`)) return;
+    clearPlayedIds();
+    setPlayed(0);
   }
 
   return (
@@ -91,9 +102,33 @@ export function Highscore() {
         </div>
       ) : null}
 
-      <p className="mt-12 text-xs text-ink-muted">
-        <span className="small-caps">Hinweis</span> &nbsp;·&nbsp; Diese Liste wird ausschließlich
-        in deinem Browser gespeichert (localStorage). Sie verlässt dein Gerät nicht.
+      <div className="mt-12 border-t border-paper-rule pt-6">
+        <p className="small-caps text-[11px] text-rust">Pool-Status</p>
+        <div className="mt-3 flex flex-wrap items-baseline justify-between gap-3">
+          <p className="font-display text-base text-ink-soft">
+            <span className="font-headline text-2xl italic text-ink">{played}</span> von{" "}
+            <span className="font-headline italic">{total}</span> Orten bereits gespielt.
+          </p>
+          {played > 0 ? (
+            <button
+              type="button"
+              onClick={handleResetPlayed}
+              className="border border-ink/20 px-4 py-2 text-xs transition-colors hover:border-rust hover:text-rust"
+            >
+              <span className="small-caps">Pool zurücksetzen</span>
+            </button>
+          ) : null}
+        </div>
+        <p className="mt-3 text-xs text-ink-muted">
+          Bereits gespielte Orte werden nicht erneut ausgewählt. Wenn der Pool leer
+          ist, setzt er sich automatisch zurück.
+        </p>
+      </div>
+
+      <p className="mt-8 text-xs text-ink-muted">
+        <span className="small-caps">Hinweis</span> &nbsp;·&nbsp; Highscores und Pool-Verlauf
+        werden ausschließlich in deinem Browser gespeichert (localStorage). Sie verlassen
+        dein Gerät nicht.
       </p>
     </div>
   );

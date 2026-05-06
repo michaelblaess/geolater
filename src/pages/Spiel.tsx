@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { BildPanel } from "../components/BildPanel";
 import { GuessMap } from "../components/GuessMap";
@@ -12,7 +12,8 @@ import {
   saveActiveGame,
   type Phase,
 } from "../lib/gameSession";
-import { loadDifficulty, viewForRound } from "../lib/difficulty";
+import { loadDifficulty, TIMER_SECONDS, viewForRound } from "../lib/difficulty";
+import { addPlayedId, locationKey } from "../lib/playedHistory";
 import type { Difficulty, GameResult, Round } from "../lib/types";
 
 const TOTAL_ROUNDS = 5;
@@ -101,6 +102,48 @@ export function Spiel() {
     debugLog("Wahre Position (DEBUG)", { lat: current.lat, lng: current.lng, label: current.label });
   }, [roundIndex, current]);
 
+  // Timer fuer Schwer-Modus
+  const [secondsLeft, setSecondsLeft] = useState(TIMER_SECONDS);
+  useEffect(() => {
+    if (difficulty !== "schwer" || phase !== "guessing" || current === undefined) {
+      return;
+    }
+    const start = Date.now();
+    setSecondsLeft(TIMER_SECONDS);
+    const id = window.setInterval(() => {
+      const elapsed = (Date.now() - start) / 1000;
+      const left = Math.max(0, TIMER_SECONDS - elapsed);
+      setSecondsLeft(Math.ceil(left));
+      if (left <= 0) {
+        window.clearInterval(id);
+        // Auto-Submit: aktueller Tipp oder 0 Punkte
+        if (guessRef.current !== null) {
+          const g = guessRef.current;
+          const distanceKm = haversineKm(g.lat, g.lng, current.lat, current.lng);
+          const points = pointsFromDistance(distanceKm);
+          log(`Etappe ${roundIndex + 1} (Zeit abgelaufen): ${current.label}`, {
+            tipp: `${g.lat.toFixed(3)}, ${g.lng.toFixed(3)}`,
+            distanzKm: Math.round(distanceKm),
+            punkte: points,
+          });
+          setCurrentResult({ distanceKm, points });
+        } else {
+          log(`Etappe ${roundIndex + 1}: Zeit abgelaufen ohne Tipp`, { punkte: 0 });
+          setCurrentResult({ distanceKm: -1, points: 0 });
+        }
+        setPhase("result");
+      }
+    }, 250);
+    return () => window.clearInterval(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [difficulty, phase, roundIndex]);
+
+  // Aktuellen guess fuer den Timer-Callback referenzieren (vermeidet stale closure)
+  const guessRef = useRef(guess);
+  useEffect(() => {
+    guessRef.current = guess;
+  }, [guess]);
+
   function handleSubmit() {
     if (guess === null) return;
     const distanceKm = haversineKm(guess.lat, guess.lng, current.lat, current.lng);
@@ -124,6 +167,7 @@ export function Spiel() {
       distanceKm: currentResult.distanceKm,
       points: currentResult.points,
     };
+    addPlayedId(locationKey(current));
     const nextCompleted = [...completedRounds, finishedRound];
 
     if (roundIndex + 1 >= TOTAL_ROUNDS) {
@@ -160,6 +204,7 @@ export function Spiel() {
       distanceKm: -1,
       points: 0,
     };
+    addPlayedId(locationKey(current));
     const nextCompleted = [...completedRounds, skippedRound];
     debugLog(`Etappe ${roundIndex + 1} uebersprungen`);
 
@@ -199,6 +244,18 @@ export function Spiel() {
           <span className="small-caps text-[10px] text-ink-muted">Reisende</span>
           <span className="font-headline text-lg italic text-ink">{nickname}</span>
         </div>
+        {difficulty === "schwer" && phase === "guessing" ? (
+          <div className="flex items-baseline gap-3">
+            <span className="small-caps text-[10px] text-ink-muted">Zeit</span>
+            <span
+              className={`font-headline text-lg tabular-nums ${
+                secondsLeft <= 10 ? "text-rust animate-pulse-soft" : "text-ink"
+              }`}
+            >
+              {secondsLeft}s
+            </span>
+          </div>
+        ) : null}
         <div className="flex items-baseline gap-3">
           <span className="small-caps text-[10px] text-ink-muted">Punkte</span>
           <span className="font-headline text-lg text-rust">

@@ -29,9 +29,15 @@ export function RoundResult({ location, distanceKm, points, isLastRound, onConti
             {location.label}
           </p>
           <p className="mt-2 text-sm text-ink-soft">
-            <span className="small-caps text-[10px]">Distanz</span>
-            <span className="mx-2 text-ink/30">·</span>
-            <span className="font-display">{formatDistance(distanceKm)}</span>
+            {distanceKm < 0 ? (
+              <span className="small-caps text-[10px] text-rust">Keine Wertung · Zeit abgelaufen</span>
+            ) : (
+              <>
+                <span className="small-caps text-[10px]">Distanz</span>
+                <span className="mx-2 text-ink/30">·</span>
+                <span className="font-display">{formatDistance(distanceKm)}</span>
+              </>
+            )}
           </p>
         </div>
 
