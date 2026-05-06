@@ -9,7 +9,8 @@
     "continent": "Europa",
     "extract": "Der Eiffelturm (französisch Tour Eiffel, [tuʁ‿ɛˈfɛl] ) ist ein 330 Meter hoher Eisenfachwerkturm in Paris. Er steht im 7.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Eiffelturm",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Frankreich"
   },
   {
     "id": "Brandenburg_Gate",
@@ -21,7 +22,8 @@
     "continent": "Europa",
     "extract": "Das Brandenburger Tor in Berlin ist ein frühklassizistisches Triumphtor, das an der Westflanke des quadratischen Pariser Platzes im Berliner Ortsteil Mitte steht. Es wurde als Abschluss der zentralen Prachtstraße der Dorotheenstadt, des Boulevards Unter den Linden, in den Jahren 1789 bis 1793 auf Anweisung des preußischen Königs Friedrich Wilhelm II.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Brandenburger_Tor",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Deutschland"
   },
   {
     "id": "Big_Ben",
@@ -33,7 +35,8 @@
     "continent": "Europa",
     "extract": "Der Name Big Ben (englisch Kurzform für „großer Benjamin“) bezeichnet die mit 13,5 t Gewicht schwerste der fünf Glocken des berühmten Uhrturms am Palace of Westminster in London.\nAuch auf die Uhr oder den Uhrturm wird die Bezeichnung Big Ben häufig übertragen.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Big_Ben",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigtes Königreich"
   },
   {
     "id": "Tower_Bridge",
@@ -45,7 +48,8 @@
     "continent": "Europa",
     "extract": "Die Tower Bridge ist eine Straßenbrücke über den Fluss Themse in London und benannt nach dem nahen Tower of London. Sie wurde 1894 eröffnet und verbindet den Stadtbezirk Tower Hamlets auf der Nordseite mit dem Stadtteil Southwark im Stadtbezirk London Borough of Southwark; über sie führt die Hauptstraße A 100.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Tower_Bridge",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigtes Königreich"
   },
   {
     "id": "Buckingham_Palace",
@@ -57,7 +61,8 @@
     "continent": "Europa",
     "extract": "Der Buckingham-Palast (englisch Buckingham Palace) ist die offizielle Residenz des britischen Monarchen in London. Das Gebäude im Stadtbezirk City of Westminster wird auch für Staatsanlässe genutzt.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Buckingham_Palace",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigtes Königreich"
   },
   {
     "id": "Notre-Dame_de_Paris",
@@ -69,7 +74,8 @@
     "continent": "Europa",
     "extract": "Die Kathedrale Notre-Dame de Paris (französisch Cathédrale Notre-Dame de Paris, deutsch Kathedrale Unserer Lieben Frau zu Paris), umgangssprachlich kurz Notre-Dame, ist die römisch-katholische Bischofskirche der Erzdiözese Paris. Die unter dem Patrozinium Unserer Lieben Frau, also der Gottesmutter Maria, stehende Kirche wurde zwischen 1163 und 1345 errichtet und ist eines der frühesten gotischen Gotteshäuser Frankreichs.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Kathedrale_Notre-Dame_de_Paris",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Frankreich"
   },
   {
     "id": "Louvre",
@@ -81,7 +87,8 @@
     "continent": "Europa",
     "extract": "Das Museum Louvre (französisch Musée du Louvre [myze dy luvʁ] ), kurz der Louvre [ˈluːvrə] , ist ein Kunstmuseum im 1. Arrondissement von Paris, der Hauptstadt Frankreichs.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Louvre",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Frankreich"
   },
   {
     "id": "Arc_de_Triomphe",
@@ -93,7 +100,8 @@
     "continent": "Europa",
     "extract": "Der Arc de Triomphe de l’Étoile (dt. Triumphbogen an der Place de l’Étoile) oder kurz Arc de Triomphe ist ein von 1806 bis 1836 errichtetes Denkmal im Zentrum der Place Charles de Gaulle in Paris.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Arc_de_Triomphe_de_l%E2%80%99%C3%89toile",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Frankreich"
   },
   {
     "id": "Sacré-Cœur,_Paris",
@@ -105,7 +113,8 @@
     "continent": "Europa",
     "extract": "Die Basilika Sacré-Cœur de Montmartre (französisch Basilique du Sacré-Cœur de Montmartre, deutsch Basilika des Herzens Jesu vom Montmartre), umgangssprachlich kurz Sacré-Cœur, ist eine römisch-katholische Basilica minor auf dem Hügel Montmartre im 18. Arrondissement der französischen Hauptstadt Paris.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Sacr%C3%A9-C%C5%93ur_de_Montmartre",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Frankreich"
   },
   {
     "id": "Colosseum",
@@ -117,7 +126,8 @@
     "continent": "Europa",
     "extract": "Das Kolosseum (antiker Name Amphitheatrum Novum oder Amphitheatrum Flavium, italienisch Colosseo, Anfiteatro Flavio) ist das größte der im antiken Rom erbauten Amphitheater, der größte geschlossene Bau der römischen Antike und weiterhin das größte je gebaute Amphitheater der Welt. Zwischen 72 und 80 n.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Kolosseum",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Italien"
   },
   {
     "id": "Trevi_Fountain",
@@ -129,7 +139,8 @@
     "continent": "Europa",
     "extract": "Der Trevi-Brunnen oder Trevibrunnen (ital. Fontana di Trevi) ist ein Monumentalbrunnen auf der Piazza di Trevi vor dem Palazzo Poli in Rom.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Trevi-Brunnen",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Italien"
   },
   {
     "id": "Pantheon,_Rome",
@@ -141,7 +152,8 @@
     "continent": "Europa",
     "extract": "Das Pantheon (altgriechisch Πάνθειον (ἱερόν) oder auch Πάνθεον, von πᾶν pān „all“, „gesamt“, und θεός theós „Gott“) ist ein zur Kirche umgeweihtes antikes Bauwerk in Rom. Als römisch-katholische Kirche lautet der offizielle italienische Name Santa Maria ad Martyres (lateinisch Sancta Maria ad Martyres).",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Pantheon_(Rom)",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Italien"
   },
   {
     "id": "St._Peter's_Basilica",
@@ -153,7 +165,8 @@
     "continent": "Europa",
     "extract": "Die Basilika St. Peter (italienisch Basilica di San Pietro), auf Deutsch auch häufig Petersdom (auch Peterskirche, Petersbasilika, Vatikanische Basilika) genannt, ist die Memorialkirche des Apostels Simon Petrus.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Petersdom",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vatikanstadt"
   },
   {
     "id": "Leaning_Tower_of_Pisa",
@@ -165,7 +178,8 @@
     "continent": "Europa",
     "extract": "Der Schiefe Turm von Pisa (italienisch Torre pendente di Pisa) ist das wohl bekannteste geneigte Gebäude der Welt und Wahrzeichen der Stadt Pisa in Italien.\nDer Turm war als freistehender Glockenturm (Campanile) für den Dom in Pisa geplant.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Schiefer_Turm_von_Pisa",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Italien"
   },
   {
     "id": "Sagrada_Família",
@@ -177,7 +191,8 @@
     "continent": "Europa",
     "extract": "Die Sagrada Família (katalanisch [səˈɣɾaðə fəˈmiɫiə]; vollständige katalanische Bezeichnung Basílica i Temple Expiatori de la Sagrada Família, deutsch Basilika und Sühnetempel der Heiligen Familie) ist eine römisch-katholische Basilika des Modernisme in Barcelona und gilt als das Hauptwerk des katalanischen Baumeisters Antoni Gaudí. Er übernahm 1883 die Planung des Gotteshauses.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Spanien"
   },
   {
     "id": "Park_Güell",
@@ -189,7 +204,8 @@
     "continent": "Europa",
     "extract": "Der Park Güell [ɡʊ̯eʎ] (Katalanisch Parc Güell, Spanisch Parque Güell) ist eine Parkanlage in Barcelona im Stadtbezirk Gràcia im Ortsteil La Salud. Er wurde von 1900 bis 1914 von Antoni Gaudí im Auftrag von Eusebi Güell erschaffen und hat eine Größe von 17,18 ha.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Park_G%C3%BCell",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Spanien"
   },
   {
     "id": "Acropolis_of_Athens",
@@ -201,7 +217,8 @@
     "continent": "Europa",
     "extract": "Die Akropolis in Athen (altgriechisch ἡ Ἀκρόπολις τῶν Ἀθηνῶν hē Akrópolis tôn Atʰēnôn; neugriechisch η Ακρόπολη της Αθήνας i Akrópoli tis Aθínas, „die Oberstadt Athens“) ist die wohl bekannteste Vertreterin der als Akropolis bezeichneten Stadtfestungen des antiken Griechenlands. Die Athener Akropolis mit ihren bemerkenswerten Gebäuden wird deshalb oft einfach „die Akropolis“ genannt.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Akropolis_(Athen)",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Griechenland"
   },
   {
     "id": "Stonehenge",
@@ -213,7 +230,8 @@
     "continent": "Europa",
     "extract": "Stonehenge [stəʊ̯n'hɛndʒ] ist ein Megalith-Bauwerk der Jungsteinzeit nahe des Flusses (Salisbury) Avon bei Amesbury in Wiltshire, Südwestengland. Es wurde ab wenigstens 3000 v.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Stonehenge",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigtes Königreich"
   },
   {
     "id": "Edinburgh_Castle",
@@ -225,7 +243,8 @@
     "continent": "Europa",
     "extract": "Die Burg Edinburgh Castle gilt als eine der bedeutendsten Sehenswürdigkeiten Schottlands. Die Höhenburg steht im Zentrum von Edinburgh auf dem Castle Rock.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Edinburgh_Castle",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigtes Königreich"
   },
   {
     "id": "Charles_Bridge",
@@ -237,7 +256,8 @@
     "continent": "Europa",
     "extract": "Die Karlsbrücke (tschechisch Karlův most ) ist eine im 14. Jahrhundert errichtete, historisch bedeutsame Brücke über die Moldau in Prag, die die Prager Altstadt am rechten Ufer mit der Kleinseite am linken verbindet.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Karlsbr%C3%BCcke",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Tschechien"
   },
   {
     "id": "Schönbrunn_Palace",
@@ -249,7 +269,8 @@
     "continent": "Europa",
     "extract": "Das Schloss Schönbrunn ist die ehemalige Sommerresidenz der Habsburger in der österreichischen Hauptstadt Wien. Die barocke Dreiflügelanlage wurde ab 1695 unter Leopold I.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Schloss_Sch%C3%B6nbrunn",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Österreich"
   },
   {
     "id": "Saint_Basil's_Cathedral",
@@ -261,7 +282,8 @@
     "continent": "Europa",
     "extract": "Die Basiliuskathedrale (russisch Храм Василия Блаженного), offiziell Mariä-Schutz-und-Fürbitte-Kathedrale am Graben (russisch Собор Покрова Пресвятой Богородицы, что на Рву), ist eine orthodoxe Kathedrale am Roten Platz in der russischen Hauptstadt Moskau. Sie wurde 1561 vollendet und ist dem Hl.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Basiliuskathedrale_(Moskau)",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Russland"
   },
   {
     "id": "Cologne_Cathedral",
@@ -273,7 +295,8 @@
     "continent": "Europa",
     "extract": "Der Kölner Dom (offiziell Hohe Domkirche zu Köln) ist eine römisch-katholische Kirche in Köln unter dem Patrozinium des Apostels Petrus. Er ist die Kathedrale des Erzbistums Köln sowie Metropolitan­kirche der Kirchenprovinz Köln.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/K%C3%B6lner_Dom",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Deutschland"
   },
   {
     "id": "Neuschwanstein_Castle",
@@ -285,7 +308,8 @@
     "continent": "Europa",
     "extract": "Schloss Neuschwanstein ist ein Baudenkmal in der bayerischen Gemeinde Schwangau. Die Dreiflügelanlage wurde in den Jahren 1869 bis 1892 im Auftrag des Königs Ludwig II.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Schloss_Neuschwanstein",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Deutschland"
   },
   {
     "id": "Atomium",
@@ -297,7 +321,8 @@
     "continent": "Europa",
     "extract": "Das Atomium ist ein im Jahr 1958 in Brüssel anlässlich der Weltausstellung Expo 58 errichtetes Bauwerk mit 102 Metern Gesamthöhe, das von dem Ingenieur André Waterkeyn und den Architekten André und Jean Polak entworfen wurde. Es ist ein auf einer Ecke stehendes Modell der aus neun Atomen bestehenden kubisch-raumzentrierten (innenzentrierten) Elementarzelle der Kristalle.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Atomium",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Belgien"
   },
   {
     "id": "Manneken_Pis",
@@ -309,7 +334,8 @@
     "continent": "Europa",
     "extract": "Das Manneken Pis (niederländisch für „Männchen Pisse“), auch (Klein) Julianeken oder auf Französisch le Petit Julien genannt, ist eine Brunnenfigur eines urinierenden Knaben. Sie ist eines der Wahrzeichen der belgischen Hauptstadt Brüssel.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Manneken_Pis",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Belgien"
   },
   {
     "id": "Anne_Frank_House",
@@ -321,7 +347,8 @@
     "continent": "Europa",
     "extract": "Das Anne-Frank-Haus (niederländisch Anne Frank Huis) ist ein Museum, das dem jüdischen Holocaust-Opfer Anne Frank gewidmet ist. Es besteht seit dem 3.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Anne-Frank-Haus",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Niederlande"
   },
   {
     "id": "Mont_Saint-Michel",
@@ -333,7 +360,8 @@
     "continent": "Europa",
     "extract": "Le Mont-Saint-Michel [lə mɔ̃ sɛ̃ miʃɛl] ist ein Dorf und eine Gemeinde mit 23 Einwohnern (Stand 1. Januar 2023) im französischen Département Manche in der Region Normandie.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Le_Mont-Saint-Michel",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Frankreich"
   },
   {
     "id": "Palace_of_Versailles",
@@ -345,7 +373,8 @@
     "continent": "Europa",
     "extract": "Das Schloss Versailles (französisch château de Versailles) in der gleichnamigen Nachbarstadt von Paris ist eine der größten Palastanlagen Europas und war von der Mitte des 17. Jahrhunderts bis zum Ausbruch der Französischen Revolution die Hauptresidenz der Könige von Frankreich.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Schloss_Versailles",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Frankreich"
   },
   {
     "id": "Plitvice_Lakes_National_Park",
@@ -357,7 +386,8 @@
     "continent": "Europa",
     "extract": "i3i6\nDer Nationalpark Plitvicer Seen [ˌplɪtvɪt͡sɐ ˈzeːən] (kroatisch Nacionalni park Plitvička jezera, umgangssprachlich Plitvice, deutsch auch Plitwitzer Seen) ist der flächenmäßig größte Nationalpark Kroatiens und zugleich auch der älteste Nationalpark Südosteuropas. Er wurde 1949 gegründet und befindet sich im hügeligen Karstgebiet Mittelkroatiens (Dinarischer Karst) unweit der Grenze zu Bosnien und Herzegowina, direkt an einer wichtigen Nord-Süd-Straßenverbindung, die das Landesinnere Kroatiens mit der mediterranen Küstengegend verbindet.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Nationalpark_Plitvicer_Seen",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Kroatien"
   },
   {
     "id": "Geirangerfjord",
@@ -369,7 +399,8 @@
     "continent": "Europa",
     "extract": "Der Geirangerfjord ist einer der bekanntesten Fjorde Norwegens und gehört seit dem 14. Juli 2005 zum UNESCO-Weltnaturerbe.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Geirangerfjord",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Norwegen"
   },
   {
     "id": "Cliffs_of_Moher",
@@ -381,7 +412,8 @@
     "continent": "Europa",
     "extract": "Die Cliffs of Moher (irisch Aillte an Mhothair) bilden eine bekannte Kliffküste in Irland. Sie liegen an der Westküste der irischen Hauptinsel im County Clare nahe den Ortschaften Doolin (nördlich der Klippen) und Liscannor (südlich der Klippen).",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Cliffs_of_Moher",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Irland"
   },
   {
     "id": "Mount_Etna",
@@ -393,7 +425,8 @@
     "continent": "Europa",
     "extract": "Der Ätna (italienisch Etna oder auch Mongibello) ist mit rund 3403 Meter (2024) über dem Meeresspiegel der höchste aktive Vulkan Europas. Er liegt auf der italienischen Insel Sizilien in der Verwaltungseinheit der Metropolitanstadt Catania.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/%C3%84tna",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Italien"
   },
   {
     "id": "Santorini",
@@ -405,7 +438,8 @@
     "continent": "Europa",
     "extract": "Santorin (neugriechisch Σαντορίνη [sandɔˈrini] (f. sg.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Santorin",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Griechenland"
   },
   {
     "id": "Statue_of_Liberty",
@@ -417,7 +451,8 @@
     "continent": "Nordamerika",
     "extract": "Die Freiheitsstatue (englisch Statue of Liberty, offiziell Liberty Enlightening the World, auch Lady Liberty; französisch La Liberté éclairant le monde) ist eine von Frédéric-Auguste Bartholdi geschaffene neoklassizistische Kolossalstatue zwischen New York City und Jersey City. Sie steht auf Liberty Island im New Yorker Hafen, wurde am 28.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Freiheitsstatue",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigte Staaten"
   },
   {
     "id": "Empire_State_Building",
@@ -429,7 +464,8 @@
     "continent": "Nordamerika",
     "extract": "Das Empire State Building ist ein Wolkenkratzer im Stadtbezirk (Borough) Manhattan in New York City, USA. Mit einer strukturellen Höhe von 381 Metern – bis zur Antennenspitze rund 443 Meter – war das von 1930 bis 1931 in relativ kurzer Bauzeit errichtete Gebäude nicht nur das höchste Gebäude New Yorks, sondern bis 1972 auch höchstes Gebäude der Welt.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Empire_State_Building",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigte Staaten"
   },
   {
     "id": "Times_Square",
@@ -441,7 +477,8 @@
     "continent": "Nordamerika",
     "extract": "Der Times Square in New York City liegt an der Kreuzung Broadway und Seventh Avenue und ist nach dem von der Zeitung New York Times benutzten Gebäude One Times Square benannt. Er erstreckt sich von West 42nd Street bis West 47th Street und bildet das Zentrum des als Broadway bezeichneten Theaterviertels von Manhattan.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Times_Square",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigte Staaten"
   },
   {
     "id": "Brooklyn_Bridge",
@@ -453,7 +490,8 @@
     "continent": "Nordamerika",
     "extract": "Die Brooklyn Bridge (ursprünglich New York and Brooklyn Bridge) in New York City ist eine kombinierte Hänge- und Schrägseilbrücke und wurde 1883 nach einem Entwurf von J. A.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Brooklyn_Bridge",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigte Staaten"
   },
   {
     "id": "Hollywood_Sign",
@@ -465,7 +503,8 @@
     "continent": "Nordamerika",
     "extract": "Das Hollywood Sign ist ein bekannter weißer Schriftzug in den Hollywood Hills über dem heutigen Hollywood, einem Stadtteil von Los Angeles. Die Bestandteile des Schriftzugs in Großbuchstaben sind etwa 14 Meter hoch und zusammen 137 Meter lang.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Hollywood_Sign",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigte Staaten"
   },
   {
     "id": "Golden_Gate_Bridge",
@@ -477,7 +516,8 @@
     "continent": "Nordamerika",
     "extract": "Die Golden Gate Bridge (englisch für Brücke über das goldene Tor) ist eine Hängebrücke am Eingang zur Bucht von San Francisco über das Golden Gate in Kalifornien. Sie ist das Wahrzeichen der gesamten Bay Area und für viele neben der Freiheitsstatue von New York ein Symbol für die Vereinigten Staaten.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Golden_Gate_Bridge",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigte Staaten"
   },
   {
     "id": "Las_Vegas_Strip",
@@ -489,7 +529,8 @@
     "continent": "Nordamerika",
     "extract": "Der Las Vegas Strip ist ein Abschnitt des Las Vegas Boulevard nahe Las Vegas im US-Bundesstaat Nevada, der für seine dichte Ansammlung von Luxushotels und Casinos bekannt ist. Der 6,8 km lange Strip (engl.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Las_Vegas_Strip",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigte Staaten"
   },
   {
     "id": "Mount_Rushmore",
@@ -501,7 +542,8 @@
     "continent": "Nordamerika",
     "extract": "i3i6\nDas Mount Rushmore National Memorial ist ein 1941 fertiggestelltes Denkmal, das aus monumentalen Porträtköpfen der vier bis zur Zeit seiner Erstellung als am bedeutendsten und symbolträchtigsten geltenden US-Präsidenten besteht. Jedes Porträt ist 18 Meter hoch.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Mount_Rushmore_National_Memorial",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigte Staaten"
   },
   {
     "id": "White_House",
@@ -513,7 +555,8 @@
     "continent": "Nordamerika",
     "extract": "Das Weiße Haus (englisch White House) in Washington, D.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Wei%C3%9Fes_Haus",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigte Staaten"
   },
   {
     "id": "Lincoln_Memorial",
@@ -525,7 +568,8 @@
     "continent": "Nordamerika",
     "extract": "Das Lincoln Memorial ist ein zwischen 1915 und 1922 erbautes Denkmal zu Ehren Abraham Lincolns, des 16. Präsidenten der Vereinigten Staaten, an der National Mall in Washington, D.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Lincoln_Memorial",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigte Staaten"
   },
   {
     "id": "Washington_Monument",
@@ -537,7 +581,8 @@
     "continent": "Nordamerika",
     "extract": "Das Washington Monument ist ein monumentaler Obelisk zu Ehren des ersten Präsidenten der Vereinigten Staaten von Amerika, George Washington, in Washington, D.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Washington_Monument",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigte Staaten"
   },
   {
     "id": "Space_Needle",
@@ -549,7 +594,8 @@
     "continent": "Nordamerika",
     "extract": "Space Needle (englisch für Weltraumnadel) ist ein 184 Meter hoher Aussichts- und Restaurantturm in Seattle, der zur Century 21 Exposition, der Weltausstellung von 1962, errichtet wurde. Nachdem sich der Beginn der Bauarbeiten unter anderem durch eine ungeklärte Finanzierungsfrage hingezogen hatte, konnte er in einjähriger Bauzeit rechtzeitig fertiggestellt werden.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Space_Needle",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigte Staaten"
   },
   {
     "id": "CN_Tower",
@@ -561,7 +607,8 @@
     "continent": "Nordamerika",
     "extract": "Der CN Tower [siːˈɛn ˌtʰaʊ̯ɚ] (Canadian National Tower, französisch La Tour CN) in der südlichen Innenstadt Torontos ist ein 553 Meter hoher Fernsehturm und Wahrzeichen der Stadt. Er war von 1975 bis 2009 der höchste Fernsehturm der Welt.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/CN_Tower",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Kanada"
   },
   {
     "id": "Chichen_Itza",
@@ -573,7 +620,8 @@
     "continent": "Nordamerika",
     "extract": "Chichén Itzá  ist eine der bedeutendsten Ruinenstätten auf der mexikanischen Halbinsel Yucatán. Sie liegt etwa 120 Kilometer östlich von Mérida im Bundesstaat Yucatán.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Chich%C3%A9n_Itz%C3%A1",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Mexiko"
   },
   {
     "id": "Niagara_Falls",
@@ -585,7 +633,8 @@
     "continent": "Nordamerika",
     "extract": "Die Niagarafälle (englisch Niagara Falls [naɪˌæɡ(ə)ɹəˈfɔːlz]) sind Wasserfälle des Niagara-Flusses an der Grenze zwischen dem US-amerikanischen Bundesstaat New York und der kanadischen Provinz Ontario.\nNiagara Falls ist zudem der Name der beiden Schwesterstädte Niagara Falls im US-Bundesstaat New York und Niagara Falls in der kanadischen Provinz Ontario, in deren Zentrum sich die Fälle befinden.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Niagaraf%C3%A4lle",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigte Staaten"
   },
   {
     "id": "Grand_Canyon",
@@ -597,7 +646,8 @@
     "continent": "Nordamerika",
     "extract": "i3i6\nDer Grand Canyon [grænd ˈkænjən] ist eine steile, etwa 450 Kilometer lange Schlucht im Norden des US-Bundesstaats Arizona, die über Jahrmillionen vom Colorado River ins Gestein des Colorado-Plateaus gegraben wurde.\nDer Canyon zählt zu den großen Naturwundern auf der Erde, 2018 wurde er von über sechs Millionen Menschen besucht.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Grand_Canyon",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigte Staaten"
   },
   {
     "id": "Yellowstone_National_Park",
@@ -609,7 +659,8 @@
     "continent": "Nordamerika",
     "extract": "i3i6\n\nDer Yellowstone-Nationalpark ist ein Nationalpark in den Vereinigten Staaten. Er wurde am 1.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Yellowstone-Nationalpark",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigte Staaten"
   },
   {
     "id": "Yosemite_National_Park",
@@ -621,7 +672,8 @@
     "continent": "Nordamerika",
     "extract": "i3i6\nDer Yosemite-Nationalpark [joʊˈsɛməti] ist ein Nationalpark in den Vereinigten Staaten. Er liegt in Kalifornien, etwa 300 Kilometer östlich von San Francisco.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Yosemite-Nationalpark",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigte Staaten"
   },
   {
     "id": "Antelope_Canyon",
@@ -633,7 +685,8 @@
     "continent": "Nordamerika",
     "extract": "Der Antelope Canyon ist der meistbesuchte Slot Canyon im Südwesten der Vereinigten Staaten. Er besteht aus dem Upper Antelope Canyon und dem Lower Antelope Canyon und befindet sich in der Nähe von Page in Arizona.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Antelope_Canyon",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigte Staaten"
   },
   {
     "id": "Monument_Valley",
@@ -645,7 +698,8 @@
     "continent": "Nordamerika",
     "extract": "i4i6\nDas Monument Valley (Navajo: Tsé Biiʼ Ndzisgaii) ist eine Hochebene auf dem Colorado-Plateau an der südlichen Grenze des US-Bundesstaates Utah sowie im Norden Arizonas. Es liegt innerhalb der Navajo-Nation-Reservation in der Nähe der Ortschaft Mexican Hat in Utah, wird von den Navajo verwaltet und ist daher kein staatliches Schutzgebiet wie das nahegelegene Navajo National Monument.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Monument_Valley",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigte Staaten"
   },
   {
     "id": "Banff_National_Park",
@@ -657,7 +711,8 @@
     "continent": "Nordamerika",
     "extract": "i2i3i6\n\nDer in der kanadischen Provinz Alberta gelegene Banff-Nationalpark (englisch Banff National Park of Canada, französisch Parc national du Canada Banff) wurde 1885 gegründet und war der erste Nationalpark Kanadas, der zweite in Nordamerika und weltweit der dritte ausgewiesene Park. Mit seinen 6641 km² Fläche gehört er zu den größeren Nationalparks in den kanadischen Rocky Mountains.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Banff-Nationalpark",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Kanada"
   },
   {
     "id": "Lake_Louise_(Alberta)",
@@ -669,7 +724,8 @@
     "continent": "Nordamerika",
     "extract": "Der Lake Louise ist ein See in der kanadischen Provinz Alberta im Banff-Nationalpark. Die türkisblaue Farbe des Sees wird durch feine Gesteinspartikel (dem Steinmehl oder Gletschermilch, in englischer Sprache auch als rock flour oder glacial flour bezeichnet) verursacht, welche mit dem Schmelzwasser in den See gelangen.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Lake_Louise",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Kanada"
   },
   {
     "id": "Death_Valley",
@@ -681,7 +737,8 @@
     "continent": "Nordamerika",
     "extract": "i3i6\nDer Death-Valley-Nationalpark (Death Valley [dɛθ ˈvæli] ; deutsch Tal des Todes) liegt in der Mojave-Wüste und ist der trockenste Nationalpark in den USA. Er liegt südöstlich der Sierra Nevada, zum größten Teil auf dem Gebiet Kaliforniens und zu einem kleineren Teil in Nevada.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Death_Valley",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigte Staaten"
   },
   {
     "id": "Christ_the_Redeemer_(statue)",
@@ -693,7 +750,8 @@
     "continent": "Südamerika",
     "extract": "Cristo Redentor („Christus, der Erlöser“) ist eine monumentale Christusstatue im Süden Rio de Janeiros (Brasilien) auf dem Berg Corcovado. Die 30 Meter hohe Statue im Art-déco-Stil stammt aus dem Jahre 1931.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Cristo_Redentor_(Rio_de_Janeiro)",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Brasilien"
   },
   {
     "id": "Sugarloaf_Mountain",
@@ -705,7 +763,8 @@
     "continent": "Südamerika",
     "extract": "Der Zuckerhut, portugiesisch Pão de Açúcar („Zuckerbrot“), ist ein 396 Meter hoher, steilwandiger Felsen auf der Halbinsel Urca am westlichen Eingang zur Guanabara-Bucht in Rio de Janeiro, Brasilien. Er gehört zur gleichnamigen Hügelgruppe Pão de Açúcar, die außer ihm aus dem Morro da Urca und dem Morro da Babilônia besteht.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Zuckerhut_(Felsen)",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Brasilien"
   },
   {
     "id": "Machu_Picchu",
@@ -717,67 +776,8 @@
     "continent": "Südamerika",
     "extract": "Machu Picchu [ˌmɑtʃu ˈpiktʃu] (Quechua Machu Picchu, deutsch alter Berg) ist eine gut erhaltene Ruinenstadt in Peru. Die Inka erbauten die Stadt im 15.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Machu_Picchu",
-    "credit": "Foto: Wikimedia Commons"
-  },
-  {
-    "id": "Iguazu_Falls",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/20170821_Iguaz%C3%BA-Wasserf%C3%A4lle_%28Brasilien%29.jpg/1280px-20170821_Iguaz%C3%BA-Wasserf%C3%A4lle_%28Brasilien%29.jpg",
-    "lat": -25.69527778,
-    "lng": -54.43666667,
-    "label": "Iguazú-Wasserfälle",
-    "category": "naturwunder",
-    "continent": "Südamerika",
-    "extract": "Die Iguazú-Wasserfälle (portugiesisch Cataratas do Iguaçu [kata'ɾatɐs du igwa'su], spanisch Cataratas del Iguazú [kata'ɾatas del iɣwa'su]) sind die Wasserfälle des Flusses Iguaçu/Iguazú an der Grenze zwischen dem brasilianischen Bundesstaat Paraná und der argentinischen Provinz Misiones.",
-    "wikipediaUrl": "https://de.wikipedia.org/wiki/Iguaz%C3%BA-Wasserf%C3%A4lle",
-    "credit": "Foto: Wikimedia Commons"
-  },
-  {
-    "id": "Salar_de_Uyuni",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Salar_Uyuni_au01.jpg",
-    "lat": -20.295,
-    "lng": -67.5975,
-    "label": "Salar de Uyuni",
-    "category": "naturwunder",
-    "continent": "Südamerika",
-    "extract": "Der Salar de Uyuni (auch Salar de Tunupa) in Bolivien ist mit mehr als 10.",
-    "wikipediaUrl": "https://de.wikipedia.org/wiki/Salar_de_Uyuni",
-    "credit": "Foto: Wikimedia Commons"
-  },
-  {
-    "id": "Atacama_Desert",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Chile_Atacama.jpg",
-    "lat": -22,
-    "lng": -69.5,
-    "label": "Atacama-Wüste",
-    "category": "naturwunder",
-    "continent": "Südamerika",
-    "extract": "Die Atacama-Wüste, kurz Atacama, erstreckt sich entlang der Pazifikküste Südamerikas zwischen dem 18. und 27.",
-    "wikipediaUrl": "https://de.wikipedia.org/wiki/Atacama-W%C3%BCste",
-    "credit": "Foto: Wikimedia Commons"
-  },
-  {
-    "id": "Galápagos_Islands",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/%28Grapsus_grapsus%29_Puerto_Ayora_Gal%C3%A1pagos_Islands_pic._a4.JPG/1280px-%28Grapsus_grapsus%29_Puerto_Ayora_Gal%C3%A1pagos_Islands_pic._a4.JPG",
-    "lat": -0.537,
-    "lng": -90.521,
-    "label": "Galapagosinseln",
-    "category": "naturwunder",
-    "continent": "Nordamerika",
-    "extract": "Die Galapagosinseln (in anderer Schreibweise Galápagos-Inseln, spanisch Islas Galápagos [las ˈislas ɣaˈlapaɣos], IPA lokal: laz ˈihlah ɣaˈlapaɣoh; offiziell Archipiélago de Colón  ‚Kolumbus-Archipel‘) sind ein Archipel im östlichen Pazifischen Ozean. Sie liegen am Äquator ca.",
-    "wikipediaUrl": "https://de.wikipedia.org/wiki/Galapagosinseln",
-    "credit": "Foto: Wikimedia Commons"
-  },
-  {
-    "id": "Torres_del_Paine_National_Park",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Massif_at_Night.jpg/1280px-Massif_at_Night.jpg",
-    "lat": -50.98305556,
-    "lng": -72.96638889,
-    "label": "Nationalpark Torres del Paine",
-    "category": "naturwunder",
-    "continent": "Südamerika",
-    "extract": "i3i6\nDer Nationalpark Torres del Paine (spanisch Parque Nacional Torres del Paine) ist einer der bekanntesten  Nationalparks in Chile, gelegen im Süden des Landes um die Berggruppe der Cordillera del Paine. Paine heißt in der Sprache der Tehuelche-Indianer (Aonikenk-Indianer, Patagonier) „himmelblau“, Torres del Paine also „Türme des blauen Himmels“.",
-    "wikipediaUrl": "https://de.wikipedia.org/wiki/Nationalpark_Torres_del_Paine",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Peru"
   },
   {
     "id": "Lake_Titicaca",
@@ -789,7 +789,8 @@
     "continent": "Südamerika",
     "extract": "Der Titicacasee (spanisch Lago Titicaca; Quechua Titiqaqa qucha; benannt nach der Titicaca-Insel) ist mit einer Fläche von 8372 Quadratkilometern der größte Süßwassersee Südamerikas. Er befindet sich auf der Altiplano-Hochebene in den Anden; der westliche Teil mit 4916 km² des Sees gehört zu Peru, der östliche Teil mit 3372 km² zu Bolivien.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Titicacasee",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Peru"
   },
   {
     "id": "Taj_Mahal",
@@ -801,7 +802,8 @@
     "continent": "Asien",
     "extract": "Der Taj Mahal,  auch Tadsch Mahal (persisch: تاج محل, DMG tāǧ maḥall) ist ein im Jahre 1648 fertiggestelltes Mausoleum (Grabgebäude) am Südufer des Flusses Yamuna am Stadtrand von Agra im indischen Bundesstaat Uttar Pradesh. Der Gebäudekern besteht, ebenso wie die Kuppel und die Minarette, aus vor Ort gebrannten Ziegelsteinen, die außen wie innen mit weißen Marmorplatten verkleidet sind.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Taj_Mahal",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Indien"
   },
   {
     "id": "Great_Wall_of_China",
@@ -813,7 +815,8 @@
     "continent": "Asien",
     "extract": "Die Chinesische Mauer ist eine Schutzanlage zur Grenzsicherung, die unter anderem auch während der Ming-Dynastie (1368–1644) im Norden Chinas errichtet wurde. Der chinesische Ausdruck ist 萬里長城 / 万里长城,  Wànlǐ Chángchéng – „10.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Chinesische_Mauer",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Volksrepublik China"
   },
   {
     "id": "Forbidden_City",
@@ -825,7 +828,8 @@
     "continent": "Asien",
     "extract": "Die Verbotene Stadt (chinesisch 故宮 / 故宫, Pinyin Gùgōng – „alter Palast; ehemaliger Palast; ursprünglicher Palast“ bzw. 紫禁城,  Zǐjìnchéng – „Purpurne Verbotene Stadt“) ist eine Palastanlage im Zentrum Pekings.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Verbotene_Stadt",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Volksrepublik China"
   },
   {
     "id": "Tiananmen_Square",
@@ -837,7 +841,8 @@
     "continent": "Asien",
     "extract": "Der Tian’anmen-Platz oder Platz (am Tor) des Himmlischen Friedens (chinesisch 天安門廣場 / 天安门广场, Pinyin Tiān'ānmén Guǎngchǎng) ist ein Platz im Zentrum von Peking, der Hauptstadt der Volksrepublik China.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Tian%E2%80%99anmen-Platz",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Volksrepublik China"
   },
   {
     "id": "Tokyo_Tower",
@@ -849,7 +854,8 @@
     "continent": "Asien",
     "extract": "Der Tokyo Tower (jap. 東京タワー, Tōkyō Tawā) ist ein 1958 nach dem Vorbild des Eiffelturms in Stahlfachwerkbauweise erbauter Fernsehturm im Shiba-Park im Stadtbezirk Minato und eines der Wahrzeichen der japanischen Hauptstadt Tokio.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Tokyo_Tower",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Japan"
   },
   {
     "id": "Tokyo_Skytree",
@@ -861,7 +867,8 @@
     "continent": "Asien",
     "extract": "Der Tokyo Skytree (japanisch 東京スカイツリー, Tōkyō Sukaitsurī) ist ein 634 Meter hoher Fernseh- und Rundfunksendeturm in der japanischen Hauptstadt Tokio. Er wurde am 22.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Tokyo_Skytree",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Japan"
   },
   {
     "id": "Shibuya_Crossing",
@@ -873,7 +880,8 @@
     "continent": "Asien",
     "extract": "Die Shibuya Crossing (englische Bezeichnung für japanisch 渋谷スクランブル交差点 Hepburn Shibuya sukuranburu kōsaten, dt. etwa „Scramble-Kreuzung Shibuya“) ist eine Straßenkreuzung im Stadtteil Shibuya (der Adresse nach eigentlich Dōgenzaka/Udagawachō/Jinnan) des Bezirks Shibuya in Tokio.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Shibuya_Crossing",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Japan"
   },
   {
     "id": "Fushimi_Inari-taisha",
@@ -885,7 +893,8 @@
     "continent": "Asien",
     "extract": "Der Fushimi Inari-Taisha (jap. 伏見稲荷大社, auch bekannt unter dem Namen Oinari-san) ist ein Shintō-Schrein im Stadtbezirk Fushimi der Stadt Kyōto.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Fushimi_Inari-Taisha",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Japan"
   },
   {
     "id": "Sensō-ji",
@@ -897,7 +906,8 @@
     "continent": "Asien",
     "extract": "Sensō-ji (japanisch 浅草寺), bei anderer Lesung der Zeichen auch Asakusa-dera, ist ein buddhistischer Tempel in Asakusa, Tokio. Sein formeller Tempelname ist Kinryūzan (jap.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Sens%C5%8D-ji",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Japan"
   },
   {
     "id": "Kinkaku-ji",
@@ -909,7 +919,8 @@
     "continent": "Asien",
     "extract": "Kinkaku-ji (japanisch 金閣寺, dt. „Goldener-Pavillon-Tempel“), eigentlich Rokuon-ji (鹿苑寺, dt.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Kinkaku-ji",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Japan"
   },
   {
     "id": "Angkor_Wat",
@@ -921,7 +932,8 @@
     "continent": "Asien",
     "extract": "Angkor Wat (Khmer: Ângkôr Vôtt អង្គរវត្ត; ângkôr bedeutet „Stadt“, vôtt „Tempelanlage“) ist die bekannteste Tempelanlage in der Region Angkor in Kambodscha. Der Tempel befindet sich zirka 240 km nordwestlich der Hauptstadt Phnom Penh in der Nähe von Siem Reap, rund 20 Kilometer nördlich des Sees Tonle Sap.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Angkor_Wat",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Kambodscha"
   },
   {
     "id": "Petronas_Towers",
@@ -933,7 +945,8 @@
     "continent": "Asien",
     "extract": "Petronas Towers (deutsch Petronas-Türme, malaiisch Menara Petronas, oft auch Petronas Twin Towers genannt) ist der Name eines vom Mineralölunternehmen Petronas gebauten Wolkenkratzerpaares in Kuala Lumpur, der Hauptstadt Malaysias. Mit insgesamt 452 m Höhe überragen die Zwillingstürme die Stadt.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Petronas_Towers",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Malaysia"
   },
   {
     "id": "Marina_Bay_Sands",
@@ -945,7 +958,8 @@
     "continent": "Asien",
     "extract": "Marina Bay Sands ist ein Resort an der Marina Bay in Singapur. Das 20 Hektar umfassende Resort umfasst drei 55-stöckige Hoteltürme sowie zwei schwimmende Pavillons.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Marina_Bay_Sands",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Singapur"
   },
   {
     "id": "Burj_Khalifa",
@@ -957,7 +971,8 @@
     "continent": "Asien",
     "extract": "Der Burj Khalifa (arabisch برج خليفة, DMG Burǧ Ḫalīfa ‚Chalifa-Turm‘, deutsche Transkription Burdsch Chalifa) ist ein Wolkenkratzer in Dubai (Vereinigte Arabische Emirate). Seit April 2008 ist er das höchste Bauwerk der Welt, besitzt weltweit die meisten Stockwerke und auch das höchstgelegene nutzbare Stockwerk.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Burj_Khalifa",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigte Arabische Emirate"
   },
   {
     "id": "Burj_Al_Arab",
@@ -969,7 +984,8 @@
     "continent": "Asien",
     "extract": "Das Burj al Arab (arabisch برج العرب, DMG burǧ al-ʿarab, Burdsch al-ʿArab, deutsch: „Turm der Araber“) ist ein Hotel in der emiratischen Stadt Dubai. Mit einer Höhe von 321 Metern ist es eines der höchsten Hotelgebäude der Welt und mit der markanten segelförmigen Kubatur sowie der ausgesetzten Lage ein Wahrzeichen der Stadt und gilt darüber hinaus als eines der luxuriösesten und teuersten Hotels der Welt.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Burj_al_Arab",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vereinigte Arabische Emirate"
   },
   {
     "id": "Petra",
@@ -981,7 +997,8 @@
     "continent": "Asien",
     "extract": "Petra (altgriechisch Πέτρα [ˈpɛtʁa] „Felsen, Felsmassiv“, arabisch البتراء al-Batrā’, nabatäisch wahrscheinlich Reqmu „die Rote“), eine Ruinenstätte im heutigen Jordanien, war in der Antike die Hauptstadt des Reiches der Nabatäer. Wegen ihrer monumentalen Grabtempel, deren Fassaden direkt aus dem anstehenden Fels gemeißelt wurden, gilt sie als einzigartiges Kulturdenkmal.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Petra_(Jordanien)",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Jordanien"
   },
   {
     "id": "Hagia_Sophia",
@@ -993,7 +1010,8 @@
     "continent": "Europa",
     "extract": "Die Hagia Sophia (vom griechischen Ἁγία Σοφία „heilige Weisheit“; türkisch Ayasofya) oder Sophienkirche befindet sich in Eminönü, einem Stadtteil im europäischen Teil Istanbuls. Die von 532 bis 537 n.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Hagia_Sophia",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Türkei"
   },
   {
     "id": "Sultan_Ahmed_Mosque",
@@ -1005,7 +1023,8 @@
     "continent": "Europa",
     "extract": "Die Sultan-Ahmed-Moschee (türkisch Sultan Ahmet Camii) in Istanbul wurde 1609 von Sultan Ahmed I. in Auftrag gegeben und bis 1616, ein Jahr vor dem Tod des Sultans, vom Sinan-Schüler Mehmet Ağa erbaut, sie ist ein Hauptwerk der osmanischen Architektur.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Sultan-Ahmed-Moschee",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Türkei"
   },
   {
     "id": "Wat_Pho",
@@ -1017,7 +1036,8 @@
     "continent": "Asien",
     "extract": "Wat Pho (thailändisch วัดโพธิ์) ist ein Königlicher Tempel Erster Klasse, ein buddhistischer Tempel (Wat), der im Zentrum der historischen Altstadt von Bangkok (siehe Rattanakosin) liegt, unmittelbar südlich des Königspalastes. Sein offizieller Name ist Wat Phra Chettuphon Wimon Mangkhalaram Ratchaworamahawihan (วัดพระเชตุพนวิมลมังคลารามราชวรมหาวิหาร), Einheimische nennen ihn aber noch immer Wat Pho nach seinem historischen Namen Wat Photharam, welcher an das Kloster des Bodhi-Baumes in Bodhgaya erinnern soll.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Wat_Pho",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Thailand"
   },
   {
     "id": "Tian_Tan_Buddha",
@@ -1029,7 +1049,8 @@
     "continent": "Asien",
     "extract": "Der Tian Tan Buddha, auch Tiantan Buddha (chinesisch 天壇大佛 / 天坛大佛, Pinyin Tiāntán Dàfó, Jyutping Tin1taan4 Daai6fat6), ist eine bronzene Buddha-Statue bei Ngong Ping auf Lantau Island in Hongkong. Die umgangssprachlich auch „Big Buddha“ (大佛,  dàfó, Jyutping Daai6fat6) genannte Plastik ist eine der fünf größten Buddha-Statuen in China und das größte buddhistische Monument in Hongkong.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Tian_Tan_Buddha",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Volksrepublik China"
   },
   {
     "id": "Itsukushima_Shrine",
@@ -1041,7 +1062,8 @@
     "continent": "Asien",
     "extract": "Der Itsukushima-Schrein (japanisch 厳島神社 Itsukushima-jinja) ist ein Shintō-Schrein auf der Insel Miyajima in Hatsukaichi in der Präfektur Hiroshima in Japan.\nDie japanische Regierung hat die Anlage 1952 zur Besonderen historischen Stätte (tokubetsu shiseki) erklärt, sowie mehrere Gebäude und Gegenstände zu Nationalschätzen.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Itsukushima-Schrein",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Japan"
   },
   {
     "id": "Mount_Fuji",
@@ -1053,7 +1075,8 @@
     "continent": "Asien",
     "extract": "Der Fuji (japanisch  Fuji-san [ɸɯ(d)ʑisaɴ]; eingedeutscht: Fudschi; Duden: Fudschijama; übernommen aus dem Englischen: Fujiyama) ist ein Vulkan und mit 3776,24 m Höhe über dem Meeresspiegel der höchste Berg Japans. Sein Gipfel befindet sich auf der japanischen Hauptinsel Honshū an der Grenze zwischen den Präfekturen Yamanashi und Shizuoka.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Fuji_(Vulkan)",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Japan"
   },
   {
     "id": "Cappadocia",
@@ -1065,7 +1088,8 @@
     "continent": "Asien",
     "extract": "Kappadokien (türkisch Kapadokya, griechisch Καππαδοκία, deutsch auch Kappadozien) ist eine Landschaft in Zentralanatolien in der Türkei.\nDie antike Landschaft Kappadokien umfasst heutzutage im Wesentlichen die Provinzen Nevşehir, Niğde, Aksaray, Kırşehir, Kayseri, Yozgat, Kahramanmaraş und Malatya, sowie Teile der Provinz Sivas.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Kappadokien",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Türkei"
   },
   {
     "id": "Hạ_Long_Bay",
@@ -1077,7 +1101,8 @@
     "continent": "Asien",
     "extract": "Die Halong-Bucht (vietnamesisch: Vịnh Hạ Long) ist ein rund 1500 km² großes Gebiet im Golf von Tonkin in der Provinz Quảng Ninh im Norden Vietnams. Nach offiziellen Angaben ragen 1969 Kalkfelsen, zumeist unbewohnte Inseln und Felsen, zum Teil mehrere hundert Meter hoch aus dem Wasser.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Halong-Bucht",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Vietnam"
   },
   {
     "id": "Zhangjiajie_National_Forest_Park",
@@ -1089,7 +1114,8 @@
     "continent": "Asien",
     "extract": "i4i6\n\nDer Zhangjiajie National Forest Park (chinesisch 湖南张家界国家森林公园) ist ein Nationalpark der Stadt Zhangjiajie. Er liegt in der Provinz Hunan, im Zentralosten der Volksrepublik China.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Zhangjiajie_National_Forest_Park",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Volksrepublik China"
   },
   {
     "id": "Pamukkale",
@@ -1101,7 +1127,8 @@
     "continent": "Asien",
     "extract": "Pamukkale (türkisch für Baumwollburg/Watteburg) ist eine natürliche Stätte in der Provinz Denizli im Südwesten der Türkei. Pamukkale erhielt seinen Namen durch die Kalksinterterrassen, die über Jahrtausende durch kalkhaltige Thermalquellen entstanden sind und eine Touristenattraktion darstellen.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Pamukkale",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Türkei"
   },
   {
     "id": "Dead_Sea",
@@ -1113,7 +1140,8 @@
     "continent": "Asien",
     "extract": "f\nDas Tote Meer ist ein abflussloser See, der mehr als 440 m unter dem Meeresspiegel liegt, vom Jordan gespeist wird und für seinen hohen Salzgehalt bekannt ist. Das Tote Meer grenzt an Jordanien, Israel und das Westjordanland.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Totes_Meer",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Jordanien"
   },
   {
     "id": "Giza_pyramid_complex",
@@ -1125,7 +1153,8 @@
     "continent": "Afrika",
     "extract": "Die Pyramiden von Gizeh in Ägypten gehören zu den bekanntesten und ältesten erhaltenen Bauwerken der Menschheit. Sie stehen am westlichen Rand des Niltals, etwa acht Kilometer südwestlich der Stadt Gizeh (Gîza).",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Pyramiden_von_Gizeh",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Ägypten"
   },
   {
     "id": "Great_Sphinx_of_Giza",
@@ -1137,7 +1166,8 @@
     "continent": "Afrika",
     "extract": "Die (auch der) Große Sphinx von Gizeh in Ägypten (arabisch أبو الهول, DMG Abū l-Haul) ist die mit Abstand berühmteste und größte Sphinx. Sie stellt einen liegenden Löwen mit einem Menschenkopf dar und wurde vermutlich in der 4.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Gro%C3%9Fe_Sphinx_von_Gizeh",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Ägypten"
   },
   {
     "id": "Lalibela",
@@ -1149,7 +1179,8 @@
     "continent": "Afrika",
     "extract": "Lalibela (amharisch ላሊበላ lalibäla) oder Neu-Jerusalem (früher Roha) ist eine heilige Stadt und Wallfahrtsort in Äthiopien. Lalibela liegt in der vormaligen Provinz Wällo; nach deren Auflösung 1991 wurde das Gebiet Amhara zugeschlagen.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Lalibela",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Äthiopien"
   },
   {
     "id": "Robben_Island",
@@ -1161,7 +1192,8 @@
     "continent": "Afrika",
     "extract": "Robben Island (afrikaans: Robbeneiland) ist eine Insel in der Tafelbucht im Atlantik etwa zwölf Kilometer vor der südafrikanischen Küstenstadt Kapstadt und 6,9 km vom nächstgelegenen Festlandsabschnitt bei Bloubergstrand entfernt. Die frühere Gefängnisinsel wurde Mitte der 1990er Jahre zu einem Natur- und Nationaldenkmal, das frühere Gefängnisgebäude zu einem Museum umgestaltet.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Robben_Island",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Südafrika"
   },
   {
     "id": "Mount_Kilimanjaro",
@@ -1173,7 +1205,8 @@
     "continent": "Afrika",
     "extract": "Der Kilimandscharo (auch Kilimandscharo-Massiv, von 1902 bis 1964 Kaiser-Wilhelm-Spitze oder auch Wilhelmskuppe, englisch Kilimanjaro oder Mount Kilimanjaro; Chagga: kilima ndjaro, „Berg des Wassers“) ist ein Bergmassiv im Nordosten Tansanias. Der höchste Berg des Massivs ist mit 5895 m Höhe der Kibo.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Kilimandscharo",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Tansania"
   },
   {
     "id": "Victoria_Falls",
@@ -1185,7 +1218,8 @@
     "continent": "Afrika",
     "extract": "Die Victoriafälle sind ein breiter Wasserfall des Sambesi zwischen den Grenzstädten Victoria Falls in Simbabwe und Livingstone in Sambia.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Victoriaf%C3%A4lle",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Sambia"
   },
   {
     "id": "Serengeti_National_Park",
@@ -1197,7 +1231,8 @@
     "continent": "Afrika",
     "extract": "Die Serengeti ist eine Savanne, die sich vom Norden Tansanias, östlich des Victoriasees, bis in den Süden Kenias erstreckt und eine Fläche von etwa 30.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Serengeti-Nationalpark",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Kenia"
   },
   {
     "id": "Table_Mountain",
@@ -1209,7 +1244,8 @@
     "continent": "Afrika",
     "extract": "Der Tafelberg (englisch Table Mountain, afrikaans Tafelberg, khoi: Hoerikwaggo für „aus dem Meer ragend“) liegt in Südafrika, im nördlichen Teil einer Bergkette auf der circa 52 km langen und bis zu 16 km breiten Kap-Halbinsel, an deren Südende sich das Kap der Guten Hoffnung befindet. Er prägt die Silhouette Kapstadts, auf dessen Territorium er sich erstreckt.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Tafelberg_(S%C3%BCdafrika)",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Südafrika"
   },
   {
     "id": "Sossusvlei",
@@ -1221,7 +1257,8 @@
     "continent": "Afrika",
     "extract": "Das Sossusvlei (), auch Sossus Vlei, liegt in Namibia und ist eine von Sanddünen umschlossene beige Salz-Ton-Pfanne („Vlei“) in der Namib, die nur in seltenen guten Regenjahren Wasser führt. Dann bildet sich für kurze Zeit ein wenige Zentimeter bis mehrere Meter tiefer See im Vlei am Ende des Flusses Tsauchab.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Sossusvlei",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Namibia"
   },
   {
     "id": "Sahara",
@@ -1233,7 +1270,8 @@
     "continent": "Afrika",
     "extract": "Die Sahara ist mit über neun Millionen Quadratkilometern die größte Trockenwüste der Erde. Das entspricht knapp der Fläche der gesamten USA oder etwa der 26-fachen Fläche Deutschlands.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Sahara",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Algerien"
   },
   {
     "id": "Sydney_Opera_House",
@@ -1245,7 +1283,8 @@
     "continent": "Ozeanien",
     "extract": "Das Sydney Opera House (deutsch Opernhaus Sydney) ist eines der markanten und berühmten Gebäude des 20. Jahrhunderts und das Wahrzeichen von Sydney.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Sydney_Opera_House",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Australien"
   },
   {
     "id": "Sydney_Harbour_Bridge",
@@ -1257,7 +1296,8 @@
     "continent": "Ozeanien",
     "extract": "Die Sydney Harbour Bridge (deutsch Sydneyer Hafenbrücke) wurde am 19. März 1932 offiziell eröffnet.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Sydney_Harbour_Bridge",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Australien"
   },
   {
     "id": "Bondi_Beach",
@@ -1269,7 +1309,8 @@
     "continent": "Ozeanien",
     "extract": "Bondi Beach ['bɒndaɪ] gehört zur australischen Metropole Sydney, ist einer der berühmtesten Strände Australiens und einer der bekanntesten Surfspots der Welt. Er liegt etwa sieben Kilometer östlich des Stadtzentrums.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Bondi_Beach",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Australien"
   },
   {
     "id": "Uluru",
@@ -1281,7 +1322,8 @@
     "continent": "Ozeanien",
     "extract": "Der Uluru (Pitjantjatjara: Uluṟu) [ulu'ɹu], englischer Kolonialname Ayers Rock, offiziell Uluru / Ayers Rock, ist ein Inselberg in der zentralaustralischen Wüste, der sich ca. 350 m über sein Umland erhebt.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Uluru",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Australien"
   },
   {
     "id": "Great_Barrier_Reef",
@@ -1293,7 +1335,8 @@
     "continent": "Ozeanien",
     "extract": "Das Great Barrier Reef (wörtlich übersetzt: Großes Barriereriff, Großes Barrierriff) vor der Nordostküste Australiens ist die größte zusammenhängende Ansammlung von über 2900 einzelnen Korallenriffen der Erde. Im Jahr 1981 wurde es von der UNESCO zum Weltnaturerbe erklärt und es wird auch als eines der sieben Weltwunder der Natur bezeichnet.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Great_Barrier_Reef",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Australien"
   },
   {
     "id": "Twelve_Apostles_(Victoria)",
@@ -1305,7 +1348,8 @@
     "continent": "Ozeanien",
     "extract": "Die Twelve Apostles (deutsch Zwölf Apostel) sind bis zu 70 Meter hohe, im Meer stehende Felsen aus Kalkstein. Sie liegen zwischen Princetown und Port Campbell im Coastal Ward des Verwaltungsbezirks Corangamite Shire im australischen Bundesstaat Victoria im Port-Campbell-Nationalpark.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Twelve_Apostles_(Australien)",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Australien"
   },
   {
     "id": "Milford_Sound",
@@ -1317,7 +1361,8 @@
     "continent": "Ozeanien",
     "extract": "Der Milford Sound/Piopiotahi (Maori Piopiotahi) ist ein als Fjord zu bezeichnender Meeresarm auf der Südinsel von Neuseeland. Das 15,7 km lange Gewässer ist eine der bekanntesten Touristenattraktionen des Landes und gehört, da es Teil des Fiordland National Parks im Südwesten der Insel ist, mit zum Weltnaturerbe der UNESCO, bei der die Region seit 1990 unter dem Namen Te Wahipounamu registriert ist.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Milford_Sound%2FPiopiotahi",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Neuseeland"
   },
   {
     "id": "Tongariro_National_Park",
@@ -1329,6 +1374,7 @@
     "continent": "Ozeanien",
     "extract": "i3i6\n\nDer Tongariro-Nationalpark (englisch Tongariro National Park) ist der älteste Nationalpark Neuseelands. Der sich im Zentrum der Nordinsel erstreckende Park gehört sowohl zum Weltkultur- als auch zum Weltnaturerbe der UNESCO.",
     "wikipediaUrl": "https://de.wikipedia.org/wiki/Tongariro-Nationalpark",
-    "credit": "Foto: Wikimedia Commons"
+    "credit": "Foto: Wikimedia Commons",
+    "country": "Neuseeland"
   }
 ]

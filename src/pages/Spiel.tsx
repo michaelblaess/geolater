@@ -14,6 +14,7 @@ import {
 } from "../lib/gameSession";
 import { loadDifficulty, TIMER_SECONDS, viewForRound } from "../lib/difficulty";
 import { addPlayedId, locationKey } from "../lib/playedHistory";
+import { vibrateReveal, vibrateTap } from "../lib/haptic";
 import type { Difficulty, GameResult, Round } from "../lib/types";
 
 const TOTAL_ROUNDS = 5;
@@ -146,6 +147,7 @@ export function Spiel() {
 
   function handleSubmit() {
     if (guess === null) return;
+    vibrateTap();
     const distanceKm = haversineKm(guess.lat, guess.lng, current.lat, current.lng);
     const points = pointsFromDistance(distanceKm);
     log(`Etappe ${roundIndex + 1}: ${current.label}`, {
@@ -156,6 +158,8 @@ export function Spiel() {
     });
     setCurrentResult({ distanceKm, points });
     setPhase("result");
+    // Doppel-Pulse beim Reveal — kurze Verzoegerung damit Tap und Reveal trennbar fuehlen
+    setTimeout(vibrateReveal, 200);
   }
 
   function handleContinue() {

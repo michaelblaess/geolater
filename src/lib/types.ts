@@ -21,6 +21,7 @@ export type Location = {
   credit: string;
   category?: LocationCategory;
   continent?: Continent;
+  country?: string;
   extract?: string;
   wikipediaUrl?: string;
 };

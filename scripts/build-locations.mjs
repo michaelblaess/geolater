@@ -199,8 +199,9 @@ async function fetchOnWiki(title, lang) {
   const url =
     `https://${lang}.wikipedia.org/w/api.php?` +
     `action=query&titles=${encodeURIComponent(title)}` +
-    `&prop=pageimages|coordinates|extracts` +
+    `&prop=pageimages|coordinates|extracts|pageprops` +
     `&pithumbsize=1280&exintro=true&exsentences=2&explaintext=true` +
+    `&ppprop=wikibase_item` +
     `&format=json&redirects=1&origin=*`;
   const r = await fetch(url, { headers: { "User-Agent": UA } });
   if (!r.ok) return null;
@@ -214,7 +215,50 @@ async function fetchOnWiki(title, lang) {
     lat: page.coordinates?.[0]?.lat,
     lng: page.coordinates?.[0]?.lon,
     extract: page.extract,
+    wikidataId: page.pageprops?.wikibase_item,
   };
+}
+
+// Holt fuer eine Liste von Wikidata-IDs die jeweilige country (P17)-Q-ID
+async function fetchClaimsBatch(qids) {
+  const result = {};
+  for (let i = 0; i < qids.length; i += 50) {
+    const chunk = qids.slice(i, i + 50);
+    const url =
+      `https://www.wikidata.org/w/api.php?` +
+      `action=wbgetentities&ids=${chunk.join("|")}` +
+      `&props=claims&format=json&origin=*`;
+    const r = await fetch(url, { headers: { "User-Agent": UA } });
+    if (!r.ok) continue;
+    const d = await r.json();
+    for (const id of chunk) {
+      const claim = d?.entities?.[id]?.claims?.P17?.[0];
+      result[id] = claim?.mainsnak?.datavalue?.value?.id ?? null;
+    }
+    await new Promise((r) => setTimeout(r, 100));
+  }
+  return result;
+}
+
+// Holt fuer eine Liste von Q-IDs die deutsche Beschriftung (Fallback Englisch)
+async function fetchLabelsBatch(qids) {
+  const result = {};
+  for (let i = 0; i < qids.length; i += 50) {
+    const chunk = qids.slice(i, i + 50);
+    const url =
+      `https://www.wikidata.org/w/api.php?` +
+      `action=wbgetentities&ids=${chunk.join("|")}` +
+      `&props=labels&languages=de|en&format=json&origin=*`;
+    const r = await fetch(url, { headers: { "User-Agent": UA } });
+    if (!r.ok) continue;
+    const d = await r.json();
+    for (const id of chunk) {
+      const labels = d?.entities?.[id]?.labels;
+      result[id] = labels?.de?.value ?? labels?.en?.value ?? id;
+    }
+    await new Promise((r) => setTimeout(r, 100));
+  }
+  return result;
 }
 
 // Listet alle Bilder eines Artikels (Filenamen mit 'File:'-Prefix)
@@ -330,6 +374,7 @@ async function buildLocation({ slug, category }) {
       extract,
       wikipediaUrl,
       credit: "Foto: Wikimedia Commons",
+      _wikidataId: onDe?.wikidataId ?? onEn?.wikidataId ?? null,
     };
   } catch (err) {
     console.warn(`  ✗ ${slug}: ${err.message}`);
@@ -360,6 +405,24 @@ async function main() {
   }
   console.log("\nVerteilung:", byContinent);
   console.log(`\nGesamt: ${out.length} / ${SLUGS.length} (${SLUGS.length - out.length} verworfen)`);
+
+  // Wikidata: countries auflösen
+  console.log("\nLaender via Wikidata aufloesen ...");
+  const wdIds = out.map((l) => l._wikidataId).filter((x) => typeof x === "string");
+  const claimsByWd = await fetchClaimsBatch(wdIds);
+  const countryIds = [...new Set(Object.values(claimsByWd).filter(Boolean))];
+  console.log(`  ${wdIds.length} Items abgefragt, ${countryIds.length} Laender`);
+  const labels = await fetchLabelsBatch(countryIds);
+  let withCountry = 0;
+  for (const loc of out) {
+    const cid = loc._wikidataId ? claimsByWd[loc._wikidataId] : null;
+    if (cid && labels[cid]) {
+      loc.country = labels[cid];
+      withCountry++;
+    }
+    delete loc._wikidataId;
+  }
+  console.log(`  ${withCountry} Locations mit Land versehen`);
 
   await fs.writeFile(OUTPUT, JSON.stringify(out, null, 2) + "\n", "utf8");
   console.log(`\nGeschrieben: ${OUTPUT}`);

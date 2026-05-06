@@ -64,6 +64,11 @@ export function GuessMap({ guess, truth, debugTruth, onMapClick, viewKey, initia
     });
     mapRef.current = map;
 
+    // Map-Speed anpassen — Default-Scroll-Zoom ist sehr behaebig (1/450).
+    // Mit 1/100 ist das Mausrad ~4x schneller.
+    map.scrollZoom.setWheelZoomRate(1 / 100);
+    map.scrollZoom.setZoomRate(1 / 80);
+
     // Beschriftungen auf Deutsch umstellen, mit Fallback auf name:latin und name.
     // 'style.load' feuert beim ersten Laden und bei jedem setStyle erneut —
     // perfekt fuer den Fallback-Fall.
@@ -194,6 +199,17 @@ export function GuessMap({ guess, truth, debugTruth, onMapClick, viewKey, initia
       .setLngLat([truth.lng, truth.lat])
       .addTo(map);
 
+    // Pulse-Ring am Tipp-Marker fuer ~900 ms (visuelles Echo der Vibration)
+    if (guessMarkerRef.current !== null) {
+      const el = guessMarkerRef.current.getElement();
+      el.classList.add("marker-pulse");
+      const id = window.setTimeout(() => {
+        el.classList.remove("marker-pulse");
+      }, 1000);
+      // cleanup ueber Marker-Recreation handled durch ref-tracking
+      void id;
+    }
+
     if (guess !== null) {
       const ensureSource = () => {
         if (map.getSource("guess-line") !== undefined) return;
@@ -233,7 +249,7 @@ export function GuessMap({ guess, truth, debugTruth, onMapClick, viewKey, initia
       const bounds = new maplibregl.LngLatBounds();
       bounds.extend([guess.lng, guess.lat]);
       bounds.extend([truth.lng, truth.lat]);
-      map.fitBounds(bounds, { padding: 60, maxZoom: 8, duration: 800 });
+      map.fitBounds(bounds, { padding: 60, maxZoom: 8, duration: 450 });
     }
   }, [truth, guess]);
 
