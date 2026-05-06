@@ -188,11 +188,26 @@ export function Spiel() {
       return;
     }
 
-    setCompletedRounds(nextCompleted);
-    setRoundIndex(roundIndex + 1);
-    setGuess(null);
-    setCurrentResult(null);
-    setPhase("guessing");
+    advanceRound(nextCompleted);
+  }
+
+  // Naechste Etappe einleiten — wenn die View-Transitions-API verfuegbar ist,
+  // wird der Wechsel als Slide-Animation gerendert (Bild slidet links raus,
+  // neues von rechts rein). Browser ohne Support nutzen den CSS-Slide via key.
+  function advanceRound(nextCompleted: Round[]) {
+    const apply = () => {
+      setCompletedRounds(nextCompleted);
+      setRoundIndex(roundIndex + 1);
+      setGuess(null);
+      setCurrentResult(null);
+      setPhase("guessing");
+    };
+    const doc = document as Document & { startViewTransition?: (cb: () => void) => unknown };
+    if (typeof doc.startViewTransition === "function") {
+      doc.startViewTransition(() => apply());
+    } else {
+      apply();
+    }
   }
 
   function handleDebugSkip() {
@@ -220,11 +235,7 @@ export function Spiel() {
       return;
     }
 
-    setCompletedRounds(nextCompleted);
-    setRoundIndex(roundIndex + 1);
-    setGuess(null);
-    setCurrentResult(null);
-    setPhase("guessing");
+    advanceRound(nextCompleted);
   }
 
   useEffect(() => {
@@ -267,6 +278,7 @@ export function Spiel() {
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_2fr]">
         <div className="h-[32vh] sm:h-[42vh] lg:h-[70vh]">
           <BildPanel
+            key={roundIndex}
             location={current}
             roundIndex={roundIndex}
             totalRounds={TOTAL_ROUNDS}

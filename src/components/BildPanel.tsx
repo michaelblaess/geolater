@@ -20,7 +20,10 @@ export function BildPanel({ location, roundIndex, totalRounds, reveal, hint }: P
   const url = imageUrl(location.image);
 
   return (
-    <figure className="group relative h-full w-full overflow-hidden border border-ink/10 bg-cream-deep shadow-[0_30px_60px_-20px_rgba(28,25,23,0.25)]">
+    <figure
+      style={{ viewTransitionName: "bild" } as React.CSSProperties}
+      className="group relative h-full w-full overflow-hidden border border-ink/10 bg-cream-deep shadow-[0_30px_60px_-20px_rgba(28,25,23,0.25)]"
+    >
       {/* Bild */}
       {errored ? (
         <FallbackPlate url={url} />
