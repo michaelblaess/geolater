@@ -1,10 +1,26 @@
 // Eine Location aus locations.json
+export type Continent =
+  | "Europa"
+  | "Asien"
+  | "Afrika"
+  | "Nordamerika"
+  | "Südamerika"
+  | "Ozeanien"
+  | "Antarktis";
+
+export type LocationCategory = "wahrzeichen" | "naturwunder" | "stadt";
+
 export type Location = {
+  id?: string;
   image: string;
   lat: number;
   lng: number;
   label: string;
   credit: string;
+  category?: LocationCategory;
+  continent?: Continent;
+  extract?: string;
+  wikipediaUrl?: string;
 };
 
 // Ein abgeschlossener Spielzug
