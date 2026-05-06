@@ -180,7 +180,7 @@ export function Spiel() {
   const debug = isDebugActive();
 
   return (
-    <div className="mx-auto flex max-w-7xl flex-col gap-5 px-4 py-5 sm:px-6">
+    <div className="mx-auto flex max-w-7xl flex-col gap-5 px-4 pt-5 pb-28 sm:px-6 sm:py-5">
       <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-paper-rule pb-3 text-sm">
         <div className="flex items-baseline gap-3">
           <span className="small-caps text-[10px] text-ink-muted">Reisende</span>
@@ -216,21 +216,31 @@ export function Spiel() {
       </div>
 
       {phase === "guessing" ? (
-        <div className="flex flex-wrap items-center justify-end gap-3">
+        <div className="
+          fixed inset-x-0 bottom-0 z-30
+          flex items-center gap-2
+          border-t border-paper-rule bg-cream/95 px-4 py-3 backdrop-blur
+          pb-[max(env(safe-area-inset-bottom),0.75rem)]
+          sm:static sm:flex-wrap sm:justify-end sm:gap-3
+          sm:border-t-0 sm:bg-transparent sm:p-0 sm:backdrop-blur-none
+        ">
           {debug ? (
             <button
               type="button"
               onClick={handleDebugSkip}
-              className="border border-gold/60 bg-gold-soft px-4 py-2 text-sm font-medium text-gold transition-colors hover:bg-gold/20"
+              className="border border-gold/60 bg-gold-soft px-3 py-2 text-sm font-medium text-gold transition-colors hover:bg-gold/20 sm:px-4"
             >
-              <span className="small-caps text-[10px]">Etappe überspringen (DEBUG)</span>
+              <span className="small-caps text-[10px]">
+                <span className="sm:hidden">Skip</span>
+                <span className="hidden sm:inline">Etappe überspringen (DEBUG)</span>
+              </span>
             </button>
           ) : null}
           <button
             type="button"
             onClick={handleSubmit}
             disabled={guess === null}
-            className="group inline-flex w-full items-center justify-center gap-3 bg-ink px-6 py-3.5 text-cream transition-all hover:bg-rust active:translate-y-px disabled:cursor-not-allowed disabled:bg-ink-muted/40 disabled:text-cream/70 sm:w-auto"
+            className="group inline-flex flex-1 items-center justify-center gap-3 bg-ink px-6 py-3.5 text-cream transition-all hover:bg-rust active:translate-y-px disabled:cursor-not-allowed disabled:bg-ink-muted/40 disabled:text-cream/70 sm:flex-initial sm:w-auto"
           >
             <span className="small-caps text-xs">Tipp abgeben</span>
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden className="transition-transform group-hover:translate-x-0.5">
