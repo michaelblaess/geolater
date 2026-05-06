@@ -59,6 +59,29 @@ export function GuessMap({ guess, truth, debugTruth, onMapClick }: Props) {
     });
     mapRef.current = map;
 
+    // Beschriftungen auf Deutsch umstellen, mit Fallback auf name:latin und name.
+    // 'style.load' feuert beim ersten Laden und bei jedem setStyle erneut —
+    // perfekt fuer den Fallback-Fall.
+    map.on("style.load", () => {
+      const style = map.getStyle();
+      const layers = style.layers ?? [];
+      for (const layer of layers) {
+        const layout = (layer as { layout?: Record<string, unknown> }).layout;
+        if (layout && "text-field" in layout) {
+          try {
+            map.setLayoutProperty(layer.id, "text-field", [
+              "coalesce",
+              ["get", "name:de"],
+              ["get", "name:latin"],
+              ["get", "name"],
+            ]);
+          } catch {
+            // einzelne Layer dürfen scheitern (z. B. wenn ein Layer kein Standard-Schema hat)
+          }
+        }
+      }
+    });
+
     // Falls OpenFreeMap nicht erreichbar ist, auf OSM-Raster zurueckfallen
     map.on("error", (e) => {
       const msg = e?.error?.message ?? "";
