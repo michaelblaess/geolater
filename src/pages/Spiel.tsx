@@ -194,8 +194,8 @@ export function Spiel() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <div className="h-[44vh] sm:h-[52vh] lg:h-[70vh]">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_2fr]">
+        <div className="h-[32vh] sm:h-[42vh] lg:h-[70vh]">
           <BildPanel
             location={current}
             roundIndex={roundIndex}
@@ -203,7 +203,7 @@ export function Spiel() {
             reveal={phase === "result"}
           />
         </div>
-        <div className="h-[44vh] sm:h-[52vh] lg:h-[70vh]">
+        <div className="h-[48vh] sm:h-[55vh] lg:h-[70vh]">
           <GuessMap
             guess={guess}
             truth={phase === "result" ? { lat: current.lat, lng: current.lng } : null}
