@@ -12,15 +12,19 @@ import {
   saveActiveGame,
   type Phase,
 } from "../lib/gameSession";
-import type { GameResult, Round } from "../lib/types";
+import { loadDifficulty, viewForRound } from "../lib/difficulty";
+import type { Difficulty, GameResult, Round } from "../lib/types";
 
 const TOTAL_ROUNDS = 5;
 
 export function Spiel() {
   const navigate = useNavigate();
   const routerLocation = useLocation();
-  const stateNickname =
-    (routerLocation.state as { nickname?: string } | null)?.nickname ?? "Anonym";
+  const routerState = routerLocation.state as
+    | { nickname?: string; difficulty?: Difficulty }
+    | null;
+  const stateNickname = routerState?.nickname ?? "Anonym";
+  const stateDifficulty: Difficulty = routerState?.difficulty ?? loadDifficulty();
 
   // Initial state: aktive Reise wiederherstellen oder neu starten
   const initial = useMemo(() => {
@@ -28,13 +32,18 @@ export function Spiel() {
     if (saved !== null) {
       log("Aktive Reise wiederhergestellt", {
         spieler: saved.nickname,
+        schwierigkeit: saved.difficulty,
         etappe: saved.roundIndex + 1,
         bisherigePunkte: saved.completedRounds.reduce((s, r) => s + r.points, 0),
       });
       return saved;
     }
     const locations = pickRandomLocations(TOTAL_ROUNDS);
-    log("Spielsession startet", { spieler: stateNickname, runden: locations.length });
+    log("Spielsession startet", {
+      spieler: stateNickname,
+      schwierigkeit: stateDifficulty,
+      runden: locations.length,
+    });
     debugGroup("Gezogene Locations (DEBUG)", () => {
       debugTable(
         "Pool",
@@ -43,11 +52,13 @@ export function Spiel() {
           Ort: p.label,
           Lat: p.lat,
           Lng: p.lng,
+          Kontinent: p.continent,
         })),
       );
     });
     return {
       nickname: stateNickname,
+      difficulty: stateDifficulty,
       locations,
       roundIndex: 0,
       guess: null,
@@ -59,6 +70,7 @@ export function Spiel() {
   }, []);
 
   const [nickname] = useState(initial.nickname);
+  const [difficulty] = useState<Difficulty>(initial.difficulty);
   const [locations] = useState(initial.locations);
   const [roundIndex, setRoundIndex] = useState(initial.roundIndex);
   const [guess, setGuess] = useState(initial.guess);
@@ -70,6 +82,7 @@ export function Spiel() {
   useEffect(() => {
     saveActiveGame({
       nickname,
+      difficulty,
       locations,
       roundIndex,
       guess,
@@ -77,7 +90,7 @@ export function Spiel() {
       completedRounds,
       currentResult,
     });
-  }, [nickname, locations, roundIndex, guess, phase, completedRounds, currentResult]);
+  }, [nickname, difficulty, locations, roundIndex, guess, phase, completedRounds, currentResult]);
 
   const current = locations[roundIndex];
 
@@ -201,6 +214,7 @@ export function Spiel() {
             roundIndex={roundIndex}
             totalRounds={TOTAL_ROUNDS}
             reveal={phase === "result"}
+            hint={difficulty === "einfach" ? current.continent : null}
           />
         </div>
         <div className="h-[48vh] sm:h-[55vh] lg:h-[70vh]">
@@ -211,6 +225,10 @@ export function Spiel() {
               debug && phase === "guessing" ? { lat: current.lat, lng: current.lng } : null
             }
             onMapClick={phase === "guessing" ? (lat, lng) => setGuess({ lat, lng }) : null}
+            viewKey={roundIndex}
+            initialView={
+              phase === "guessing" ? viewForRound(difficulty, current.continent) : null
+            }
           />
         </div>
       </div>

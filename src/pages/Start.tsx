@@ -4,6 +4,8 @@ import { totalLocations } from "../lib/locations";
 import { CompassRose } from "../components/CompassRose";
 import { log } from "../lib/debug";
 import { clearActiveGame, hasActiveGame } from "../lib/gameSession";
+import { DIFFICULTY_LABELS, loadDifficulty, saveDifficulty } from "../lib/difficulty";
+import type { Difficulty } from "../lib/types";
 
 const NICKNAME_KEY = "geolater:lastNickname";
 
@@ -16,6 +18,7 @@ export function Start() {
       return "";
     }
   });
+  const [difficulty, setDifficulty] = useState<Difficulty>(() => loadDifficulty());
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -28,8 +31,14 @@ export function Start() {
     }
     // Beim Start aus dem Hero IMMER eine frische Reise — alte verwerfen
     clearActiveGame();
-    log("Spiel startet", { nickname: finalName });
-    navigate("/spiel", { state: { nickname: finalName } });
+    saveDifficulty(difficulty);
+    log("Spiel startet", { nickname: finalName, schwierigkeit: difficulty });
+    navigate("/spiel", { state: { nickname: finalName, difficulty } });
+  }
+
+  function pickDifficulty(d: Difficulty) {
+    setDifficulty(d);
+    saveDifficulty(d);
   }
 
   function handleResume() {
@@ -90,6 +99,36 @@ export function Start() {
               </p>
             </div>
           ) : null}
+
+          <div className="animate-rise-3 mt-6 w-full max-w-md">
+            <p className="small-caps text-[10px] text-ink-soft">Schwierigkeit</p>
+            <div className="mt-2 grid grid-cols-3 gap-2">
+              {(["einfach", "mittel", "schwer"] as const).map((d) => {
+                const active = difficulty === d;
+                return (
+                  <button
+                    key={d}
+                    type="button"
+                    onClick={() => pickDifficulty(d)}
+                    className={`border px-3 py-2.5 transition-colors ${
+                      active
+                        ? "border-rust bg-rust text-cream"
+                        : "border-ink/25 text-ink-soft hover:border-ink hover:text-ink"
+                    }`}
+                  >
+                    <span className="small-caps text-xs">{DIFFICULTY_LABELS[d]}</span>
+                  </button>
+                );
+              })}
+            </div>
+            <p className="mt-2 text-xs text-ink-muted">
+              {difficulty === "einfach"
+                ? "Karte vorgezoomt auf Kontinent, Hinweis unter dem Bild."
+                : difficulty === "mittel"
+                  ? "Welt-Übersicht, kein Hinweis."
+                  : "Welt-Übersicht, kein Hinweis, 30 s Timer pro Etappe."}
+            </p>
+          </div>
 
           <form
             onSubmit={handleSubmit}

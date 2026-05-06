@@ -10,6 +10,8 @@ export type Continent =
 
 export type LocationCategory = "wahrzeichen" | "naturwunder" | "stadt";
 
+export type Difficulty = "einfach" | "mittel" | "schwer";
+
 export type Location = {
   id?: string;
   image: string;

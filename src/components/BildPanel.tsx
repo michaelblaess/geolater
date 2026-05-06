@@ -9,11 +9,13 @@ type Props = {
   totalRounds: number;
   // true = das Spiel ist in der Result-Phase, dann darf der Label gezeigt werden
   reveal: boolean;
+  // Optionaler Hinweis-Text (z. B. Kontinent bei Schwierigkeit "einfach")
+  hint?: string | null;
 };
 
 const ROUND_NUMERAL = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];
 
-export function BildPanel({ location, roundIndex, totalRounds, reveal }: Props) {
+export function BildPanel({ location, roundIndex, totalRounds, reveal, hint }: Props) {
   const [errored, setErrored] = useState(false);
   const url = imageUrl(location.image);
 
@@ -63,6 +65,14 @@ export function BildPanel({ location, roundIndex, totalRounds, reveal }: Props) 
         <span className="text-cream/60">/</span>
         <span className="font-display text-sm opacity-80">{totalRounds}</span>
       </figcaption>
+
+      {/* Hinweis oben rechts (Schwierigkeit "einfach") */}
+      {hint !== undefined && hint !== null && !reveal ? (
+        <div className="absolute right-5 top-5 flex items-baseline gap-2 text-cream">
+          <span className="small-caps text-[10px] opacity-90">Hinweis</span>
+          <span className="font-headline text-base italic">{hint}</span>
+        </div>
+      ) : null}
 
       {/* Credit unten rechts */}
       <span className="absolute bottom-4 right-5 max-w-[60%] truncate text-right font-display text-[10px] uppercase tracking-widest text-cream/70">

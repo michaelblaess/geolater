@@ -2,7 +2,7 @@
 // damit der Spieler von beliebigen Seiten zurueck zum laufenden Spiel kann.
 // Wird beim Spielende explizit geloescht.
 
-import type { Location, Round } from "./types";
+import type { Difficulty, Location, Round } from "./types";
 
 const KEY = "geolater:activeGame";
 
@@ -10,6 +10,7 @@ export type Phase = "guessing" | "result";
 
 export type ActiveGame = {
   nickname: string;
+  difficulty: Difficulty;
   locations: Location[];
   roundIndex: number;
   guess: { lat: number; lng: number } | null;

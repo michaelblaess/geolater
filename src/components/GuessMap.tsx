@@ -11,6 +11,11 @@ type Props = {
   debugTruth?: { lat: number; lng: number } | null;
   // Klick-Handler — null bedeutet "Karte ist gelockt"
   onMapClick: ((lat: number, lng: number) => void) | null;
+  // Discriminator fuer Etappenwechsel — bei Aenderung wird die Karte
+  // auf initialView geflogen
+  viewKey?: number | string;
+  // Start-Kamera fuer den naechsten Etappenstart
+  initialView?: { center: [number, number]; zoom: number } | null;
 };
 
 // OpenFreeMap (https://openfreemap.org) liefert kostenlose Vektor-Tiles
@@ -32,7 +37,7 @@ const FALLBACK_STYLE: maplibregl.StyleSpecification = {
   layers: [{ id: "osm", type: "raster", source: "osm" }],
 };
 
-export function GuessMap({ guess, truth, debugTruth, onMapClick }: Props) {
+export function GuessMap({ guess, truth, debugTruth, onMapClick, viewKey, initialView }: Props) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
   const guessMarkerRef = useRef<Marker | null>(null);
@@ -53,8 +58,8 @@ export function GuessMap({ guess, truth, debugTruth, onMapClick }: Props) {
     const map = new maplibregl.Map({
       container: containerRef.current,
       style: OPENFREEMAP_STYLE,
-      center: [10, 30],
-      zoom: 1.2,
+      center: initialView?.center ?? [10, 30],
+      zoom: initialView?.zoom ?? 1.2,
       attributionControl: { compact: true },
     });
     mapRef.current = map;
@@ -105,6 +110,17 @@ export function GuessMap({ guess, truth, debugTruth, onMapClick }: Props) {
       mapRef.current = null;
     };
   }, []);
+
+  // Bei Etappenwechsel auf den passenden Continent-Zoom (oder Welt) fliegen
+  const lastViewKey = useRef<number | string | undefined>(viewKey);
+  useEffect(() => {
+    const map = mapRef.current;
+    if (map === null) return;
+    if (viewKey === lastViewKey.current) return;
+    lastViewKey.current = viewKey;
+    const target = initialView ?? { center: [10, 30] as [number, number], zoom: 1.2 };
+    map.flyTo({ center: target.center, zoom: target.zoom, duration: 700, essential: true });
+  }, [viewKey, initialView]);
 
   // Tipp-Marker aktualisieren
   useEffect(() => {
