@@ -38,7 +38,7 @@ export function Layout() {
                 Debug
               </span>
             ) : null}
-            <NavItem to="/highscore">Tafel</NavItem>
+            <NavItem to="/highscore">Bestenliste</NavItem>
             <ThemeToggle />
           </nav>
         </div>

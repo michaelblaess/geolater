@@ -21,7 +21,7 @@ export function Highscore() {
       <div className="animate-rise mb-10">
         <p className="small-caps text-[11px] text-rust">Bestenliste</p>
         <h1 className="mt-3 font-headline text-5xl font-semibold tracking-tight text-ink">
-          Tafel der Reisenden
+          Bestenliste der Reisenden
         </h1>
         <p className="mt-3 max-w-xl font-display text-base text-ink-soft">
           Die zehn besten Reisen — gespeichert ausschließlich in deinem Browser, ohne Server,

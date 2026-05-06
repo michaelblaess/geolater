@@ -312,27 +312,81 @@ Privates Schülerprojekt, nicht kommerziell.
 
 ## 10. Phasen-Roadmap (nach MVP)
 
-### Phase 1.5 — Politur & Begleitfeatures
-- Suno-Tracks einbinden (Hintergrundmusik mit Mute/Volume, in `localStorage`)
-- Optional: Spenden-Link im Footer (Ko-fi / Buy Me a Coffee, ohne Tracking-Skripte)
-- Mehr Locations (z. B. 30+) und/oder Schwierigkeitsgrade
+### Phase 1.5 — Musik
+- Suno-Tracks einbinden (Hintergrundmusik mit Mute/Volume in `localStorage`)
+- Wartet auf Generierung der Tracks durch Michael
 
-### Phase 2 — App-Tauglichkeit
+### Phase 2 — Comfort, Inhalte, Game-Feel  *(aktiver Backlog, Mai 2026)*
+
+Sortiert nach Bearbeitungsreihenfolge — Quick wins zuerst, dann Inhalt,
+dann Game-Mechaniken:
+
+| #  | Aufgabe                                              | Status   |
+|----|------------------------------------------------------|----------|
+| 1  | „Tafel" → „Bestenliste" (Rename)                     | offen    |
+| 2  | Karte auf Deutsch (`name:de` + Fallback `name`)      | offen    |
+| 3  | Karte 2× Breite (Desktop) / Bild kleiner (Mobile)    | offen    |
+| 4  | „Tipp abgeben" immer sichtbar (sticky Mobile)        | offen    |
+| 5  | Locations-Pool auf 100+ ausbauen (inkl. Naturwunder) | offen    |
+| 6  | Schwierigkeitsstufen einfach/mittel/schwer (Default: einfach) | offen |
+| 7  | Timer 30 s bei „Schwer", Auto-Submit bei Ablauf      | offen    |
+| 8  | Gespielte Orte über Reisen merken, Auto-Reset wenn leer, manueller Reset jederzeit | offen |
+| 9  | Hamburger-Menü (nur Mobile) mit allen Infos          | offen    |
+| 10 | Slide-Effekt zur nächsten Etappe                     | offen    |
+| 11 | Wikipedia-Infos nach Auflösung (Land + 2 Sätze + Link) | offen  |
+| 12 | Haptic-Feedback (Vibrate + Pulse-Ring am Marker)     | offen    |
+| 13 | Map-Zoom/Pan-Speed erhöhen                           | offen    |
+
+**Schwierigkeits-Differenzierung (Punkt 6):**
+- **Einfach** (Default): Hinweis-Text unter Bild („Europa", „Asien" …),
+  Karte vorgezoomt auf Kontinent, kein Timer
+- **Mittel**: kein Hinweis, Karte komplett rausgezoomt, kein Timer
+- **Schwer**: kein Hinweis, Karte rausgezoomt, **30 s Timer** pro Etappe;
+  bei Ablauf wird der zuletzt gesetzte Tipp automatisch abgegeben (oder
+  0 Punkte falls keiner gesetzt)
+- Punktestand bleibt in allen Modi gleich (max. 25.000), Schwer ist die
+  Selbstherausforderung
+
+**Gespielte Orte merken (Punkt 8):**
+- Neuer `localStorage`-Key `geolater:playedIds` — Set von Location-IDs
+- `pickRandomLocations()` filtert beim Ziehen die schon gespielten raus
+- Wenn der Restpool < benötigte Etappen ist → Auto-Reset
+- Manueller Reset-Knopf in den Einstellungen / Bestenliste-Seite
+
+**Locations 100+ (Punkt 5):**
+- Skript `scripts/build-locations.mjs`, das eine Liste von Wikipedia-Slugs
+  + Kategorien (Wahrzeichen, Naturwunder) durchgeht und für jeden Eintrag
+  via MediaWiki-API `pageimages` + `coordinates` + `extracts` zieht
+- Output: `src/data/locations.json` mit ~100 validierten Einträgen
+- Naturwunder-Beispiele: Yellowstone, Iguazú, Grand Canyon, Mt Fuji,
+  Halong-Bucht, Antelope Canyon, Plitvicer Seen, …
+
+**Haptic (Punkt 12):**
+- `navigator.vibrate(15)` beim Klick auf „Tipp abgeben" — kurzer Mini-Bump
+- `navigator.vibrate([60, 30, 60])` beim Reveal — Doppel-Pulse
+- Visueller Pulse-Ring am Tipp-Marker beim Submit (CSS-Animation)
+- **Kein Sound** in dieser Phase — Sound erst mit Phase 1.5 Musik
+
+**Map-Speed (Punkt 13):**
+- `map.scrollZoom.setWheelZoomRate(1/100)` (Default `1/450` → ~4× schneller)
+- Zoom-Animation-Duration auf Etappenwechsel von 800 ms auf ~400 ms
+- Doppelklick-Zoom-Geschwindigkeit auch erhöhen
+
+### Phase 3 — App-Tauglichkeit
 - **PWA** — Manifest + Service Worker + Install-Prompt + Offline-Fallback
-- Mobile-Polish (Touch-Map-Geste, größere Tap-Targets)
 - Eigene Domain (optional)
 
-### Phase 3 — Stores (falls gewünscht)
+### Phase 4 — Stores (falls gewünscht)
 - **Google Play**: TWA via Bubblewrap/PWA Builder, 25 USD einmalig (Stefan)
 - **Apple App Store**: Capacitor-Wrapper, 99 USD/Jahr (Stefan)
 - Erfordert: kommerzielle Klarstellung im Impressum, ggf. Gewerbeanmeldung
 - Bilder dann lokal hosten (Wikimedia-Hotlinks bei kommerziellem Maßstab unsauber)
 
-### Phase 4 — Multiplayer (falls gewollt)
+### Phase 5 — Multiplayer (falls gewollt)
 - WebRTC oder leichter WebSocket-Server (Cloudflare Workers Free + KV)
 - Räume mit Code zum Beitreten
 
-### Phase 5 — Custom Content
+### Phase 6 — Custom Content
 - Eigene Location-Sets (Themen, Regionen)
 - Community-Sets teilen via JSON-Export
 

@@ -42,7 +42,7 @@ export function Datenschutz() {
               </ul>
               <p className="mt-3">
                 Du kannst diese Daten jederzeit über die Browser-Funktion „Daten der Website
-                löschen" oder über die Schaltfläche „Liste löschen" auf der Tafel-Seite entfernen.
+                löschen" oder über die Schaltfläche „Liste löschen" auf der Bestenliste-Seite entfernen.
               </p>
             </>
           }

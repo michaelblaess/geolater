@@ -98,7 +98,7 @@ export function Victory() {
               <span className="italic">{result.nickname}</span>
               {rank !== null ? (
                 <>
-                  {" "}— Tafelplatz <span className="text-rust">№ {rank}</span>
+                  {" "}— Platz <span className="text-rust">№ {rank}</span>
                 </>
               ) : null}
             </p>
@@ -151,7 +151,7 @@ export function Victory() {
             to="/highscore"
             className="inline-flex flex-1 items-center justify-center border border-ink/25 px-6 py-4 text-ink transition-colors hover:border-rust hover:text-rust"
           >
-            <span className="small-caps text-xs">Tafel ansehen</span>
+            <span className="small-caps text-xs">Bestenliste ansehen</span>
           </Link>
         </div>
       </div>
