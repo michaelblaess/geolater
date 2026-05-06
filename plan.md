@@ -316,26 +316,31 @@ Privates Schülerprojekt, nicht kommerziell.
 - Suno-Tracks einbinden (Hintergrundmusik mit Mute/Volume in `localStorage`)
 - Wartet auf Generierung der Tracks durch Michael
 
-### Phase 2 — Comfort, Inhalte, Game-Feel  *(aktiver Backlog, Mai 2026)*
+### Phase 2 — Comfort, Inhalte, Game-Feel  *(abgeschlossen, Mai 2026)*
 
-Sortiert nach Bearbeitungsreihenfolge — Quick wins zuerst, dann Inhalt,
-dann Game-Mechaniken:
+| #  | Aufgabe                                              | Status      |
+|----|------------------------------------------------------|-------------|
+| 1  | „Tafel" → „Bestenliste" (Rename)                     | ✓ erledigt  |
+| 2  | Karte auf Deutsch (`name:de` + Fallback `name`)      | ✓ erledigt  |
+| 3  | Karte 2× Breite (Desktop) / Bild kleiner (Mobile)    | ✓ erledigt  |
+| 4  | „Tipp abgeben" immer sichtbar (sticky Mobile)        | ✓ erledigt  |
+| 5  | Locations-Pool auf 111 (inkl. Naturwunder)           | ✓ erledigt  |
+| 6  | Schwierigkeitsstufen einfach/mittel/schwer (Default: einfach) | ✓ erledigt |
+| 7  | Timer 30 s bei „Schwer", Auto-Submit bei Ablauf      | ✓ erledigt  |
+| 8  | Gespielte Orte über Reisen merken, Auto-Reset, manueller Reset | ✓ erledigt |
+| 9  | Hamburger-Menü (nur Mobile) mit allen Infos          | ✓ erledigt  |
+| 10 | Slide-Effekt zur nächsten Etappe (View-Transitions-API) | ✓ erledigt |
+| 11 | Wikipedia-Infos nach Auflösung (Land + 2 Sätze + Link) | ✓ erledigt |
+| 12 | Haptic-Feedback (Vibrate + Pulse-Ring am Marker)     | ✓ erledigt  |
+| 13 | Map-Zoom/Pan-Speed erhöhen                           | ✓ erledigt  |
 
-| #  | Aufgabe                                              | Status   |
-|----|------------------------------------------------------|----------|
-| 1  | „Tafel" → „Bestenliste" (Rename)                     | offen    |
-| 2  | Karte auf Deutsch (`name:de` + Fallback `name`)      | offen    |
-| 3  | Karte 2× Breite (Desktop) / Bild kleiner (Mobile)    | offen    |
-| 4  | „Tipp abgeben" immer sichtbar (sticky Mobile)        | offen    |
-| 5  | Locations-Pool auf 100+ ausbauen (inkl. Naturwunder) | offen    |
-| 6  | Schwierigkeitsstufen einfach/mittel/schwer (Default: einfach) | offen |
-| 7  | Timer 30 s bei „Schwer", Auto-Submit bei Ablauf      | offen    |
-| 8  | Gespielte Orte über Reisen merken, Auto-Reset wenn leer, manueller Reset jederzeit | offen |
-| 9  | Hamburger-Menü (nur Mobile) mit allen Infos          | offen    |
-| 10 | Slide-Effekt zur nächsten Etappe                     | offen    |
-| 11 | Wikipedia-Infos nach Auflösung (Land + 2 Sätze + Link) | offen  |
-| 12 | Haptic-Feedback (Vibrate + Pulse-Ring am Marker)     | offen    |
-| 13 | Map-Zoom/Pan-Speed erhöhen                           | offen    |
+**Zusatz (während Phase 2 entstanden):**
+- Karten-Heuristik im Build-Skript: SVGs/Lagepläne werden als „nicht Foto"
+  erkannt, alternativer Foto-Kandidat aus den Artikel-Bildern wird gewählt
+  (via Commons-API). Sechs Locations dadurch von Karten-Bildern auf echte
+  Fotos umgestellt.
+- Wikidata-Integration: pro Location P17 (country) auflösen + deutsche
+  Beschriftung holen. 106 von 111 Locations haben jetzt ein Land.
 
 **Schwierigkeits-Differenzierung (Punkt 6):**
 - **Einfach** (Default): Hinweis-Text unter Bild („Europa", „Asien" …),
